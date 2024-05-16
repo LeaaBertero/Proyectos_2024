@@ -14,5 +14,9 @@ namespace Proyecto2024.BD.Data.Entity
 
         public string Apellido { get; set; }
 
+        public int TDocumentoId { get; set; }
+
+        public TDocumento TDocumento { get; set;}
+
     }
 }

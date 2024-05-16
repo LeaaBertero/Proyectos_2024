@@ -11,8 +11,8 @@ namespace Proyecto2024.BD.Data
     public class Context : DbContext
     {
         //agregar tablas //DbSet --> es de la misma clase que DbContext
-        public DbSet<TDocumento> TDocumento { get; set; }
-        public DbSet<TDocumento> Personas { get; set; }
+        public DbSet<TDocumento> TDocumentos { get; set; }
+        public DbSet<Persona> Personas { get; set; }
 
         public Context(DbContextOptions options) : base(options)
         {
