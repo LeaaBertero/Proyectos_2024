@@ -5,23 +5,24 @@
 namespace Proyecto2024.BD.Migrations
 {
     /// <inheritdoc />
-    public partial class Inicio2 : Migration
+    public partial class Inicio : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropPrimaryKey(
-                name: "PK_TDocumento",
-                table: "TDocumento");
-
-            migrationBuilder.RenameTable(
-                name: "TDocumento",
-                newName: "TDocumentos");
-
-            migrationBuilder.AddPrimaryKey(
-                name: "PK_TDocumentos",
-                table: "TDocumentos",
-                column: "Id");
+            migrationBuilder.CreateTable(
+                name: "TDocumentos",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Codigo = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TDocumentos", x => x.Id);
+                });
 
             migrationBuilder.CreateTable(
                 name: "Personas",
@@ -29,9 +30,9 @@ namespace Proyecto2024.BD.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    NumDoc = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Apellido = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    NumDoc = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Nombre = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Apellido = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     TDocumentoId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -46,9 +47,15 @@ namespace Proyecto2024.BD.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Personas_TDocumentoId",
+                name: "Persona_Apellido_Nombre",
                 table: "Personas",
-                column: "TDocumentoId");
+                columns: new[] { "Apellido", "Nombre" });
+
+            migrationBuilder.CreateIndex(
+                name: "Persona_UQ",
+                table: "Personas",
+                columns: new[] { "TDocumentoId", "NumDoc" },
+                unique: true);
         }
 
         /// <inheritdoc />
@@ -57,18 +64,8 @@ namespace Proyecto2024.BD.Migrations
             migrationBuilder.DropTable(
                 name: "Personas");
 
-            migrationBuilder.DropPrimaryKey(
-                name: "PK_TDocumentos",
-                table: "TDocumentos");
-
-            migrationBuilder.RenameTable(
-                name: "TDocumentos",
-                newName: "TDocumento");
-
-            migrationBuilder.AddPrimaryKey(
-                name: "PK_TDocumento",
-                table: "TDocumento",
-                column: "Id");
+            migrationBuilder.DropTable(
+                name: "TDocumentos");
         }
     }
 }

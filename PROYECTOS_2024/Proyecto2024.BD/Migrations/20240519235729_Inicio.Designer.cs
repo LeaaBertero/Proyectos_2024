@@ -11,8 +11,8 @@ using Proyecto2024.BD.Data;
 namespace Proyecto2024.BD.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20240516000402_Inicio2")]
-    partial class Inicio2
+    [Migration("20240519235729_Inicio")]
+    partial class Inicio
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -34,22 +34,25 @@ namespace Proyecto2024.BD.Migrations
 
                     b.Property<string>("Apellido")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Nombre")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("NumDoc")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("TDocumentoId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("TDocumentoId");
+                    b.HasIndex(new[] { "Apellido", "Nombre" }, "Persona_Apellido_Nombre");
+
+                    b.HasIndex(new[] { "TDocumentoId", "NumDoc" }, "Persona_UQ")
+                        .IsUnique();
 
                     b.ToTable("Personas");
                 });

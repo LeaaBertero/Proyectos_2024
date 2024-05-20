@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace Proyecto2024.BD.Data
 {
+    //Base de datos de Context
     public class Context : DbContext
     {
         //agregar tablas //DbSet --> es de la misma clase que DbContext
