@@ -5,7 +5,7 @@
 namespace Proyecto2024.BD.Migrations
 {
     /// <inheritdoc />
-    public partial class Inicio : Migration
+    public partial class MaximaLongitudPersona : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -16,8 +16,8 @@ namespace Proyecto2024.BD.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Codigo = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Codigo = table.Column<string>(type: "nvarchar(4)", maxLength: 4, nullable: false),
+                    Nombre = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -30,9 +30,9 @@ namespace Proyecto2024.BD.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    NumDoc = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Nombre = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Apellido = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    NumDoc = table.Column<string>(type: "nvarchar(12)", maxLength: 12, nullable: false),
+                    Nombre = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
+                    Apellido = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
                     TDocumentoId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -55,6 +55,12 @@ namespace Proyecto2024.BD.Migrations
                 name: "Persona_UQ",
                 table: "Personas",
                 columns: new[] { "TDocumentoId", "NumDoc" },
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "TDocumento_UQ",
+                table: "TDocumentos",
+                column: "Codigo",
                 unique: true);
         }
 
