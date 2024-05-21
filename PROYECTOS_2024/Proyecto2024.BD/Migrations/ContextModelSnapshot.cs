@@ -86,12 +86,17 @@ namespace Proyecto2024.BD.Migrations
             modelBuilder.Entity("Proyecto2024.BD.Data.Entity.Persona", b =>
                 {
                     b.HasOne("Proyecto2024.BD.Data.Entity.TDocumento", "TDocumento")
-                        .WithMany()
+                        .WithMany("Personas")
                         .HasForeignKey("TDocumentoId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("TDocumento");
+                });
+
+            modelBuilder.Entity("Proyecto2024.BD.Data.Entity.TDocumento", b =>
+                {
+                    b.Navigation("Personas");
                 });
 #pragma warning restore 612, 618
         }

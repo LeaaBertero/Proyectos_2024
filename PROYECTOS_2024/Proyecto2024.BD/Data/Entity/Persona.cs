@@ -32,5 +32,7 @@ namespace Proyecto2024.BD.Data.Entity
 
         public TDocumento TDocumento { get; set;}
 
+        public List<Profesion> profesiones { get; set; }
+
     }
 }
