@@ -57,6 +57,29 @@ namespace Proyecto2024.BD.Migrations
                     b.ToTable("Personas");
                 });
 
+            modelBuilder.Entity("Proyecto2024.BD.Data.Entity.Profesion", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("PersonaId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TituloId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PersonaId");
+
+                    b.HasIndex("TituloId");
+
+                    b.ToTable("Profesiones");
+                });
+
             modelBuilder.Entity("Proyecto2024.BD.Data.Entity.TDocumento", b =>
                 {
                     b.Property<int>("Id")
@@ -83,6 +106,32 @@ namespace Proyecto2024.BD.Migrations
                     b.ToTable("TDocumentos");
                 });
 
+            modelBuilder.Entity("Proyecto2024.BD.Data.Entity.Titulo", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Codigo")
+                        .IsRequired()
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex(new[] { "Codigo" }, "Titulo_UQ")
+                        .IsUnique();
+
+                    b.ToTable("Titulo");
+                });
+
             modelBuilder.Entity("Proyecto2024.BD.Data.Entity.Persona", b =>
                 {
                     b.HasOne("Proyecto2024.BD.Data.Entity.TDocumento", "TDocumento")
@@ -94,9 +143,38 @@ namespace Proyecto2024.BD.Migrations
                     b.Navigation("TDocumento");
                 });
 
+            modelBuilder.Entity("Proyecto2024.BD.Data.Entity.Profesion", b =>
+                {
+                    b.HasOne("Proyecto2024.BD.Data.Entity.Persona", "Persona")
+                        .WithMany("profesiones")
+                        .HasForeignKey("PersonaId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Proyecto2024.BD.Data.Entity.Titulo", "Titulo")
+                        .WithMany("Profesiones")
+                        .HasForeignKey("TituloId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Persona");
+
+                    b.Navigation("Titulo");
+                });
+
+            modelBuilder.Entity("Proyecto2024.BD.Data.Entity.Persona", b =>
+                {
+                    b.Navigation("profesiones");
+                });
+
             modelBuilder.Entity("Proyecto2024.BD.Data.Entity.TDocumento", b =>
                 {
                     b.Navigation("Personas");
+                });
+
+            modelBuilder.Entity("Proyecto2024.BD.Data.Entity.Titulo", b =>
+                {
+                    b.Navigation("Profesiones");
                 });
 #pragma warning restore 612, 618
         }
