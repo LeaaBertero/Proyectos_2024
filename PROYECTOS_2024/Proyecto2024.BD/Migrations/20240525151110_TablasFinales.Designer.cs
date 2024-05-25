@@ -11,7 +11,7 @@ using Proyecto2024.BD.Data;
 namespace Proyecto2024.BD.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20240522001254_TablasFinales")]
+    [Migration("20240525151110_TablasFinales")]
     partial class TablasFinales
     {
         /// <inheritdoc />
