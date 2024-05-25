@@ -26,6 +26,9 @@ namespace Proyecto2024.BD.Data
 
         }
 
+
+
+
         //sobre escribiendo un metodo de la creacion de la base de datos
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
