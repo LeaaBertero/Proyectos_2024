@@ -13,17 +13,20 @@ namespace Proyecto2024.Server.Controllers
     {
         private readonly Context context;
 
+        //constructor
         public TDocumentosControllers(Context context)
         {
             this.context = context;
         }
 
+        //Método Get
         [HttpGet]
         public async Task<ActionResult<List<TDocumento>>> Get() 
         {
             return await context.TDocumentos.ToListAsync();
         }
 
+        //Método Post
         [HttpPost]
         public async Task<ActionResult<int>> Post(TDocumento entidad) 
         {
@@ -39,7 +42,9 @@ namespace Proyecto2024.Server.Controllers
             }
         }
 
-        [HttpPut("{id: int}")] //apis/Documentos/2
+
+        //Método Put
+        [HttpPut("{id:int}")] //apis/Documentos/2
         public async Task<ActionResult>Put(int id, TDocumento entidad) 
         {
             if (id != entidad.Id)
