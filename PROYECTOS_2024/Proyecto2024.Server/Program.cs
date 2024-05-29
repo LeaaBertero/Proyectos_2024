@@ -1,11 +1,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Proyecto2024.BD.Data;
+using System.Text.Json.Serialization;
 
 
 //---------------------------------------------------------------------
 //configuracion de los servicios en el constructor de la aplicación
 var builder = WebApplication.CreateBuilder(args);
+
+//para evitar los bucles infinitos en la base de datos?????
+builder.Services.AddControllersWithViews().AddJsonOptions
+    (x=>x.JsonSerializerOptions.
+    ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
 // Add services to the container.
 
