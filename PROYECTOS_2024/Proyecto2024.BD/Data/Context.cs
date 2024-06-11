@@ -15,12 +15,13 @@ namespace Proyecto2024.BD.Data
         //DbSet --> es de la misma clase que DbContext
 
         //EN ESTA SECCION DE LA CLASE CONTEXT QUE HEREDA DE DBCONTEXT SE REALIZA LA CREACION DE LAS TABLAS (ENTIDADES)
+        //acá van todas las tablas de la base de datos
         public DbSet<TDocumento> TDocumentos { get; set; } //ENTIDAD
         public DbSet<Persona> Personas { get; set; } //ENTIDAD
-        public DbSet<Profesion>Profesiones { get; set; } //ENTIDAD
+        public DbSet<Profesion>Profesiones { get; set; } //ENTIDAD 
 
-
-        //CONSTRUCTOR
+        //GENERAR ESTE CONSTRUCTOR CON OPCIONES - IMPORTATE EN LA CLASE CONTEXT QUE HEREDA DE DBCONTEXT QUE ES UNA CLASE DEL FRAMEWORKS
+        //CONSTRUCTOR con opciones
         public Context(DbContextOptions options) : base(options)
         {
 

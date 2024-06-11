@@ -15,9 +15,12 @@ namespace Proyecto2024.BD.Data.Entity
 
 
     //ÉN ESTA SECCIÓN VAN LAS ENTIDADES DE LA BASE DE DATOS
-    public class Persona : EntityBase //HEREDA DE ENTITY BASE -  POR QUE ENTITY BASE TIENE UN ID ,
-                                      //POR QUE TODAS LAS TABLAS TIENEN UN ID Y AL HEREDAR LA CLASE ENTITY BASE, HEREDAN TODOS LAS DEMAS ENTIDADES
-    {
+    public class Persona : EntityBase //HEREDA DE ENTITY BASE -  POR QUE ENTITY BASE TIENE UN ID , 
+    {  
+                                      //POR QUE TODAS LAS TABLAS TIENEN UN ID Y AL HEREDAR LA CLASE ENTITY BASE, 
+                                      //HEREDAN EL ID DE TODAS LAS DEMAS ENTIDADES 
+        
+
         [Required(ErrorMessage = "El número de documento es obligatorio")]
         [MaxLength(12, ErrorMessage = "Máximo número de caracteres {1} ")]
         public string NumDoc { get; set; }
@@ -33,12 +36,13 @@ namespace Proyecto2024.BD.Data.Entity
 
 
         //Para hacer las relaciones entre las tablas
+        //con este REQUIRED se le envia un mensaje al usuario desde back-end, hacia el front-end
         [Required(ErrorMessage = "El tipo de documento es obligatorio")]
         public int TDocumentoId { get; set; }
 
         public TDocumento TDocumento { get; set;}
 
         public List<Profesion> profesiones { get; set; }
-
     }
 }
+

@@ -11,7 +11,7 @@ namespace Proyecto2024.BD.Data
     {
         public int Id { get; set; }
 
-        public bool Activo { get; set; }
+        //public bool Activo { get; set; }
 
     }
 }

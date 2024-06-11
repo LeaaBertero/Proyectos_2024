@@ -27,7 +27,7 @@ builder.Services.AddDbContext<Context>(op => op.UseSqlServer("name=conn"));
 
 
 //---------------------------------------------------------------------
-//construccion de la aplicacion
+//construccion de la aplicacion la cual va a conectar la aplicacion con la base de datos
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
