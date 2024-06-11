@@ -11,8 +11,8 @@ using Proyecto2024.BD.Data;
 namespace Proyecto2024.BD.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20240528172654_TablasFinales")]
-    partial class TablasFinales
+    [Migration("20240611182155_tablasFinales")]
+    partial class tablasFinales
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -138,7 +138,7 @@ namespace Proyecto2024.BD.Migrations
             modelBuilder.Entity("Proyecto2024.BD.Data.Entity.Persona", b =>
                 {
                     b.HasOne("Proyecto2024.BD.Data.Entity.TDocumento", "TDocumento")
-                        .WithMany("Personas")
+                        .WithMany()
                         .HasForeignKey("TDocumentoId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -168,11 +168,6 @@ namespace Proyecto2024.BD.Migrations
             modelBuilder.Entity("Proyecto2024.BD.Data.Entity.Persona", b =>
                 {
                     b.Navigation("profesiones");
-                });
-
-            modelBuilder.Entity("Proyecto2024.BD.Data.Entity.TDocumento", b =>
-                {
-                    b.Navigation("Personas");
                 });
 
             modelBuilder.Entity("Proyecto2024.BD.Data.Entity.Titulo", b =>

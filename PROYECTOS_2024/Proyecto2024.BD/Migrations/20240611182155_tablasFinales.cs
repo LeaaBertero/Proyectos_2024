@@ -5,7 +5,7 @@
 namespace Proyecto2024.BD.Migrations
 {
     /// <inheritdoc />
-    public partial class TablasFinales : Migration
+    public partial class tablasFinales : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

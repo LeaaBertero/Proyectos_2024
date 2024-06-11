@@ -29,9 +29,6 @@ namespace Proyecto2024.BD.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<bool>("Activo")
-                        .HasColumnType("bit");
-
                     b.Property<string>("Apellido")
                         .IsRequired()
                         .HasMaxLength(150)
@@ -68,9 +65,6 @@ namespace Proyecto2024.BD.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<bool>("Activo")
-                        .HasColumnType("bit");
-
                     b.Property<int>("PersonaId")
                         .HasColumnType("int");
 
@@ -93,9 +87,6 @@ namespace Proyecto2024.BD.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<bool>("Activo")
-                        .HasColumnType("bit");
 
                     b.Property<string>("Codigo")
                         .IsRequired()
@@ -123,9 +114,6 @@ namespace Proyecto2024.BD.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<bool>("Activo")
-                        .HasColumnType("bit");
-
                     b.Property<string>("Codigo")
                         .IsRequired()
                         .HasMaxLength(4)
@@ -147,7 +135,7 @@ namespace Proyecto2024.BD.Migrations
             modelBuilder.Entity("Proyecto2024.BD.Data.Entity.Persona", b =>
                 {
                     b.HasOne("Proyecto2024.BD.Data.Entity.TDocumento", "TDocumento")
-                        .WithMany("Personas")
+                        .WithMany()
                         .HasForeignKey("TDocumentoId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -177,11 +165,6 @@ namespace Proyecto2024.BD.Migrations
             modelBuilder.Entity("Proyecto2024.BD.Data.Entity.Persona", b =>
                 {
                     b.Navigation("profesiones");
-                });
-
-            modelBuilder.Entity("Proyecto2024.BD.Data.Entity.TDocumento", b =>
-                {
-                    b.Navigation("Personas");
                 });
 
             modelBuilder.Entity("Proyecto2024.BD.Data.Entity.Titulo", b =>

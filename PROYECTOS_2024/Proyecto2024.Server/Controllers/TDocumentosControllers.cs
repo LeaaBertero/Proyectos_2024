@@ -11,13 +11,14 @@ namespace Proyecto2024.Server.Controllers
     [ApiController]
     [Route("api/TDocumentos")] //Ruta dónde esta alojada la api  del controlador de la entidad TDocumento
     public class TDocumentosControllers : ControllerBase //Tiene que heredar de la clase del framework (ControllerBase, por que estamos haciendo justamente los controllers
-                                                         //de las entodades de cada una de las tablas).
+                                                         //de las entidades de cada una de las tablas).
     {
         //inicializacion de la clase Contextt que es readonly("de solo lectura").
         private readonly Context context;
 
         
         //Hacer el constructor del controller TDocumento
+        //Constructor de la clase TDocumentoController
         public TDocumentosControllers(Context context) //contxt es la base de datos
         {
             this.context = context;

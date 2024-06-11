@@ -31,8 +31,9 @@ builder.Services.AddDbContext<Context>(op => op.UseSqlServer("name=conn"));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment()) 
 {
+    //esta preguntando si acá el ambiente es de desarrollo, se va a ejectar con swagger
     app.UseSwagger();
     app.UseSwaggerUI();
 }

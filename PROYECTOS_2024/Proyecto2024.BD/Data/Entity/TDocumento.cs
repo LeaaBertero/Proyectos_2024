@@ -28,7 +28,7 @@ namespace Proyecto2024.BD.Data.Entity
         //propiedad de la clase TDocumento (Nombre)
         public string Nombre { get; set;}
 
-        public List<Persona> Personas { get; set; }
+        //public List<Persona> Personas { get; set; }
 
     }
 }
