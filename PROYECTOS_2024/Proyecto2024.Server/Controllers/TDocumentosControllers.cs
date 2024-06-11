@@ -33,7 +33,7 @@ namespace Proyecto2024.Server.Controllers
             //devuelve una lista en forma asincronica
         }
         
-        
+        //Método Get
         [HttpGet("{id:int}")]
         public async Task<ActionResult<TDocumento>> Get(int id) 
         {
@@ -47,7 +47,7 @@ namespace Proyecto2024.Server.Controllers
         }
 
 
-
+        //Método Get
         [HttpGet("Existe/{id:int}")]
         public async Task<ActionResult<bool>> Existe(int id) 
         {
@@ -78,9 +78,11 @@ namespace Proyecto2024.Server.Controllers
         }
 
 
+
+
         //Método Put
         [HttpPut("{id:int}")] //apis/Documentos/2
-        public async Task<ActionResult> Put(int id, TDocumento entidad)
+        public async Task<ActionResult> Put(int id, [FromBody] TDocumento entidad)
         {
             if (id != entidad.Id)
             {
@@ -112,6 +114,8 @@ namespace Proyecto2024.Server.Controllers
 
 
         }
+
+
 
         //método para eliminar
         [HttpDelete("{id:int}")]
