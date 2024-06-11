@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Proyecto2024.BD.Data
 {
     //Base de datos de Context
-    public class Context : DbContext
+    public class Context : DbContext //clase Context Hereda de DbContext
     {
         //para agregar tablas, se realiza acá en en Context
         //DbSet --> es de la misma clase que DbContext
@@ -31,6 +31,7 @@ namespace Proyecto2024.BD.Data
 
 
         //éste método evita que la base de datos pueda borrarse en cascada
+        //IMPORTANTE: establecer este codigo en el proyecto que vamos a realizar, evita que se borre la base de datos en cascada.
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 

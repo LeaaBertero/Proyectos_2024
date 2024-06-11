@@ -9,23 +9,29 @@ using Proyecto2024.BD.Data.Entity;
 namespace Proyecto2024.Server.Controllers
 {
     [ApiController]
-    [Route("api/TDocumentos")]
-    public class TDocumentosControllers : ControllerBase //Clase de Entity Framework Heredada
+    [Route("api/TDocumentos")] //Ruta dónde esta alojada la api  del controlador de la entidad TDocumento
+    public class TDocumentosControllers : ControllerBase //Tiene que heredar de la clase del framework (ControllerBase, por que estamos haciendo justamente los controllers
+                                                         //de las entodades de cada una de las tablas).
     {
+        //inicializacion de la clase Contextt que es readonly("de solo lectura").
         private readonly Context context;
 
-        //constructor
+        
+        //Hacer el constructor del controller TDocumento
         public TDocumentosControllers(Context context) //contxt es la base de datos
         {
             this.context = context;
         }
 
-        //Método Get
+
+        //Método Get = devuelve una lista de objetos de la clase TDocumentos
         [HttpGet]
-        public async Task<ActionResult<List<TDocumento>>> Get()
+        public async Task<ActionResult<List<TDocumento>>> Get() 
         {
-            return await context.TDocumentos.ToListAsync();
+            return await context.TDocumentos.ToListAsync(); //El Context es la base de datos
+            //devuelve una lista en forma asincronica
         }
+        
         
         [HttpGet("{id:int}")]
         public async Task<ActionResult<TDocumento>> Get(int id) 
@@ -38,6 +44,8 @@ namespace Proyecto2024.Server.Controllers
             }
             return Lean;
         }
+
+
 
         [HttpGet("Existe/{id:int}")]
         public async Task<ActionResult<bool>> Existe(int id) 

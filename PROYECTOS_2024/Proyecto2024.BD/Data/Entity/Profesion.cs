@@ -11,13 +11,13 @@ namespace Proyecto2024.BD.Data.Entity
     {
         [Required(ErrorMessage = "La persona es obligatoria")]
         public int PersonaId { get; set; }
-        public Persona Persona { get; set; }
+        public Persona Persona { get; set; } //clase persona hereda de entityBase
 
 
 
         [Required(ErrorMessage = "El título es obligatorio")]
         public int TituloId { get; set; }
-        public Titulo Titulo { get; set; }
+        public Titulo Titulo { get; set; } //clase titulo tambien hereda de entityBase
 
 
     }
