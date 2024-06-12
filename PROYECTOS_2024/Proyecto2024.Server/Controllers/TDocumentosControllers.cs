@@ -6,6 +6,7 @@ using Proyecto2024.BD.Data;
 using Proyecto2024.BD.Data.Entity;
 
 //proyecto server - acá van los controllers
+//Los controladores son clases especializadas en responder peticiones http
 namespace Proyecto2024.Server.Controllers
 {
     [ApiController]
@@ -26,13 +27,15 @@ namespace Proyecto2024.Server.Controllers
 
 
         //Método Get = devuelve una lista de objetos de la clase TDocumentos
-        [HttpGet]
+        [HttpGet] //Peticiones http o EndPoint's
         public async Task<ActionResult<List<TDocumento>>> Get() 
         {
             return await context.TDocumentos.ToListAsync(); //El Context es la base de datos
             //devuelve una lista en forma asincronica
         }
-        
+
+       
+
         //Método Get
         [HttpGet("{id:int}")]
         public async Task<ActionResult<TDocumento>> Get(int id) 
@@ -46,9 +49,22 @@ namespace Proyecto2024.Server.Controllers
             return Lean;
         }
 
-
         //Método Get
-        [HttpGet("Existe/{id:int}")]
+        [HttpGet("{cod}")]
+        public async Task<ActionResult<TDocumento>> GetByCod(string cod)
+        {
+            var Lean = await context.TDocumentos.FirstOrDefaultAsync(x => x.Codigo == cod);
+
+            if (Lean == null)
+            {
+                return NotFound();
+            }
+            return Lean;
+        }
+
+
+        //Método Get -  para ver si existe el registro
+        [HttpGet("existe/{id:int}")]
         public async Task<ActionResult<bool>> Existe(int id) 
         {
             //Existe = false;
@@ -125,7 +141,7 @@ namespace Proyecto2024.Server.Controllers
 
             if (!existe)
             {
-                return NotFound($"El tipo de documento {id} no existe");
+                return NotFound($"El tipo de documento {id} no existe..");
             }
 
 
@@ -138,6 +154,10 @@ namespace Proyecto2024.Server.Controllers
             return Ok();
 
         }
+
+        
+
+
     }   
 }
 
