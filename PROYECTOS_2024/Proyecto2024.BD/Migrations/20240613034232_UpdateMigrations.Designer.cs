@@ -11,8 +11,8 @@ using Proyecto2024.BD.Data;
 namespace Proyecto2024.BD.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20240611182155_tablasFinales")]
-    partial class tablasFinales
+    [Migration("20240613034232_UpdateMigrations")]
+    partial class UpdateMigrations
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
