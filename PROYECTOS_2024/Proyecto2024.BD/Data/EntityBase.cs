@@ -10,8 +10,8 @@ namespace Proyecto2024.BD.Data
     public class EntityBase //Base de todas las entidades , la cual hereda de las demas entidades por que tiene un Id
     {
         public int Id { get; set; }
-
-        //public bool Activo { get; set; }
-
     }
 }
+
+        
+
