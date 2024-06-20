@@ -7,19 +7,19 @@ using System.Collections.Generic;
 
 
 var builder = WebApplication.CreateBuilder(args);
-var apellido = builder.Configuration.GetValue<string>("Apellido");
+var origenesPermitidos = builder.Configuration.GetValue<string>("origenesPermitidos")!;
+
 //inicio de area de los servicios
 
 builder.Services.AddCors(opciones =>
 opciones.AddDefaultPolicy(configuracion =>
 {
-    configuracion.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+    configuracion.WithOrigins(origenesPermitidos).AllowAnyHeader().AllowAnyMethod();
 })); 
 
 //fin del area de los servicios
 
 var app = builder.Build();
-
 
 //inicio de area de los middleware
 app.MapGet("/", () => "Hola Mundo");
