@@ -4,6 +4,9 @@ using MinimalApiApeliculas.Entidades;
 var builder = WebApplication.CreateBuilder(args);
 
 //inicio de area de los servicios
+builder.Services.AddCors(opciones => 
+opciones.AddDefaultPolicy(configuracion =>
+configuracion.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod()));
 
 
 var apellido = builder.Configuration.GetValue<string>("apellido");
