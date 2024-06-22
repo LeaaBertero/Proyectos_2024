@@ -4,6 +4,9 @@ namespace Presentacion
 {
     public partial class FormAdmProfes : Form
     {
+        private object objNegProf;
+        private object objEntProf;
+
         public FormAdmProfes()
         {
             InitializeComponent();
