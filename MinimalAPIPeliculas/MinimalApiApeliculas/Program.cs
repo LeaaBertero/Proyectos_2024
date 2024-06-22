@@ -3,13 +3,24 @@ using MinimalApiApeliculas.Entidades;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var origenesPermitodos = builder.Configuration.GetValue<string>("origenesPermitidos")!;
+
 //inicio de area de los servicios
 builder.Services.AddCors(opciones => 
+{
 opciones.AddDefaultPolicy(configuracion =>
-configuracion.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod()));
+{
+    configuracion.WithOrigins(origenesPermitodos).AllowAnyHeader().AllowAnyMethod();
+});
 
 
-var apellido = builder.Configuration.GetValue<string>("apellido");
+
+        
+    
+
+
+
+
 
 
 //fin de area de los servicios
@@ -18,8 +29,8 @@ var app = builder.Build();
 
 //inicio de area de los middleware
 
+app.UseCors();
 
-app.MapGet("/", () => apellido);
 
 app.MapGet("/generos",() =>
 {
