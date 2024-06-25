@@ -7,7 +7,7 @@ using MinimalAPIPeliculas.Entidades;
 var builder = WebApplication.CreateBuilder(args);
 var origenesPermitidos = builder.Configuration.GetValue<string>("origenesPermitidos")!;
 
-var apellido = builder.Configuration.GetValue<string>("apellido");
+//var apellido = builder.Configuration.GetValue<string>("apellido");
 
 //inicio del area de los servicios
 
