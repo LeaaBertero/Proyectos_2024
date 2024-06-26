@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35004.147
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Proyecto_LaGran7.Server", "Proyecto_LaGran7.Server\Proyecto_LaGran7.Server.csproj", "{26455915-9533-4922-96D2-F67C82990591}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Proyecto_LaGran7.Server", "Proyecto_LaGran7.Server\Proyecto_LaGran7.Server.csproj", "{26455915-9533-4922-96D2-F67C82990591}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Proyecto_Lagran7.BD", "Proyecto_Lagran7.BD\Proyecto_Lagran7.BD.csproj", "{8CE32310-9DEC-49F4-B0A3-36C276F03D9D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{26455915-9533-4922-96D2-F67C82990591}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{26455915-9533-4922-96D2-F67C82990591}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{26455915-9533-4922-96D2-F67C82990591}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CE32310-9DEC-49F4-B0A3-36C276F03D9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CE32310-9DEC-49F4-B0A3-36C276F03D9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CE32310-9DEC-49F4-B0A3-36C276F03D9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CE32310-9DEC-49F4-B0A3-36C276F03D9D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
