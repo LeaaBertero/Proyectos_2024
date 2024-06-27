@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Proyecto_Lagran7.BD.Data;
 
 
 //---------------------------------------------------------------------------------------------------
@@ -12,7 +13,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-//conexion string
+//conexion string con la base de datos
 builder.Services.AddDbContext<Context>(op => op.UseSqlServer("name=conn"));
 
 
