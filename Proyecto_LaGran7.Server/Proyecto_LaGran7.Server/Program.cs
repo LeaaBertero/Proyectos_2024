@@ -1,3 +1,8 @@
+using Microsoft.EntityFrameworkCore;
+
+
+//---------------------------------------------------------------------------------------------------
+//configuración de los servicios en el constructor de la aplicación
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,6 +12,13 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+//conexion string
+builder.Services.AddDbContext<Context>(op => op.UseSqlServer("name=conn"));
+
+
+
+
+//-------------------------------------------------------------------------------------------------------
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
