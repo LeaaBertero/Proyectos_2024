@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Proyecto2024.BD.Data;
 
 //----------------------------------------------------------------------------
 //configuracion de los servicios en el contructor de la aplicación  
