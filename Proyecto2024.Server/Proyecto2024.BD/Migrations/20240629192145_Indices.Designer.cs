@@ -11,8 +11,8 @@ using Proyecto2024.BD.Data;
 namespace Proyecto2024.BD.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20240629185750_indices")]
-    partial class indices
+    [Migration("20240629192145_Indices")]
+    partial class Indices
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -5,7 +5,7 @@
 namespace Proyecto2024.BD.Migrations
 {
     /// <inheritdoc />
-    public partial class indices : Migration
+    public partial class Indices : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

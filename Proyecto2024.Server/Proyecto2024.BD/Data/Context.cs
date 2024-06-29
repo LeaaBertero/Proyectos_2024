@@ -17,7 +17,7 @@ namespace Proyecto2024.BD.Data
         public DbSet<Persona> Persona { get; set; }
 
 
-        //constructor del context
+        //constructor del context (base de datos)
         public Context(DbContextOptions options) : base(options)
         {
 
