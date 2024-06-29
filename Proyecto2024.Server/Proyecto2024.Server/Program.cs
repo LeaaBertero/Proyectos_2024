@@ -13,7 +13,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 
-
+//conexion con la base de datos  --- El context, que es una clase, es la base de datos
+//es un servicio que conecta la aplicación con la base de datos
 builder.Services.AddDbContext<Context>(op => op.UseSqlServer("name=conn"));
 
 

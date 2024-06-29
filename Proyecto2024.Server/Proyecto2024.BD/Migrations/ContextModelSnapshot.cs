@@ -30,15 +30,24 @@ namespace Proyecto2024.BD.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Apellido")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Nombre")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("NumDoc")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("TDocumentoID")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex(new[] { "Apellido", "Nombre" }, "Persona_Apellido_Nombre");
+
+                    b.HasIndex(new[] { "TDocumentoID", "NumDoc" }, "Persona_UQ")
+                        .IsUnique()
+                        .HasFilter("[NumDoc] IS NOT NULL");
 
                     b.ToTable("Persona");
                 });
@@ -52,14 +61,27 @@ namespace Proyecto2024.BD.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Codigo")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nombre")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.ToTable("TDocumentos");
+                });
+
+            modelBuilder.Entity("Proyecto2024.BD.Data.Entity.Persona", b =>
+                {
+                    b.HasOne("Proyecto2024.BD.Data.Entity.TDocumento", "TDocumento")
+                        .WithMany()
+                        .HasForeignKey("TDocumentoID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("TDocumento");
                 });
 #pragma warning restore 612, 618
         }

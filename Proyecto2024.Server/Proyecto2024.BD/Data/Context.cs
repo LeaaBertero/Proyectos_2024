@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace Proyecto2024.BD.Data
 {
+    //El context (:) Hereda de la clase propia del EntityFramework (DbContext), que es funcional a la base de datos 
     public class Context : DbContext
     {
         //acá van las tablas de la base de datos
