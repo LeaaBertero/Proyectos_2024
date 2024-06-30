@@ -5,7 +5,7 @@
 namespace Proyecto2024.BD.Migrations
 {
     /// <inheritdoc />
-    public partial class Indices : Migration
+    public partial class MaximaLongitud : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -16,8 +16,8 @@ namespace Proyecto2024.BD.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Codigo = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Codigo = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -25,21 +25,21 @@ namespace Proyecto2024.BD.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Persona",
+                name: "Personas",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    NumDoc = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    Nombre = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    Apellido = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    NumDoc = table.Column<string>(type: "nvarchar(12)", maxLength: 12, nullable: false),
+                    Nombre = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
+                    Apellido = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
                     TDocumentoID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Persona", x => x.Id);
+                    table.PrimaryKey("PK_Personas", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Persona_TDocumentos_TDocumentoID",
+                        name: "FK_Personas_TDocumentos_TDocumentoID",
                         column: x => x.TDocumentoID,
                         principalTable: "TDocumentos",
                         principalColumn: "Id",
@@ -48,22 +48,21 @@ namespace Proyecto2024.BD.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "Persona_Apellido_Nombre",
-                table: "Persona",
+                table: "Personas",
                 columns: new[] { "Apellido", "Nombre" });
 
             migrationBuilder.CreateIndex(
                 name: "Persona_UQ",
-                table: "Persona",
+                table: "Personas",
                 columns: new[] { "TDocumentoID", "NumDoc" },
-                unique: true,
-                filter: "[NumDoc] IS NOT NULL");
+                unique: true);
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Persona");
+                name: "Personas");
 
             migrationBuilder.DropTable(
                 name: "TDocumentos");

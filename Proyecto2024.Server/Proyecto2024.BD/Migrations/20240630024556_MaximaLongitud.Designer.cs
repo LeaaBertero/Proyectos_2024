@@ -11,8 +11,8 @@ using Proyecto2024.BD.Data;
 namespace Proyecto2024.BD.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20240629192145_Indices")]
-    partial class Indices
+    [Migration("20240630024556_MaximaLongitud")]
+    partial class MaximaLongitud
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,13 +33,19 @@ namespace Proyecto2024.BD.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Apellido")
-                        .HasColumnType("nvarchar(450)");
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
 
                     b.Property<string>("Nombre")
-                        .HasColumnType("nvarchar(450)");
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
 
                     b.Property<string>("NumDoc")
-                        .HasColumnType("nvarchar(450)");
+                        .IsRequired()
+                        .HasMaxLength(12)
+                        .HasColumnType("nvarchar(12)");
 
                     b.Property<int>("TDocumentoID")
                         .HasColumnType("int");
@@ -49,10 +55,9 @@ namespace Proyecto2024.BD.Migrations
                     b.HasIndex(new[] { "Apellido", "Nombre" }, "Persona_Apellido_Nombre");
 
                     b.HasIndex(new[] { "TDocumentoID", "NumDoc" }, "Persona_UQ")
-                        .IsUnique()
-                        .HasFilter("[NumDoc] IS NOT NULL");
+                        .IsUnique();
 
-                    b.ToTable("Persona");
+                    b.ToTable("Personas");
                 });
 
             modelBuilder.Entity("Proyecto2024.BD.Data.Entity.TDocumento", b =>
@@ -64,11 +69,9 @@ namespace Proyecto2024.BD.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Codigo")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nombre")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
