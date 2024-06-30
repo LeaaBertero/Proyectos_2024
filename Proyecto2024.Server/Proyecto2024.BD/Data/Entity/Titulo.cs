@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace Proyecto2024.BD.Data.Entity
 {
-    [Index(nameof(Codigo), Name = "TDocumento_UQ", IsUnique = true)]
-    public class TDocumento : EntityBase
+    [Index(nameof(Codigo), Name = "Titulo_UQ", IsUnique = true)]
+    public class Titulo : EntityBase
     {
         //Mensaje para el dato del Código
         //Mensaje para el usuario desde el backEnd hacia el frontEnd
-        [Required(ErrorMessage = "El código del tipo de documento es obligatorio")]
+        [Required(ErrorMessage = "El código del titulo es obligatorio")]
         [MaxLength(4, ErrorMessage = "Máximo número de caracteres {1}.")]
         public string? Codigo { get; set; }
 
@@ -21,11 +21,11 @@ namespace Proyecto2024.BD.Data.Entity
 
         //Mensaje para el dato del Nombre
         //Mensaje para el usuario desde el backend hacia el frontEnd
-        [Required(ErrorMessage = "El nombre del tipo de documento es obligatorio")]
+        [Required(ErrorMessage = "El nombre del titulo es obligatorio")]
         [MaxLength(4, ErrorMessage = "Máximo número de caracteres {1}.")]
         public string? Nombre { get; set; }
 
+        public List<Profesion>? Proofesiones { get; set; }
 
-        public List<Persona>? Personas { get; set; }
     }
 }

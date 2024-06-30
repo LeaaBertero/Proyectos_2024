@@ -12,6 +12,13 @@ namespace Proyecto2024.BD.Data.Entity
     //poner como dato para ingresar al sistema y asi evitar que pong cualquier dato)
     [Index(nameof(TDocumentoID), nameof(NumDoc), Name = "Persona_UQ", IsUnique = true)]
     [Index(nameof(Apellido), nameof(Nombre), Name = "Persona_Apellido_Nombre", IsUnique = false)]
+
+    //-------------------------------------- IMPORTANTE -------------------------------------------------
+    
+    //En este lugar en la carpeta de las entidades, se hacen todas las clases, referidas a las entidades
+    //y en el context, se hacen las tablas, post haber hecho las entidades en éste lugar    
+
+    //-------------------------------------- IMPORTANTE -------------------------------------------------
     public class Persona : EntityBase
     {
         //mensajes para el usuario, emitidos desde el backend hacia el frontEnd(Parte visual)
@@ -44,5 +51,8 @@ namespace Proyecto2024.BD.Data.Entity
         //Ésta es una propiedad que se relaciona a la persona,
         //es decir la clase (TDocumento como objeto y la propiedad del objeto en si..)
         public TDocumento? TDocumento {get; set;}
+
+        //Lista de personas en la clase persona
+        public List<Profesion>? Profesiones { get; set; }
     }
 }
