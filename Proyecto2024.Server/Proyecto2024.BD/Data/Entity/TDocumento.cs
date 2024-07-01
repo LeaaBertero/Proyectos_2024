@@ -26,6 +26,6 @@ namespace Proyecto2024.BD.Data.Entity
         public string? Nombre { get; set; }
 
 
-        public List<Persona>? Personas { get; set; }
+        //public List<Persona>? Personas { get; set; }
     }
 }

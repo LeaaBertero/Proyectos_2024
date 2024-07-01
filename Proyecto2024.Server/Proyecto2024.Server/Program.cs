@@ -1,13 +1,21 @@
 using Microsoft.EntityFrameworkCore;
 using Proyecto2024.BD.Data;
+using System.Text.Json.Serialization;
 
 //----------------------------------------------------------------------------
 //configuracion de los servicios en el contructor de la aplicación  
 var builder = WebApplication.CreateBuilder(args);
 
+
 // Add services to the container.
 
 builder.Services.AddControllers();
+
+//para ignorar los ciclos repetitivos(bucles infinitos)
+builder.Services.AddControllersWithViews().AddJsonOptions(
+    x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
+
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

@@ -54,7 +54,7 @@ namespace Proyecto2024.BD.Migrations
                     b.HasIndex(new[] { "TDocumentoID", "NumDoc" }, "Persona_UQ")
                         .IsUnique();
 
-                    b.ToTable("Personas");
+                    b.ToTable("Personas", (string)null);
                 });
 
             modelBuilder.Entity("Proyecto2024.BD.Data.Entity.Profesion", b =>
@@ -77,7 +77,7 @@ namespace Proyecto2024.BD.Migrations
 
                     b.HasIndex("TituloId");
 
-                    b.ToTable("Profesiones");
+                    b.ToTable("Profesiones", (string)null);
                 });
 
             modelBuilder.Entity("Proyecto2024.BD.Data.Entity.TDocumento", b =>
@@ -103,7 +103,7 @@ namespace Proyecto2024.BD.Migrations
                     b.HasIndex(new[] { "Codigo" }, "TDocumento_UQ")
                         .IsUnique();
 
-                    b.ToTable("TDocumentos");
+                    b.ToTable("TDocumentos", (string)null);
                 });
 
             modelBuilder.Entity("Proyecto2024.BD.Data.Entity.Titulo", b =>
@@ -129,7 +129,7 @@ namespace Proyecto2024.BD.Migrations
                     b.HasIndex(new[] { "Codigo" }, "Titulo_UQ")
                         .IsUnique();
 
-                    b.ToTable("Titulo");
+                    b.ToTable("Titulo", (string)null);
                 });
 
             modelBuilder.Entity("Proyecto2024.BD.Data.Entity.Persona", b =>
