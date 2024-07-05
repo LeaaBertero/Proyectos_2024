@@ -1,0 +1,6 @@
+@ProyectoLaGran7.Server_HostAddress = http://localhost:5002
+
+GET {{ProyectoLaGran7.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
