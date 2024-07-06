@@ -1,12 +1,17 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ProyectoLaGran7.BD.Data.Entity
 {
+    [Index(nameof(IdReserva), Name = "Reserva_UQ", IsUnique = true)]
+    [Index(nameof(fechaReserva), nameof(HoraInicio), nameof(HoraFin), nameof(Estado), Name = "fechaReserva_HoraInicio_HoraFin_Estado", IsUnique = false)]
+
     public class Reserva : EntityBase
     {
         [Required(ErrorMessage = "El usuario es obligatorio")]
