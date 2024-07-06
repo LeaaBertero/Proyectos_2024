@@ -35,7 +35,7 @@ namespace ProyectoLaGran7.BD.Data.Entity
 
         //relaciones entre tablas
         [Required(ErrorMessage = "El número de reserva es obligatorio")]
-        [MaxLength(100, ErrorMessage = "Máximo número de caracteres {1}")]
+        [MaxLength(4, ErrorMessage = "Máximo número de caracteres {1}")]
         public int ReservaId { get; set; }
 
         public Reserva? Reserva { get; set; }

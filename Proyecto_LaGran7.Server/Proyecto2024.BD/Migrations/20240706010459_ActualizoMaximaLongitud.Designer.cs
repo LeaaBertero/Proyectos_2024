@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Proyecto2024.BD.Data;
 
@@ -11,9 +12,11 @@ using Proyecto2024.BD.Data;
 namespace ProyectoLaGran7.BD.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20240706010459_ActualizoMaximaLongitud")]
+    partial class ActualizoMaximaLongitud
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -78,38 +81,24 @@ namespace ProyectoLaGran7.BD.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
                     b.Property<string>("Estado")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("HoraFin")
-                        .IsRequired()
-                        .HasMaxLength(50)
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("HoraInicio")
-                        .IsRequired()
-                        .HasMaxLength(50)
                         .HasColumnType("datetime2");
 
                     b.Property<int?>("IdCancha")
-                        .IsRequired()
-                        .HasMaxLength(4)
                         .HasColumnType("int");
 
                     b.Property<int?>("IdReserva")
-                        .IsRequired()
-                        .HasMaxLength(4)
                         .HasColumnType("int");
 
                     b.Property<int?>("IdUsuario")
-                        .IsRequired()
-                        .HasMaxLength(100)
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("fechaReserva")
-                        .IsRequired()
-                        .HasMaxLength(150)
                         .HasColumnType("datetime2");
 
                     b.HasKey("ID");
