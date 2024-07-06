@@ -21,7 +21,8 @@ namespace Proyecto2024.BD.Data
 
         //Tabla (Reserva)
         public DbSet<Reserva> Reserva { get; set; }
-        //constructor
+        
+        //constructor del context que (hereda) del DBContext
         public Context(DbContextOptions options) : base(options)
         {
                 
