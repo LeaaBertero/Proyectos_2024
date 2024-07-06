@@ -12,5 +12,8 @@ namespace ProyectoLaGran7.BD.Data.Entity
         public int Monto { get; set; }
         public DateTime? FechaPago { get; set; }
         public string? metodoPago { get; set; }
+
+        //Relaciones entre Tablas
+        
     }
 }

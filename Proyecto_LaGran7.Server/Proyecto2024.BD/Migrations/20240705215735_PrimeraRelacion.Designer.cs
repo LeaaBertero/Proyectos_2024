@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Proyecto2024.BD.Data;
 
@@ -11,9 +12,11 @@ using Proyecto2024.BD.Data;
 namespace ProyectoLaGran7.BD.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20240705215735_PrimeraRelacion")]
+    partial class PrimeraRelacion
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -112,13 +115,13 @@ namespace ProyectoLaGran7.BD.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
                     b.Property<string>("Contrasenia")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Mail")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nombre")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("ReservaId")
                         .HasColumnType("int");
@@ -128,10 +131,7 @@ namespace ProyectoLaGran7.BD.Migrations
 
                     b.HasKey("ID");
 
-                    b.HasIndex(new[] { "Nombre", "Mail", "Contrasenia", "Rol" }, "Persona_Nombre_Mail_Rol");
-
-                    b.HasIndex(new[] { "ReservaId" }, "Usuario_UQ")
-                        .IsUnique();
+                    b.HasIndex("ReservaId");
 
                     b.ToTable("Usuarios");
                 });

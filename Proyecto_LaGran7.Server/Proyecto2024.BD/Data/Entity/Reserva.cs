@@ -16,6 +16,8 @@ namespace ProyectoLaGran7.BD.Data.Entity
         public DateTime? HoraFin { get; set; }
         public string? Estado { get; set; }
 
+        //Relaciones entre tablas
+
 
     }
 }
