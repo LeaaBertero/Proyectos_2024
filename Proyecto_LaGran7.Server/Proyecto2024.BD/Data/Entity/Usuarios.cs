@@ -20,9 +20,22 @@ namespace ProyectoLaGran7.BD.Data.Entity
         [MaxLength(4, ErrorMessage = "Máximo número de caracteres {1}")]
         public int IdUsuario { get; set; }
 
-        
-        //Clave foranea (FK) de la tabla (Reserva), que se relaciona con la tabla Usuarios(De uno a muchos)
+        //Tabla Reserva
+        //Tabla (Reserva), que se relaciona con la tabla Usuarios - (De uno a muchos)
         public Reserva? Reserva { get; set; }
+
+
+        //Clave primaria de la taabla (Reserva), que establece conexion con la tabla Usuarios por medio de la clave primaria
+        //----------------------------------------------------------------------------------------
+        //Relaciones entre tablas (Por medio de la PK de laa tabla Reserva)
+        //-----------------------------------------------------------------------------------------
+        [Required(ErrorMessage = "El número de reserva es obligatorio")]
+        [MaxLength(4, ErrorMessage = "Máximo número de caracteres {1}")]
+        public int IdReserva { get; set; } //PK - (Clave primaria) de la tabla Reserva que se relaciona con la tabla Usuarios
+
+
+
+
 
         //--------------------------------------------------------------------------------
         //Atributos de la tabla (Usuarios)
@@ -54,19 +67,14 @@ namespace ProyectoLaGran7.BD.Data.Entity
         [Required(ErrorMessage = "El rol es obligatorio")]
         [MaxLength(100, ErrorMessage = "Máximo número de caracteres {1}")]
         public int? Rol { get; set; }
+    }
+}
         
 
         
        
-        //----------------------------------------------------------------------------------------
-        //Relaciones entre tablas
-        //-----------------------------------------------------------------------------------------
-        [Required(ErrorMessage = "El número de reserva es obligatorio")]
-        [MaxLength(4, ErrorMessage = "Máximo número de caracteres {1}")]
-        public int IdReserva { get; set; } //PK - (Clave primaria) de la tabla Reserva que se relaciona con la tabla Usuarios
+       
 
 
 
         
-    }
-}
