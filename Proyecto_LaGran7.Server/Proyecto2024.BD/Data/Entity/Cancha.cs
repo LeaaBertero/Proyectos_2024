@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace ProyectoLaGran7.BD.Data.Entity
 {
     //(Indices de la tabla (Cancha))
-    [Index(nameof(IdCancha), Name = "Cancha_UQ", IsUnique = true)]
+    [Index(nameof(IdCancha), Name = "Cancha_UQ", IsUnique = true)] //Indice para la PK(Clave primaria)
     [Index(nameof(Nombre), nameof(Ubicaciòn), nameof(Estado), Name = "Nombre_Ubicación_Estado", IsUnique = false)]
 
     public class Cancha : EntityBase

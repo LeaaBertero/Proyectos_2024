@@ -10,6 +10,8 @@ namespace Proyecto2024.BD.Data
 {
     public class Context : DbContext
     {
+        //Acá es el lugar donde van todas las tablas 
+
         //Tablas de la base de datos que se encuentra en el context, que es la base de datos
         //Tabla (Cancha)
         public DbSet<Cancha> Cancha { get; set; }
@@ -28,6 +30,7 @@ namespace Proyecto2024.BD.Data
         //Constructor - - - - - - - - - - - - - - - - - - - - - - - 
         //---------------------------------------------------------
         //constructor del context que (hereda) del DBContext
+        //Constructor con opciones que hereda de DBContext(Base de datos)
         public Context(DbContextOptions options) : base(options)
         {
                 

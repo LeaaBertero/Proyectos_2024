@@ -8,18 +8,26 @@ using System.Threading.Tasks;
 
 namespace ProyectoLaGran7.BD.Data.Entity
 { 
-        //Indices
+    //Indices para la clave primaria
     [Index(nameof(IdUsuario), Name = "UsuarioId_UQ", IsUnique = true)]
+    //Indices para los atributos de las tablas
     [Index(nameof(Nombre), nameof(Mail), nameof(Contraseña), nameof(Rol), Name = "Persona_Nombre_Mail_Rol", IsUnique = false)]
 
     public class Usuarios : EntityBase
     {   
         //Clave primaria de la tabla
-        [Required(ErrorMessage = "El IdUsuario es obligatorio")]
+        [Required(ErrorMessage = "Ingrese el Id de usuario")]
         [MaxLength(4, ErrorMessage = "Máximo número de caracteres {1}")]
         public int IdUsuario { get; set; }
 
         
+        //Clave foranea (FK) de la tabla (Reserva), que se relaciona con la tabla Usuarios(De uno a muchos)
+        public Reserva? Reserva { get; set; }
+
+        //--------------------------------------------------------------------------------
+        //Atributos de la tabla (Usuarios)
+        //--------------------------------------------------------------------------------
+
 
         //Atributo de la tabla(Usuarios)
         [Required(ErrorMessage = "El nombre es obligatorio")] //Mensaje para el usuario
@@ -55,11 +63,9 @@ namespace ProyectoLaGran7.BD.Data.Entity
         //-----------------------------------------------------------------------------------------
         [Required(ErrorMessage = "El número de reserva es obligatorio")]
         [MaxLength(4, ErrorMessage = "Máximo número de caracteres {1}")]
-        public int ReservaId { get; set; } //PK - (Clave primaria) de la tabla Reserva que se relaciona con la tabla Usuarios
+        public int IdReserva { get; set; } //PK - (Clave primaria) de la tabla Reserva que se relaciona con la tabla Usuarios
 
 
-        //Clave foranea (FK) de la tabla (Reserva), que se relaciona con la tabla Usuarios
-        public Reserva? Reserva { get; set; }
 
         
     }

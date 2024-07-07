@@ -22,19 +22,19 @@ namespace ProyectoLaGran7.BD.Data.Entity
         public int? IdReserva { get; set; }
 
 
+        
         //(FK) - Clave foranea de la tabla (Reserva)
         [Required(ErrorMessage = "El usuario es obligatorio")]
         [MaxLength(150, ErrorMessage = "Máximo número de caracteres {1}")]
         public int? IdUsuario { get; set; }
 
 
+        
+        
         //(FK) - Clave foránea de la tabla (Reserva)
         [Required(ErrorMessage = "El número de ID de la cancha es obligatorio")]
         [MaxLength(4, ErrorMessage = "Máximo número de caracteres {1}")]
         public int? IdCancha { get; set; }
-
-
-
 
 
 
@@ -61,7 +61,7 @@ namespace ProyectoLaGran7.BD.Data.Entity
 
         //Atributo de la tabla
         [Required(ErrorMessage = "Indique la hora de finalización de la reserva")]
-        [MaxLength(50, ErrorMessage = "Máximo número de caracteres {1}")]
+        [MaxLength(50, ErrorMessage = "Máximo número de caracteres {1}")]   
         public DateTime? HoraFin { get; set; }
         
 
@@ -75,9 +75,6 @@ namespace ProyectoLaGran7.BD.Data.Entity
 
 
 
-
-        
-        
         
         //Relaciones entre tablas(Lista de los usuarios)
         public List<Usuarios>? Usuarios { get; set; }
