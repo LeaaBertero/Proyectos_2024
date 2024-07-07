@@ -11,6 +11,6 @@ namespace ProyectoLaGran7.BD.Data
     public class EntityBase
     {
         //clase generada con un (id), para heredarla en cada una de las tablas del proyecto 
-        public int ID { get; set; }
+        public int ID { get; set; } 
     }
 }
