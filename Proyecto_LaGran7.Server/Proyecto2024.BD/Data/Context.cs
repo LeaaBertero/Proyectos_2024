@@ -10,6 +10,7 @@ namespace Proyecto2024.BD.Data
 {
     public class Context : DbContext
     {
+        //Tablas de la base de datos que se encuentra en el context, que es la base de datos
         //Tabla (Cancha)
         public DbSet<Cancha> Cancha { get; set; }
 
@@ -22,10 +23,34 @@ namespace Proyecto2024.BD.Data
         //Tabla (Reserva)
         public DbSet<Reserva> Reserva { get; set; }
         
+
+        //---------------------------------------------------------
+        //Constructor - - - - - - - - - - - - - - - - - - - - - - - 
+        //---------------------------------------------------------
         //constructor del context que (hereda) del DBContext
         public Context(DbContextOptions options) : base(options)
         {
                 
         }
+
+
+        //codigo que evita que un registro de la base de datos, pueda borrarse en cascada
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+
+            //Éste codigo sirve para evitar que se borren los datos en cascada en la base de datos
+            var cascadeFKs = modelBuilder.Model.G­etEntityTypes()
+                                         .SelectMany(t => t.GetForeignKeys())
+                                         .Where(fk => !fk.IsOwnership
+                                                      && fk.DeleteBehavior == DeleteBehavior.Casca­de);
+            foreach (var fk in cascadeFKs)
+            {
+                fk.DeleteBehavior = DeleteBehavior.Restr­ict;
+            }
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }
+
+
