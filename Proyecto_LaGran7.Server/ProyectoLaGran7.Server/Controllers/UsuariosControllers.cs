@@ -41,6 +41,43 @@ namespace ProyectoLaGran7.Server.Controllers
                 
             }
         }
+
+        //Metodo Put
+        [HttpPut("{id:int}")]
+        public async Task<ActionResult> Put(int Id,[FromBody] Usuarios entidad) 
+        {
+            if (Id == entidad.ID)
+            {
+                return BadRequest("Datos incorrectos");
+            }
+            //recibe valores null
+            Usuarios? Lean = await context.Usuarios.
+                Where(e => e.ID==Id).FirstOrDefaultAsync();
+
+            if (Lean == null) 
+            {
+                return NotFound("No existe el usuario buscado");  
+            }
+
+            Lean.Nombre = entidad.Nombre;
+            Lean.Mail = entidad.Mail;
+            Lean.Contraseña = entidad.Contraseña;
+            Lean.Rol = entidad.Rol;
+
+
+            try
+            {
+                context.Usuarios.Update(Lean);
+                await context.SaveChangesAsync();
+                return Ok();
+            }
+            catch (Exception e)
+            {
+
+                return BadRequest(e.Message);
+            }
+
+        }
     }
 
     
