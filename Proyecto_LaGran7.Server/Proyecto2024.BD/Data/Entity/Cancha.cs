@@ -17,6 +17,8 @@ namespace ProyectoLaGran7.BD.Data.Entity
 
         //---------------------------------------------------------------------
         //Clave primaria de la tabla (Pago)
+        [Required(ErrorMessage = "El codigo de pago, es obligatorio")]
+        [MaxLength(2, ErrorMessage = "Máximo número de caracteres {1}")]
         public int IdPago { get; set; }
 
         //Tabla (Pago) - Que se relaciona con tabla (Usuarios)
