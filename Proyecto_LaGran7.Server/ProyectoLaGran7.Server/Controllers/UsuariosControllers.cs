@@ -25,5 +25,25 @@ namespace ProyectoLaGran7.Server.Controllers
         {
              return await context.Usuarios.ToListAsync();   
         }
+
+        [HttpPost]
+        public async Task<ActionResult<int>> Post(Usuarios entidad) 
+        {
+            try
+            {
+                context.Usuarios.Add(entidad);
+                await context.SaveChangesAsync(); //para grabar los datos ingresados por el usuario en el servidor de base de datos
+                return entidad.ID;
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+                
+            }
+        }
     }
+
+    
 }
+
+
