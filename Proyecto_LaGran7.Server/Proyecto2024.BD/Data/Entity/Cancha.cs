@@ -14,10 +14,25 @@ namespace ProyectoLaGran7.BD.Data.Entity
 
     public class Cancha : EntityBase
     {
+
+        //---------------------------------------------------------------------
+        //Clave primaria de la tabla (Pago)
+        public int IdPago { get; set; }
+
+        //Tabla (Pago) - Que se relaciona con tabla (Usuarios)
+        public Pago? Pago { get; set; }
+        //---------------------------------------------------------------------
+
+        //Clave foránea de la tabla (Pago)
+        public int IdReserva { get; set; }
+
+
         //Clave primaria de la tabla (Cancha)
         [Required(ErrorMessage = "El Número de cancha es obligatorio")]
         [MaxLength(2, ErrorMessage = "Máximo número de caracteres {1}")]
         public int IdCancha { get; set; }
+
+
 
 
 
