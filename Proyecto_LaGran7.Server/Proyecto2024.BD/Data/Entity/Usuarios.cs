@@ -7,19 +7,32 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ProyectoLaGran7.BD.Data.Entity
-{ 
+{
     //Indices para la clave primaria
     [Index(nameof(IdUsuario), Name = "UsuarioId_UQ", IsUnique = true)]
     //Indices para los atributos de las tablas
     [Index(nameof(Nombre), nameof(Mail), nameof(Contraseña), nameof(Rol), Name = "Persona_Nombre_Mail_Rol", IsUnique = false)]
 
     public class Usuarios : EntityBase
-    {   
+    {
+        //---------------------------------------------------------------------
+        //Clave primaria de la tabla (Pago)
+        public int IdPago { get; set; }
+        
+        //Tabla (Pago) - Que se relaciona con tabla (Usuarios)
+        public Pago? Pago { get; set; }
+        //---------------------------------------------------------------------
+
+
+        //Relacion con tabla Reserva
         //Clave primaria de la tabla
         [Required(ErrorMessage = "Ingrese el Id de usuario")]
         [MaxLength(4, ErrorMessage = "Máximo número de caracteres {1}")]
         public int IdUsuario { get; set; }
 
+        //---------------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------------
+        
         //Tabla Reserva
         //Tabla (Reserva), que se relaciona con la tabla Usuarios - (De uno a muchos)
         public Reserva? Reserva { get; set; }
@@ -33,7 +46,8 @@ namespace ProyectoLaGran7.BD.Data.Entity
         [MaxLength(4, ErrorMessage = "Máximo número de caracteres {1}")]
         public int IdReserva { get; set; } //PK - (Clave primaria) de la tabla Reserva que se relaciona con la tabla Usuarios
 
-
+        //-----------------------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------------------
 
 
 
