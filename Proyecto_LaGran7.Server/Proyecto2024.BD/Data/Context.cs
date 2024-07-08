@@ -19,12 +19,12 @@ namespace Proyecto2024.BD.Data
         //Tabla (Pago)
         public DbSet<Pago> Pago { get; set; }
 
-        //Tabla (Usuarios)
-        public DbSet<Usuarios> Usuarios { get; set; }
-
         //Tabla (Reserva)
         public DbSet<Reserva> Reserva { get; set; }
         
+        //Tabla (Usuarios)
+        public DbSet<Usuarios> Usuarios { get; set; }
+
 
         //---------------------------------------------------------
         //Constructor - - - - - - - - - - - - - - - - - - - - - - - 

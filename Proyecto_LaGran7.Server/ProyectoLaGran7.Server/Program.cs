@@ -7,9 +7,15 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+
+//constructor de los servicios de los controladores - (Controllers)
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
+//constructor de los servicios de los endPoints (CRUD)
 builder.Services.AddEndpointsApiExplorer();
+
+//constructor de los servicios de ejecucion (Swagger);
 builder.Services.AddSwaggerGen();
 
 
@@ -34,7 +40,9 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
+//Mapea los controladores
 app.MapControllers();
 
+//En ésta sección arranca el programa cuando se ejecuta
 app.Run();
-//Comentario
+
