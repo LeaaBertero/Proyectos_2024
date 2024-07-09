@@ -20,12 +20,16 @@ namespace ProyectoLaGran7.Server.Controllers
             this.context = context;
         }
 
+
+        //MétodoGet
         [HttpGet]
         public async Task<ActionResult<List<Usuarios>>> Get() 
         {
              return await context.Usuarios.ToListAsync();   
         }
 
+
+        //Método Post
         [HttpPost]
         public async Task<ActionResult<int>> Post(Usuarios entidad) 
         {
@@ -78,6 +82,11 @@ namespace ProyectoLaGran7.Server.Controllers
             }
 
         }
+
+
+        //Método delete
+
+
     }
 
     
