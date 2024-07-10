@@ -26,7 +26,7 @@ namespace ProyectoLaGran7.BD.Data.Entity
 
         //Relacion con tabla Reserva
         //Clave primaria de la tabla
-        [Required(ErrorMessage = "Ingrese el Id de usuario")]
+        [Required(ErrorMessage = "Ingrese su Id de usuario (4 dígitos)")]
         [MaxLength(4, ErrorMessage = "Máximo número de caracteres {1}")]
         public int IdUsuario { get; set; }
 
@@ -80,7 +80,7 @@ namespace ProyectoLaGran7.BD.Data.Entity
         //Atributo de la tabla(Usuarios)
         [Required(ErrorMessage = "El rol es obligatorio")]
         [MaxLength(100, ErrorMessage = "Máximo número de caracteres {1}")]
-        public int? Rol { get; set; }
+        public int? Rol { get; set; } // Rol(Cliente(Usuario) - (Administrador), (Administrador del sistema))
     }
 }
         

@@ -45,7 +45,7 @@ namespace ProyectoLaGran7.BD.Data.Entity
         //---------------------------------------------------------------
 
         //Atributo de la tabla
-        [Required(ErrorMessage = "Debe ingresa el monto")]
+        [Required(ErrorMessage = "Ingrese el monto a abonar")]
         [MaxLength(12, ErrorMessage = "Máximo número de caracteres {1}")]
         public int Monto { get; set; }
 
@@ -53,14 +53,14 @@ namespace ProyectoLaGran7.BD.Data.Entity
 
 
         //Atributo de la tabla
-        [Required(ErrorMessage = "Indique la fecha de la reserva")]
+        [Required(ErrorMessage = "Fecha de la reserva")]
         [MaxLength(30, ErrorMessage = "Máximo número de caracteres {1}")]
         public DateTime? FechaPago { get; set; }
 
         
         
         //Atributo de la tabla
-        [Required(ErrorMessage = "Indique el método de pago")]
+        [Required(ErrorMessage = "Método de pago")]
         [MaxLength(30, ErrorMessage = "Máximo número de caracteres {1}")]
         public string? metodoPago { get; set; }
     }

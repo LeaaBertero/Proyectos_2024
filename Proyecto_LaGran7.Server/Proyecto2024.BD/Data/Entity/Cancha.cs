@@ -31,7 +31,7 @@ namespace ProyectoLaGran7.BD.Data.Entity
 
         //Clave primaria de la tabla (Cancha)
         [Required(ErrorMessage = "El Número de cancha es obligatorio")]
-        [MaxLength(2, ErrorMessage = "Máximo número de caracteres {1}")]
+        [MaxLength(3, ErrorMessage = "Máximo número de caracteres {1}")]
         public int IdCancha { get; set; }
 
 
@@ -53,7 +53,7 @@ namespace ProyectoLaGran7.BD.Data.Entity
 
 
         //Atributos de la tabla_(Cancha)
-        [Required(ErrorMessage = "La seleccion de cancha es obligatoria")]
+        [Required(ErrorMessage = "La ubicación de cancha es obligatoria")]
         [MaxLength(10, ErrorMessage = "Máximo número de caracteres {1}")]
         public string? Ubicaciòn { get; set; } //Ubicacion del predio(Dirección -  (Complejo deportivo La Gran 7))
 
@@ -63,7 +63,7 @@ namespace ProyectoLaGran7.BD.Data.Entity
         //Aributo de la tabla (Cancha)
         [Required(ErrorMessage = "El estado de la cancha es obligatorio")]
         [MaxLength(50, ErrorMessage = "Máximo número de caracteres {1}")]
-        public string? Estado { get; set; }
+        public string? Estado { get; set; } //disponible // Reservado // Mantenimiento
     }
 }
 

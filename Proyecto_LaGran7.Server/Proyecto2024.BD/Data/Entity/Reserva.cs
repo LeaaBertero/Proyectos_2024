@@ -52,7 +52,7 @@ namespace ProyectoLaGran7.BD.Data.Entity
 
         
         //Atributo de la tabla
-        [Required(ErrorMessage = "Indique la hora de inicio para la reserva")]
+        [Required(ErrorMessage = "Hora de inicio para la reserva")]
         [MaxLength(50, ErrorMessage = "Máximo número de caracteres {1}")]
         public DateTime? HoraInicio { get; set; }   
 
@@ -60,13 +60,14 @@ namespace ProyectoLaGran7.BD.Data.Entity
 
 
         //Atributo de la tabla
-        [Required(ErrorMessage = "Indique la hora de finalización de la reserva")]
+        [Required(ErrorMessage = "Hora de finalización de la reserva")]
         [MaxLength(50, ErrorMessage = "Máximo número de caracteres {1}")]   
         public DateTime? HoraFin { get; set; }
         
 
 
-
+        //El estado de la reserva indica que una vez realizada la reserva, el usuario puede verificar si fue
+        //cancelada o no, de acuerdo a la disponibilidad.
         //Atributo de la tabña (Reserva)
         [Required(ErrorMessage = "Indique el estado de la reserva")] //Pendiente // Cancelada
         [MaxLength(100, ErrorMessage = "Máximo número de caracteres {1}")]
