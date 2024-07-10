@@ -21,7 +21,7 @@ namespace ProyectoLaGran7.Server.Controllers
         }
 
 
-        //MétodoGet
+        //MétodoGet (Retorna una lista de usuarios)
         [HttpGet]
         public async Task<ActionResult<List<Usuarios>>> Get() 
         {
@@ -29,22 +29,24 @@ namespace ProyectoLaGran7.Server.Controllers
         }
 
 
-        //Método Post
+        //Método Post (datos que devuelve al server y el server lo devuelve peticiones al front)
         [HttpPost]
         public async Task<ActionResult<int>> Post(Usuarios entidad) 
         {
+            //TryCatch - Por si se genera un error en la carga de datos del usuario
             try
             {
+                //agrega la entidad (Usuarios a la base de datos en el método Post)
                 context.Usuarios.Add(entidad);
                 await context.SaveChangesAsync(); //para grabar los datos ingresados por el usuario en el servidor de base de datos
-                return entidad.ID;
+                return entidad.ID; //ID que viene de la clase (EntityBase), la cual ese ID, esta en todas las entidades
             }
             catch (Exception e)
             {
                 return BadRequest(e.Message);
-                
             }
         }
+                
 
         //Metodo Put
         [HttpPut("{id:int}")]
