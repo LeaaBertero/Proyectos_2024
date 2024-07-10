@@ -63,6 +63,9 @@ namespace ProyectoLaGran7.BD.Data.Entity
         [Required(ErrorMessage = "Método de pago")]
         [MaxLength(30, ErrorMessage = "Máximo número de caracteres {1}")]
         public string? metodoPago { get; set; }
+
+        //Devuelve la lista de los usuario que pagaron por el alquiler de las canchas
+        public List<Pago>? FechaPagoList { get; set; }
     }
 }
 
