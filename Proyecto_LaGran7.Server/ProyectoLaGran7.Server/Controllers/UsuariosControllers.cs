@@ -21,7 +21,7 @@ namespace ProyectoLaGran7.Server.Controllers
         }
 
 
-        //MétodoGet (Retorna una lista de usuarios)
+        //Método Get = (Retorna una lista de usuarios)
         [HttpGet]
         public async Task<ActionResult<List<Usuarios>>> Get() 
         {
@@ -29,7 +29,7 @@ namespace ProyectoLaGran7.Server.Controllers
         }
 
 
-        //Método Post (datos que devuelve al server y el server lo devuelve peticiones al front)
+        //Método Post (datos que devuelve al server y el server le devuelve en forma de respuesta peticiones al front(Mensajes para el usuario))
         [HttpPost]
         public async Task<ActionResult<int>> Post(Usuarios entidad) 
         {

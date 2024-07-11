@@ -78,7 +78,7 @@ namespace ProyectoLaGran7.BD.Data.Entity
 
         
         //Relaciones entre tablas(Lista de los usuarios)
-        public List<Usuarios>? Usuarios { get; set; }
+        public List<Reserva>? Resrva { get; set; }
         
     }
 }

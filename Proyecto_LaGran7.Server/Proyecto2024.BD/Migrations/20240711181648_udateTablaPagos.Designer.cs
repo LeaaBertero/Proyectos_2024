@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Proyecto2024.BD.Data;
 
@@ -11,9 +12,11 @@ using Proyecto2024.BD.Data;
 namespace ProyectoLaGran7.BD.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20240711181648_udateTablaPagos")]
+    partial class udateTablaPagos
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -92,9 +95,9 @@ namespace ProyectoLaGran7.BD.Migrations
                         .HasMaxLength(4)
                         .HasColumnType("int");
 
-                    b.Property<int>("Monto")
+                    b.Property<decimal>("Monto")
                         .HasMaxLength(12)
-                        .HasColumnType("int");
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int?>("PagoID")
                         .HasColumnType("int");

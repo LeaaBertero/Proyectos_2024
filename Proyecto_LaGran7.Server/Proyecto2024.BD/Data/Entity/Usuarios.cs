@@ -81,6 +81,10 @@ namespace ProyectoLaGran7.BD.Data.Entity
         [Required(ErrorMessage = "El rol es obligatorio")]
         [MaxLength(100, ErrorMessage = "Máximo número de caracteres {1}")]
         public int? Rol { get; set; } // Rol(Cliente(Usuario) - (Administrador), (Administrador del sistema))
+
+
+        //Lista de Usuario que realizaron una o muchas reservas
+        public List<Reserva>? Resrva { get; set; }
     }
 }
         
