@@ -31,16 +31,6 @@ namespace ProyectoLaGran7.BD.Data.Entity
         public int? IdCancha { get; set; }
         //------------------------------------------
 
-        //------------------------------------------
-        //Tabla (Pagos), que se relaciona con la tabla (Reserva)
-        public Pago? Pagos { get; set; }
-        //------------------------------------------
-
-        //------------------------------------------
-        //Clave primaria de la tabla (Pagos)
-        public int IdPago { get; set; }
-        //------------------------------------------
-
 
 
 

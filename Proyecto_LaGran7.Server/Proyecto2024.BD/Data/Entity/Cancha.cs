@@ -23,7 +23,7 @@ namespace ProyectoLaGran7.BD.Data.Entity
 
         //------------------------------------------
         //Tabla (Pagos), que se relaciona con Tabla (Cancha)
-        public Pago? Pago { get; set; }
+        public Pago? Pagos { get; set; }
         //------------------------------------------
 
 

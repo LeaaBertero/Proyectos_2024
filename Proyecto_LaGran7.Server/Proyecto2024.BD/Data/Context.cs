@@ -47,7 +47,7 @@ namespace Proyecto2024.BD.Data
         {
             //problema de la relacion entre tablas
             modelBuilder.Entity<Cancha>()
-              .HasOne(c => c.Pago)
+              .HasOne(c => c.Pagos)
               .WithOne(p => p.Cancha)
               .HasForeignKey<Pago>(p => p.IdCancha);
 
