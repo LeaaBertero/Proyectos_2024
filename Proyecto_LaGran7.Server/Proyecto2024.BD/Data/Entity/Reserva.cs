@@ -14,36 +14,37 @@ namespace ProyectoLaGran7.BD.Data.Entity
 
     public class Reserva : EntityBase
     {
-        //----------------------------------------------------------------------
-        //(PK) - Clave primaria de la tabla (Reserva)
-        //----------------------------------------------------------------------
-        [Required(ErrorMessage = "El número de reserva es obligatorio")]
-        [MaxLength(4, ErrorMessage = "Máximo número de caracteres {1}")]
+
+        //------------------------------------------
+        //Clave primaria de la tabla (Reserva)
         public int? IdReserva { get; set; }
+        //------------------------------------------
 
-
-        
-        //(FK) - Clave foranea de la tabla (Reserva)
-        [Required(ErrorMessage = "El usuario es obligatorio")]
-        [MaxLength(150, ErrorMessage = "Máximo número de caracteres {1}")]
+        //------------------------------------------
+        //Clave primaria de la tabla Usuarios
         public int? IdUsuario { get; set; }
+        //------------------------------------------
 
 
-        
-        
-        //(FK) - Clave foránea de la tabla (Reserva)
-        [Required(ErrorMessage = "El número de ID de la cancha es obligatorio")]
-        [MaxLength(4, ErrorMessage = "Máximo número de caracteres {1}")]
+        //------------------------------------------
+        //Clave Primaria de la tabla (Cancha), que se relaciona con la tabla (Reserva)
         public int? IdCancha { get; set; }
+        //------------------------------------------
+
+        //------------------------------------------
+        //Tabla (Pagos), que se relaciona con la tabla (Reserva)
+        public Pago? Pagos { get; set; }
+        //------------------------------------------
+
+        //------------------------------------------
+        //Clave primaria de la tabla (Pagos)
+        public int IdPago { get; set; }
+        //------------------------------------------
 
 
 
 
-        //-----------------------------------------------------------------------------
-        //Atributos de la tabla (Reserva)
-        //------------------------------------------------------------------------------
 
-        //Atributo de la tabla
         [Required(ErrorMessage = "Indique la fecha para la reserva")]
         [MaxLength(150, ErrorMessage = "Máximo número de caracteres {1}")]
         public DateTime? fechaReserva { get; set; }
@@ -51,7 +52,7 @@ namespace ProyectoLaGran7.BD.Data.Entity
 
 
         
-        //Atributo de la tabla
+       
         [Required(ErrorMessage = "Hora de inicio para la reserva")]
         [MaxLength(50, ErrorMessage = "Máximo número de caracteres {1}")]
         public DateTime? HoraInicio { get; set; }   
@@ -59,29 +60,26 @@ namespace ProyectoLaGran7.BD.Data.Entity
         
 
 
-        //Atributo de la tabla
+        
         [Required(ErrorMessage = "Hora de finalización de la reserva")]
         [MaxLength(50, ErrorMessage = "Máximo número de caracteres {1}")]   
         public DateTime? HoraFin { get; set; }
         
 
 
-        //El estado de la reserva indica que una vez realizada la reserva, el usuario puede verificar si fue
-        //cancelada o no, de acuerdo a la disponibilidad.
-        //Atributo de la tabña (Reserva)
+      
         [Required(ErrorMessage = "Indique el estado de la reserva")] //Pendiente // Cancelada
         [MaxLength(100, ErrorMessage = "Máximo número de caracteres {1}")]
         public string? Estado { get; set; }
 
 
 
+        public List<Usuario>? Usuarios { get; set; }
 
-        
-        //Relaciones entre tablas(Lista de los usuarios)
-        public List<Reserva>? Resrva { get; set; }
-        
     }
 }
+        
+        
       
 
 

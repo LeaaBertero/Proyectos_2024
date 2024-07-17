@@ -9,42 +9,50 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ProyectoLaGran7.BD.Data.Entity
 {
+
     //Indices
     [Index(nameof(IdPago), Name = "IdPago_UQ", IsUnique = true)]
+    //atributos de las tablas (No son claves unicas)
     [Index(nameof(Monto), nameof(FechaPago), nameof(metodoPago), Name = "Monto_FechaPago_MétodoPago", IsUnique = false)]
 
-    
+
     public class Pago : EntityBase
     {
-        //---------------------------------------------------------------
-        //Clave primaria
-        //---------------------------------------------------------------
-        
-        //PK - (Clave primaria de la tabla PAGO)
-        [Required(ErrorMessage = "El campo Id_Pago es obligatorio")]
-        [MaxLength(4, ErrorMessage = "Máximo número de caracteres {1}")]
+        //------------------------------------------
+        //Clave primaria de la tabla (Pago)
         public int IdPago { get; set; }
+        //------------------------------------------
+
+
+        //------------------------------------------
+        //Tabla (Cancha), que se relaciona con Tabla (Pago)
+        public Cancha? Cancha { get; set; }
+        //------------------------------------------
 
 
 
+        //------------------------------------------
+        //Clave primaria del la tabla (Cancha) que se relaciona con la tabla (Pago)
+        public int IdCancha { get; set; }
+        //------------------------------------------
 
-        //---------------------------------------------------------------
-        //Clave foránea
-        //---------------------------------------------------------------
-        
-        //FK - (Clave foránea de la tabla PAGO)
-        [Required(ErrorMessage = "El número de reserva es obligatorio")]
-        [MaxLength(4, ErrorMessage = "Máximo número de caracteres {1}")]
+        //------------------------------------------
+        //Tabla (Reserva), que se relaciona con tabla (Pago)
+        public Reserva? Reservas { get; set; }
+        //------------------------------------------
+
+        //------------------------------------------
+        //Clave primaria de la tabla Reserva
         public int IdReserva { get; set; }
+        //------------------------------------------
 
 
 
-        
-        //---------------------------------------------------------------
-        //Atributos de la tabla (Pago)
-        //---------------------------------------------------------------
 
-        //Atributo de la tabla
+        //------------------------------------------
+        //Atributo de la tabla (Pagos)
+        //------------------------------------------
+
         [Required(ErrorMessage = "Ingrese el monto a abonar")]
         [MaxLength(12, ErrorMessage = "Máximo número de caracteres {1}")]
         public int Monto { get; set; }
@@ -52,22 +60,91 @@ namespace ProyectoLaGran7.BD.Data.Entity
 
 
 
-        //Atributo de la tabla
+
+        //------------------------------------------
+        //Atributo de la tabla (Pagos)
+        //------------------------------------------
+
         [Required(ErrorMessage = "Fecha de la reserva")]
         [MaxLength(30, ErrorMessage = "Máximo número de caracteres {1}")]
         public DateTime? FechaPago { get; set; }
 
-        
-        
-        //Atributo de la tabla
+
+
+        //------------------------------------------
+        //Atributo de la tabla (Pagos)
+        //------------------------------------------
+
         [Required(ErrorMessage = "Método de pago")]
         [MaxLength(30, ErrorMessage = "Máximo número de caracteres {1}")]
-        public string? metodoPago { get; set; }
 
-        //Devuelve la lista de los usuario que pagaron por el alquiler de las canchas
-        public List<Pago>? FechaPagoList { get; set; }
+        //METODO DE PAGOOOOOOOOOO !!!!!!!!!
+        //METODO DE PAGOOOOOOOOOO !!!!!!!!!
+        //METODO DE PAGOOOOOOOOOO !!!!!!!!!
+        //METODO DE PAGOOOOOOOOOO !!!!!!!!!
+        //METODO DE PAGOOOOOOOOOO !!!!!!!!!
+        //METODO DE PAGOOOOOOOOOO !!!!!!!!!
+        //METODO DE PAGOOOOOOOOOO !!!!!!!!!
+        //METODO DE PAGOOOOOOOOOO !!!!!!!!!
+        //METODO DE PAGOOOOOOOOOO !!!!!!!!!
+        //METODO DE PAGOOOOOOOOOO !!!!!!!!!
+        public string? metodoPago { get; set; }
+        //Si el usuario va a abonar on-line o pago presencial (En el predio),
+        //para realizar el alquiler de la cancha
+        //Si el usuario va a abonar on-line o pago presencial (En el predio),
+        //para realizar el alquiler de la cancha
+        //Si el usuario va a abonar on-line o pago presencial (En el predio),
+        //para realizar el alquiler de la cancha
+        //Si el usuario va a abonar on-line o pago presencial (En el predio),
+        //para realizar el alquiler de la cancha
+        //Si el usuario va a abonar on-line o pago presencial (En el predio),
+        //para realizar el alquiler de la cancha
+        //Si el usuario va a abonar on-line o pago presencial (En el predio),
+        //para realizar el alquiler de la cancha
+
     }
 }
+
+
+
+
+
+       
+
+        
+
+
+
+
+      
+
+        
+        
+
+
+
+
+
+
+
+
+
+
+       
+
+        
+        
+
+
+
+
+
+
+       
+
+
+
+
 
         
         

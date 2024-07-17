@@ -23,7 +23,7 @@ namespace ProyectoLaGran7.Server.Controllers
 
         //Método Get = (Retorna una lista de usuarios)
         [HttpGet]
-        public async Task<ActionResult<List<Usuarios>>> Get() 
+        public async Task<ActionResult<List<Usuario>>> Get() 
         {
              return await context.Usuarios.ToListAsync();   
         }
@@ -31,7 +31,7 @@ namespace ProyectoLaGran7.Server.Controllers
 
         //Método Post (datos que devuelve al server y el server le devuelve en forma de respuesta peticiones al front(Mensajes para el usuario))
         [HttpPost]
-        public async Task<ActionResult<int>> Post(Usuarios entidad) 
+        public async Task<ActionResult<int>> Post(Usuario entidad) 
         {
             //TryCatch - Por si se genera un error en la carga de datos del usuario
             try
@@ -50,14 +50,14 @@ namespace ProyectoLaGran7.Server.Controllers
 
         //Metodo Put
         [HttpPut("{id:int}")]
-        public async Task<ActionResult> Put(int Id,[FromBody] Usuarios entidad) 
+        public async Task<ActionResult> Put(int Id,[FromBody] Usuario entidad) 
         {
             if (Id == entidad.ID)
             {
                 return BadRequest("Datos incorrectos");
             }
             //recibe valores null
-            Usuarios? Lean = await context.Usuarios.
+            Usuario? Lean = await context.Usuarios.
                 Where(e => e.ID==Id).FirstOrDefaultAsync();
 
             if (Lean == null) 

@@ -14,16 +14,19 @@ namespace Proyecto2024.BD.Data
 
         //Tablas de la base de datos que se encuentra en el context, que es la base de datos
         //Tabla (Cancha)
-        public DbSet<Cancha> Cancha { get; set; }
+
+        //DbSet es una clase del frameWork
+
+        public DbSet<Cancha> Canchas { get; set; }
 
         //Tabla (Pago)
-        public DbSet<Pago> Pago { get; set; }
+        public DbSet<Pago> Pagos { get; set; }
 
         //Tabla (Reserva)
-        public DbSet<Reserva> Reserva { get; set; }
+        public DbSet<Reserva> Reservas { get; set; }
         
         //Tabla (Usuarios)
-        public DbSet<Usuarios> Usuarios { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }
 
 
         //---------------------------------------------------------
@@ -36,10 +39,19 @@ namespace Proyecto2024.BD.Data
                 
         }
 
+       
+
 
         //codigo que evita que un registro de la base de datos, pueda borrarse en cascada
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            //problema de la relacion entre tablas
+            modelBuilder.Entity<Cancha>()
+              .HasOne(c => c.Pago)
+              .WithOne(p => p.Cancha)
+              .HasForeignKey<Pago>(p => p.IdCancha);
+
+            base.OnModelCreating(modelBuilder);
 
             //Éste codigo sirve para evitar que se borren los datos en cascada en la base de datos
             var cascadeFKs = modelBuilder.Model.G­etEntityTypes()
