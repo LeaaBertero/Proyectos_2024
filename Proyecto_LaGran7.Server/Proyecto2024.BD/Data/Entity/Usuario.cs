@@ -83,7 +83,7 @@ namespace ProyectoLaGran7.BD.Data.Entity
 
         //------------------------------------------
         //Clave primaria de la tabla Cancha
-        public int IdCancha { get; set; }
+        //public int IdCancha { get; set; }
         //------------------------------------------
     }
 }

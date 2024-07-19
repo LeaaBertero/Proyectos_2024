@@ -38,7 +38,7 @@ namespace ProyectoLaGran7.BD.Data.Entity
 
         //------------------------------------------
         //Tabla (Reserva), que se relaciona con tabla (Pago)
-        public Reserva? Reservas { get; set; }
+        //public Reserva? Reservas { get; set; }
         //------------------------------------------
 
         //------------------------------------------
