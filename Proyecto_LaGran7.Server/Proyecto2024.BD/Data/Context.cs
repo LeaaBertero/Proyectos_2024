@@ -39,9 +39,11 @@ namespace Proyecto2024.BD.Data
                 
         }
 
-       
 
-
+        //codigo que evita que un registro de la base de datos, pueda borrarse en cascada
+        //codigo que evita que un registro de la base de datos, pueda borrarse en cascada
+        //codigo que evita que un registro de la base de datos, pueda borrarse en cascada
+        //codigo que evita que un registro de la base de datos, pueda borrarse en cascada
         //codigo que evita que un registro de la base de datos, pueda borrarse en cascada
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -53,6 +55,8 @@ namespace Proyecto2024.BD.Data
 
             base.OnModelCreating(modelBuilder);
 
+            
+            
             //Éste codigo sirve para evitar que se borren los datos en cascada en la base de datos
             var cascadeFKs = modelBuilder.Model.G­etEntityTypes()
                                          .SelectMany(t => t.GetForeignKeys())

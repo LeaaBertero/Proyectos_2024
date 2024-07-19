@@ -46,7 +46,7 @@ namespace ProyectoLaGran7.BD.Migrations
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
 
-                    b.Property<string>("Ubicaciòn")
+                    b.Property<string>("Ubicacion")
                         .IsRequired()
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
@@ -56,7 +56,7 @@ namespace ProyectoLaGran7.BD.Migrations
                     b.HasIndex(new[] { "IdCancha" }, "Cancha_UQ")
                         .IsUnique();
 
-                    b.HasIndex(new[] { "Nombre", "Ubicaciòn", "Estado" }, "Nombre_Ubicación_Estado");
+                    b.HasIndex(new[] { "Nombre", "Ubicacion", "Estado" }, "Nombre_Ubicación_Estado");
 
                     b.ToTable("Canchas");
                 });

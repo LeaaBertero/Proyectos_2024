@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ProyectoLaGran7.BD.Migrations
 {
     /// <inheritdoc />
-    public partial class Pagos : Migration
+    public partial class TablaCancha : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -20,7 +20,7 @@ namespace ProyectoLaGran7.BD.Migrations
                     IdCancha = table.Column<int>(type: "int", nullable: false),
                     IdPago = table.Column<int>(type: "int", nullable: false),
                     Nombre = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
-                    Ubicaciòn = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
+                    Ubicacion = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
                     Estado = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
@@ -118,7 +118,7 @@ namespace ProyectoLaGran7.BD.Migrations
             migrationBuilder.CreateIndex(
                 name: "Nombre_Ubicación_Estado",
                 table: "Canchas",
-                columns: new[] { "Nombre", "Ubicaciòn", "Estado" });
+                columns: new[] { "Nombre", "Ubicacion", "Estado" });
 
             migrationBuilder.CreateIndex(
                 name: "IdPago_UQ",

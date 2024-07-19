@@ -12,7 +12,7 @@ namespace ProyectoLaGran7.BD.Data.Entity
     [Index(nameof(IdCancha), Name = "Cancha_UQ", IsUnique = true)] //Indice para la PK(Clave primaria)
     
     //(Indice para los atributos)
-    [Index(nameof(Nombre), nameof(Ubicaciòn), nameof(Estado), Name = "Nombre_Ubicación_Estado", IsUnique = false)]
+    [Index(nameof(Nombre), nameof(Ubicacion), nameof(Estado), Name = "Nombre_Ubicación_Estado", IsUnique = false)]
 
     public class Cancha : EntityBase
     {
@@ -61,7 +61,7 @@ namespace ProyectoLaGran7.BD.Data.Entity
         //Atributos de la tabla (Cancha)
         [Required(ErrorMessage = "La ubicación de cancha es obligatoria")]
         [MaxLength(10, ErrorMessage = "Máximo número de caracteres {1}")]
-        public string? Ubicaciòn { get; set; } //Ubicacion del predio(Dirección -  (Complejo deportivo La Gran 7))
+        public string? Ubicacion { get; set; } //Ubicacion del predio(Dirección -  (Complejo deportivo La Gran 7))
         //------------------------------------------------------------------
 
 

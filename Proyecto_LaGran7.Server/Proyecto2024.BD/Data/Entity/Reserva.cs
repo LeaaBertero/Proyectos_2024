@@ -63,7 +63,7 @@ namespace ProyectoLaGran7.BD.Data.Entity
         public string? Estado { get; set; }
 
 
-
+        //lista de los usuarios que reservaron una cancha 
         public List<Usuario>? Usuarios { get; set; }
 
     }

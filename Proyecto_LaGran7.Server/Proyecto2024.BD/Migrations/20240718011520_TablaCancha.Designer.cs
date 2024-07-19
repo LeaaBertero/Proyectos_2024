@@ -12,8 +12,8 @@ using Proyecto2024.BD.Data;
 namespace ProyectoLaGran7.BD.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20240717195738_Pagos")]
-    partial class Pagos
+    [Migration("20240718011520_TablaCancha")]
+    partial class TablaCancha
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -49,7 +49,7 @@ namespace ProyectoLaGran7.BD.Migrations
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
 
-                    b.Property<string>("Ubicaciòn")
+                    b.Property<string>("Ubicacion")
                         .IsRequired()
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
@@ -59,7 +59,7 @@ namespace ProyectoLaGran7.BD.Migrations
                     b.HasIndex(new[] { "IdCancha" }, "Cancha_UQ")
                         .IsUnique();
 
-                    b.HasIndex(new[] { "Nombre", "Ubicaciòn", "Estado" }, "Nombre_Ubicación_Estado");
+                    b.HasIndex(new[] { "Nombre", "Ubicacion", "Estado" }, "Nombre_Ubicación_Estado");
 
                     b.ToTable("Canchas");
                 });
@@ -219,7 +219,7 @@ namespace ProyectoLaGran7.BD.Migrations
             modelBuilder.Entity("ProyectoLaGran7.BD.Data.Entity.Pago", b =>
                 {
                     b.HasOne("ProyectoLaGran7.BD.Data.Entity.Cancha", "Cancha")
-                        .WithOne("Pago")
+                        .WithOne("Pagos")
                         .HasForeignKey("ProyectoLaGran7.BD.Data.Entity.Pago", "IdCancha")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -250,7 +250,7 @@ namespace ProyectoLaGran7.BD.Migrations
 
             modelBuilder.Entity("ProyectoLaGran7.BD.Data.Entity.Cancha", b =>
                 {
-                    b.Navigation("Pago");
+                    b.Navigation("Pagos");
                 });
 
             modelBuilder.Entity("ProyectoLaGran7.BD.Data.Entity.Reserva", b =>
