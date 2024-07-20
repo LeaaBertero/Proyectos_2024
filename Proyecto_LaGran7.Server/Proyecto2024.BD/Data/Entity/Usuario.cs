@@ -88,6 +88,9 @@ namespace ProyectoLaGran7.BD.Data.Entity
         //Clave primaria de la tabla Cancha
         //public int IdCancha { get; set; }
         //------------------------------------------
+
+        //Lista de las reservas, realizadas por los usuarios
+        public List<Reserva>? Reservas { get; set; }
     }
 }
 

@@ -104,6 +104,9 @@ namespace ProyectoLaGran7.BD.Data.Entity
         //Si el usuario va a abonar on-line o pago presencial (En el predio),
         //para realizar el alquiler de la cancha
 
+
+        public List<Usuario> Usuarios { get; set; } = new List<Usuario>();
+
     }
 }
 
