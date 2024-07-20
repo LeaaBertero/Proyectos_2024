@@ -18,6 +18,8 @@ namespace ProyectoLaGran7.BD.Data.Entity
         //Atributos de la tabla (Usuarios)
         //------------------------------------------
 
+
+        //El usuario crea su perfil, para poder tener acceso
         //------------------------------------------
         //Atributos de la tabla Usuario
         [Required(ErrorMessage = "El nombre es obligatorio")]
@@ -47,6 +49,7 @@ namespace ProyectoLaGran7.BD.Data.Entity
         //Atributos de la tabla usuario
         [Required(ErrorMessage = "El rol es obligatorio")]
         [MaxLength(100, ErrorMessage = "Máximo número de caracteres {1}")]
+        //Para saber si el usuario es arrquero // Defensor // Mediocampista // delantero
         public int? Rol { get; set; }
         //------------------------------------------
 

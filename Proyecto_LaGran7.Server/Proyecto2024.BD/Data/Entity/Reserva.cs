@@ -37,6 +37,8 @@ namespace ProyectoLaGran7.BD.Data.Entity
 
         [Required(ErrorMessage = "Indique la fecha para la reserva")]
         [MaxLength(150, ErrorMessage = "Máximo número de caracteres {1}")]
+
+        //El usuario va a saber la fecha en que realizó la reserva
         public DateTime? fechaReserva { get; set; }
 
 
@@ -45,6 +47,8 @@ namespace ProyectoLaGran7.BD.Data.Entity
        
         [Required(ErrorMessage = "Hora de inicio para la reserva")]
         [MaxLength(50, ErrorMessage = "Máximo número de caracteres {1}")]
+
+        //El usuario va a saber la hora de inicio de la reserva 
         public DateTime? HoraInicio { get; set; }   
 
         
@@ -52,18 +56,22 @@ namespace ProyectoLaGran7.BD.Data.Entity
 
         
         [Required(ErrorMessage = "Hora de finalización de la reserva")]
-        [MaxLength(50, ErrorMessage = "Máximo número de caracteres {1}")]   
+        [MaxLength(50, ErrorMessage = "Máximo número de caracteres {1}")]
+
+        //El usuario va a saber la hora de finalizacón de la reserva
         public DateTime? HoraFin { get; set; }
         
 
 
       
-        [Required(ErrorMessage = "Indique el estado de la reserva")] //Pendiente // Cancelada
+        [Required(ErrorMessage = "Indique el estado de la reserva")] 
         [MaxLength(100, ErrorMessage = "Máximo número de caracteres {1}")]
+
+        // Condiciones de solicitudes // -- //Pendiente // Cancelada //Aprobada
         public string? Estado { get; set; }
 
 
-        //lista de los usuarios que reservaron una cancha 
+        //Lista de los usuarios que reservaron la reserva de una cancha 
         public List<Usuario>? Usuarios { get; set; }
 
     }

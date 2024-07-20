@@ -55,6 +55,7 @@ namespace ProyectoLaGran7.BD.Data.Entity
 
         [Required(ErrorMessage = "Ingrese el monto a abonar")]
         [MaxLength(12, ErrorMessage = "Máximo número de caracteres {1}")]
+        //cantidad que debe abonar por el alquiler de la cancha
         public int Monto { get; set; }
 
 
@@ -67,6 +68,7 @@ namespace ProyectoLaGran7.BD.Data.Entity
 
         [Required(ErrorMessage = "Fecha de la reserva")]
         [MaxLength(30, ErrorMessage = "Máximo número de caracteres {1}")]
+        //Fecha en la que se abona el alquiler de la cancha
         public DateTime? FechaPago { get; set; }
 
 
