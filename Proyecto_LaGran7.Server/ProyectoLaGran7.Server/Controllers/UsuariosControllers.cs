@@ -10,7 +10,7 @@ namespace ProyectoLaGran7.Server.Controllers
     [ApiController]
     [Route("api/Usuarios")]
     public class UsuariosControllers : ControllerBase //Clase del framework que hereda de la clase UsuarioControllers
-    {
+    {                    //clase //argumento
         private readonly Context context;
 
         //contructor de la tabla usuarios             
@@ -20,6 +20,8 @@ namespace ProyectoLaGran7.Server.Controllers
             this.context = context;
         }
 
+
+        // -------------------- END POINTS -------------------- //  
 
         //Método Get = (Retorna una lista de usuarios)
         [HttpGet]
