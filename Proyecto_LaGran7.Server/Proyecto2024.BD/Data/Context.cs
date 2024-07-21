@@ -20,10 +20,10 @@ namespace Proyecto2024.BD.Data
         public DbSet<Cancha> Canchas { get; set; }
 
         //Tabla (Pago)
-        public DbSet<Pago> Pagos { get; set; }
+        public DbSet<Pago> Pago { get; set; }
 
         //Tabla (Reserva)
-        public DbSet<Reserva> Reservas { get; set; }
+        public DbSet<Reserva> Reserva { get; set; }
         
         //Tabla (Usuarios)
         public DbSet<Usuario> Usuarios { get; set; }
