@@ -90,7 +90,7 @@ namespace ProyectoLaGran7.BD.Data.Entity
         //------------------------------------------
 
         //Lista de las reservas, realizadas por los usuarios
-        public List<Reserva>? Reservas { get; set; }
+        //public List<Reserva>? Reservas { get; set; }
     }
 }
 

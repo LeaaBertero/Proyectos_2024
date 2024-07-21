@@ -104,7 +104,7 @@ namespace ProyectoLaGran7.BD.Data.Entity
 
         //Lista que se actualiza a medida que los usuarios van realizando
         //el pago por el alquiler de las canchas
-        public List<Usuario> Usuarios { get; set; } = new List<Usuario>();
+        //public List<Usuario> Usuarios { get; set; } = new List<Usuario>();
 
     }
 }
