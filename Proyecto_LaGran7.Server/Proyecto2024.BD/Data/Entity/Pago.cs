@@ -9,12 +9,10 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ProyectoLaGran7.BD.Data.Entity
 {
-
     //Indices
     [Index(nameof(IdPago), Name = "IdPago_UQ", IsUnique = true)]
     //atributos de las tablas (No son claves unicas)
     [Index(nameof(Monto), nameof(FechaPago), nameof(metodoPago), Name = "Monto_FechaPago_MétodoPago", IsUnique = false)]
-
 
     public class Pago : EntityBase
     {

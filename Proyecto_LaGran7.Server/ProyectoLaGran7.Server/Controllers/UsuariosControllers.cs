@@ -27,12 +27,13 @@ namespace ProyectoLaGran7.Server.Controllers
         [HttpGet]
         public async Task<ActionResult<List<Usuario>>> Get() 
         {
-             return await context.Usuarios.ToListAsync();   
+            return await context.Usuarios.ToListAsync();
+            // retornar esperando al context(Base de datos, la lista asincronica de los usuarios)
         }
 
 
         //Método Post (datos que devuelve al server y el server le devuelve en forma de respuesta peticiones al front(Mensajes para el usuario))
-        [HttpPost]
+        [HttpPost] //Inserta un registro a la base de datos
         public async Task<ActionResult<int>> Post(Usuario entidad) 
         {
             //TryCatch - Por si se genera un error en la carga de datos del usuario

@@ -48,12 +48,12 @@ namespace Proyecto2024.BD.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //problema de la relacion entre tablas
-            modelBuilder.Entity<Cancha>()
-              .HasOne(c => c.Pagos)
-              .WithOne(p => p.Cancha)
-              .HasForeignKey<Pago>(p => p.IdCancha);
+            //modelBuilder.Entity<Cancha>()
+            //  .HasOne(c => c.Pagos)
+            //  .WithOne(p => p.Cancha)
+            //  .HasForeignKey<Pago>(p => p.IdCancha);
 
-            base.OnModelCreating(modelBuilder);
+            //base.OnModelCreating(modelBuilder);
 
             
             
