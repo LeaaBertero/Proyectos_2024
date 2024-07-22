@@ -78,32 +78,16 @@ namespace ProyectoLaGran7.BD.Data.Entity
         [Required(ErrorMessage = "Método de pago")]
         [MaxLength(30, ErrorMessage = "Máximo número de caracteres {1}")]
 
-        //METODO DE PAGOOOOOOOOOO !!!!!!!!!
-        //METODO DE PAGOOOOOOOOOO !!!!!!!!!
-        //METODO DE PAGOOOOOOOOOO !!!!!!!!!
-        //METODO DE PAGOOOOOOOOOO !!!!!!!!!
-        //METODO DE PAGOOOOOOOOOO !!!!!!!!!
-        //METODO DE PAGOOOOOOOOOO !!!!!!!!!
-        //METODO DE PAGOOOOOOOOOO !!!!!!!!!
-        //METODO DE PAGOOOOOOOOOO !!!!!!!!!
-        //METODO DE PAGOOOOOOOOOO !!!!!!!!!
+       
         //METODO DE PAGOOOOOOOOOO !!!!!!!!!
         public string? metodoPago { get; set; } //usuario debe ingresar el método para abonar
         //Si el usuario va a abonar on-line o pago presencial (En el predio),
         //para realizar el alquiler de la cancha
-        //Si el usuario va a abonar on-line o pago presencial (En el predio),
-        //para realizar el alquiler de la cancha
-        //Si el usuario va a abonar on-line o pago presencial (En el predio),
-        //para realizar el alquiler de la cancha
-        //Si el usuario va a abonar on-line o pago presencial (En el predio),
-        //para realizar el alquiler de la cancha
-        //Si el usuario va a abonar on-line o pago presencial (En el predio),
-        //para realizar el alquiler de la cancha
-        //Si el usuario va a abonar on-line o pago presencial (En el predio),
-        //para realizar el alquiler de la cancha
+       
 
         //Lista que se actualiza a medida que los usuarios van realizando
         //el pago por el alquiler de las canchas
+
         //public List<Usuario> Usuarios { get; set; } = new List<Usuario>();
 
     }

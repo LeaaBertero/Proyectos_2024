@@ -34,12 +34,12 @@ namespace ProyectoLaGran7.BD.Data.Entity
 
         //------------------------------------------
         //Tabla Reserva que se relaciona con Tabla (Cancha)
-        public Reserva? Reservas { get; set; }
+        //public Reserva? Reservas { get; set; }
         //------------------------------------------
 
         //------------------------------------------
         //Clave primaria de la tabla Reserva
-        public int ReservaId { get; set; }
+        //public int ReservaId { get; set; }
         //------------------------------------------
 
 

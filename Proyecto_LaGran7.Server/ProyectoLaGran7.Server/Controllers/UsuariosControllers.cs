@@ -14,7 +14,7 @@ namespace ProyectoLaGran7.Server.Controllers
         private readonly Context context;
 
         //contructor de la tabla usuarios             
-                                   //Inyección de dependencia
+        //Inyección de dependencia
         public UsuariosControllers(Context context) //tabla usuarioController, recibe como argumento el Context(La base de datos)
         {
             this.context = context;
@@ -25,7 +25,7 @@ namespace ProyectoLaGran7.Server.Controllers
 
         //Método Get = (Retorna una lista de usuarios)
         [HttpGet]
-        public async Task<ActionResult<List<Usuario>>> Get() 
+        public async Task<ActionResult<List<Usuario>>> Get()
         {
             return await context.Usuarios.ToListAsync();
             // retornar esperando al context(Base de datos, la lista asincronica de los usuarios)
@@ -34,7 +34,7 @@ namespace ProyectoLaGran7.Server.Controllers
 
         //Método Post (datos que devuelve al server y el server le devuelve en forma de respuesta peticiones al front(Mensajes para el usuario))
         [HttpPost] //Inserta un registro a la base de datos
-        public async Task<ActionResult<int>> Post(Usuario entidad) 
+        public async Task<ActionResult<int>> Post(Usuario entidad)
         {
             //TryCatch - Por si se genera un error en la carga de datos del usuario
             try
@@ -49,11 +49,11 @@ namespace ProyectoLaGran7.Server.Controllers
                 return BadRequest(e.Message);
             }
         }
-                
+
 
         //Metodo Put
         [HttpPut("{id:int}")]
-        public async Task<ActionResult> Put(int Id,[FromBody] Usuario entidad) 
+        public async Task<ActionResult> Put(int Id, [FromBody] Usuario entidad)
         {
             if (Id == entidad.ID)
             {
@@ -61,11 +61,11 @@ namespace ProyectoLaGran7.Server.Controllers
             }
             //recibe valores null
             Usuario? Lean = await context.Usuarios.
-                Where(e => e.ID==Id).FirstOrDefaultAsync();
+                Where(e => e.ID == Id).FirstOrDefaultAsync();
 
-            if (Lean == null) 
+            if (Lean == null)
             {
-                return NotFound("No existe el usuario buscado");  
+                return NotFound("No existe el usuario buscado");
             }
 
             Lean.Nombre = entidad.Nombre;
@@ -90,6 +90,31 @@ namespace ProyectoLaGran7.Server.Controllers
 
 
         //Método delete
+        [HttpDelete("{id: int}")]
+        public async Task<ActionResult> Delete(int id)
+        {
+            //pregunto si en la tabla Usuarios existe un registro x que cumple 
+            //con la condicion de que el campo ID es igual al id que entro de argumento
+            //si existe devuelve true, en caso contrario devuelve false (por ser booleano)
+            var existe = await context.Usuarios.AnyAsync(x => x.ID == id);
+
+            if (!existe)
+            {
+                return NotFound($"El usuario {id}, no existe");
+            }
+
+            //instanciando la entidad que quiero borrar
+            Usuario EntidadABorrar = new Usuario();
+            EntidadABorrar.ID = id; 
+
+            context.Remove( EntidadABorrar );
+            await context.SaveChangesAsync();
+            return Ok();
+
+
+
+        }
+
 
 
     }

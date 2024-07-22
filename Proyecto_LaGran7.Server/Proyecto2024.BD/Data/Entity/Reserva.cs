@@ -71,7 +71,7 @@ namespace ProyectoLaGran7.BD.Data.Entity
         public string? Estado { get; set; }
 
 
-       //public List<Usuario> Usuarios { get; set; } = new List<Usuario>();
+        public List<Usuario> Usuarios { get; set; } = new List<Usuario>();
 
     }
 }
