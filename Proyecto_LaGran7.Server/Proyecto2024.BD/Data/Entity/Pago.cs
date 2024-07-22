@@ -54,7 +54,7 @@ namespace ProyectoLaGran7.BD.Data.Entity
         [Required(ErrorMessage = "Ingrese el monto a abonar")]
         [MaxLength(12, ErrorMessage = "Máximo número de caracteres {1}")]
         //cantidad que debe abonar por el alquiler de la cancha
-        public int Monto { get; set; }
+        public decimal Monto { get; set; }
 
 
 

@@ -20,7 +20,7 @@ namespace Proyecto2024.BD.Data
         public DbSet<Cancha> Canchas { get; set; }
 
         //Tabla (Pago)
-        public DbSet<Pago> Pago { get; set; }
+        public DbSet<Pago> Pagos { get; set; }
 
         //Tabla (Reserva)
         public DbSet<Reserva> Reserva { get; set; }
@@ -47,21 +47,11 @@ namespace Proyecto2024.BD.Data
         //codigo que evita que un registro de la base de datos, pueda borrarse en cascada
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //problema de la relacion entre tablas
-            //modelBuilder.Entity<Cancha>()
-            //  .HasOne(c => c.Pagos)
-            //  .WithOne(p => p.Cancha)
-            //  .HasForeignKey<Pago>(p => p.IdCancha);
-
-            //base.OnModelCreating(modelBuilder);
-
-            
-            
             //Éste codigo sirve para evitar que se borren los datos en cascada en la base de datos
             var cascadeFKs = modelBuilder.Model.G­etEntityTypes()
-                                         .SelectMany(t => t.GetForeignKeys())
-                                         .Where(fk => !fk.IsOwnership
-                                                      && fk.DeleteBehavior == DeleteBehavior.Casca­de);
+                                            .SelectMany(t => t.GetForeignKeys())
+                                            .Where(fk => !fk.IsOwnership
+                                                        && fk.DeleteBehavior == DeleteBehavior.Casca­de);
             foreach (var fk in cascadeFKs)
             {
                 fk.DeleteBehavior = DeleteBehavior.Restr­ict;
@@ -71,5 +61,15 @@ namespace Proyecto2024.BD.Data
         }
     }
 }
+         
+
+
+
+        
+           
+
+
+
+
 
 
