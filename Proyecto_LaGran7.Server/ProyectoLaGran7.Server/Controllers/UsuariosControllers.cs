@@ -89,37 +89,39 @@ namespace ProyectoLaGran7.Server.Controllers
         }
 
 
-        //Método delete
-        [HttpDelete("{id: int}")]
-        public async Task<ActionResult> Delete(int id)
-        {
-            //pregunto si en la tabla Usuarios existe un registro x que cumple 
-            //con la condicion de que el campo ID es igual al id que entro de argumento
-            //si existe devuelve true, en caso contrario devuelve false (por ser booleano)
-            var existe = await context.Usuarios.AnyAsync(x => x.ID == id);
+        ////Método delete
+        //[HttpDelete("{id: int}")]
+        //public async Task<ActionResult> Delete(int id)
+        //{
+        //    //pregunto si en la tabla Usuarios existe un registro x que cumple 
+        //    //con la condicion de que el campo ID es igual al id que entro de argumento
+        //    //si existe devuelve true, en caso contrario devuelve false (por ser booleano)
+            
+            
+        //    var existe = await context.Usuarios.AnyAsync(x => x.ID == id);
 
-            if (!existe)
-            {
-                return NotFound($"El usuario {id}, no existe");
-            }
+        //    if (!existe)
+        //    {
+        //        return NotFound($"El usuario {id}, no existe");
+        //    }
 
-            //instanciando la entidad que quiero borrar
-            Usuario EntidadABorrar = new Usuario();
-            EntidadABorrar.ID = id; 
+        //    //instanciando la entidad que quiero borrar
+        //    Usuario EntidadABorrar = new Usuario();
+        //    EntidadABorrar.ID = id; 
 
-            context.Remove( EntidadABorrar );
-            await context.SaveChangesAsync();
-            return Ok();
-
-
-
-        }
-
-
-
+        //    context.Remove( EntidadABorrar );
+        //    await context.SaveChangesAsync();
+        //    return Ok();
+        //}
     }
+}
+
+
+
+
+
+
 
     
-}
 
 
