@@ -1,4 +1,6 @@
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
+using MinimalAPIPeliculas;
 using MinimalAPIPeliculas.Entidades;
 
 
@@ -6,6 +8,8 @@ using MinimalAPIPeliculas.Entidades;
 
 var builder = WebApplication.CreateBuilder(args);
 var origenesPermitidos = builder.Configuration.GetValue<string>("origenesPermitidos")!;
+
+builder.Services.AddDbContext<AplicationDbContext>(opciones => opciones.UseSqlServer("DefaultConnection"));
 
 //var apellido = builder.Configuration.GetValue<string>("apellido");
 
