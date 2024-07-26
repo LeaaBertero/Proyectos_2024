@@ -14,7 +14,11 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
         //clave foránea de la tabla Reserva
         public int IdReserva { get; set; }
 
+        //-----------------------------------------------------
+        //Propiedades de la tabla
+        //-----------------------------------------------------
         public DateOnly? FechaHoraPartidos { get; set; }
+        //-----------------------------------------------------
 
         //Clave foranea de la tabla
         public int IdEquipoUno { get; set; }

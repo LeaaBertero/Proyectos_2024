@@ -9,7 +9,11 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
 {
     public class Usuarios : EntityBase
     {
+        //Clave primaria de la tabla
         public int IdUsuario { get; set; }
+        //----------------------------------------------------
+        //Propiedades de la tabla
+        //----------------------------------------------------
         public string? Nombre { get; set; }
         public string? Apellido { get; set; }
         
@@ -20,6 +24,8 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
         public string? CorreoElectronico { get; set; }
 
         public string? Parentesco { get; set; }
+
+        //--------------------------------------------------------
 
         //--------------------------------------------------------
         //Relaciones entre tablas

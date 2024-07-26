@@ -14,6 +14,9 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
         //Clave foranea de la tabla (Usuarios)
         public int IdUsuario { get; set; }
 
+        //----------------------------------------------------
+        //Propiedades de la tabla
+        //----------------------------------------------------
         public DateOnly FechaHoraReserva { get; set; }
 
         public DateTime DuracionAlquiler { get; set; }
@@ -26,10 +29,12 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
 
         //--------------------------------------------------------
         //Relaciones entre tablas
-        //Clave primaria de la tabla (Reserva)
+        //Clave primaria de la tabla (Partidos)
         public int PartidosId { get; set; }
         public Partidos? Partidos { get; set; }
         
+
+        //(Clave primaria de la tabla (Pagos))
         public int PagoId { get; set; }
         public Pagos? Pagos { get; set; }
         

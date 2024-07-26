@@ -14,9 +14,13 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
         //clave foranea de la tabla Reserva
         public int IdReserva { get; set; }
 
+        //------------------------------------------------------
+        //Propiedades de la tabla
+        //------------------------------------------------------
         public decimal? Monto_Pago { get; set; }
 
         public DateOnly FechaPago { get; set; }
+        //-------------------------------------------------------
 
 
         //--------------------------------------------------------

@@ -11,11 +11,17 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
         //Clave primaria de la tabla
         public int IdEquipos { get; set; }
 
-        //Nombre del equipo
+        //-------------------------------------------------------
+        //Propiedades de la tabla
+        //-------------------------------------------------------
         public string? NombreEquipos { get; set; }
-
+        //-------------------------------------------------------
         //cantidad de integrantes que conforman el equipo
+        //-------------------------------------------------------
+
         public int Integrantes { get; set; }
+        //-------------------------------------------------------
+
 
         //--------------------------------------------------------
         //Relaciones entre tablas

@@ -12,6 +12,10 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
         public int IdCanchas { get; set; }
 
         //Identificacion de la cancha para el usuario que realiza la reserva
+
+        //----------------------------------------------
+        //Propiedades de la tabla
+        //----------------------------------------------
         public string? NombreCancha { get; set; }
 
         //Disponibilidad para el usuario (si / no)
