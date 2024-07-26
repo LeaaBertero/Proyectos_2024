@@ -1,4 +1,5 @@
 ﻿using Azure.Core.Pipeline;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace Proyecto_LaGranSiete.BD.Data.Entity
 {
+    
     public class Usuarios : EntityBase
     {
         //Clave primaria de la tabla
@@ -14,6 +16,7 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
         //----------------------------------------------------
         //Propiedades de la tabla
         //----------------------------------------------------
+
         public string? Nombre { get; set; }
         public string? Apellido { get; set; }
         

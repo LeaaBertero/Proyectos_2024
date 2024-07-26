@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Proyecto_LaGranSiete.BD.Data;
 
@@ -11,9 +12,11 @@ using Proyecto_LaGranSiete.BD.Data;
 namespace Proyecto_LaGranSiete.BD.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20240726200430_Indices")]
+    partial class Indices
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -143,16 +146,12 @@ namespace Proyecto_LaGranSiete.BD.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("DuracionAlquiler")
-                        .HasMaxLength(10)
                         .HasColumnType("datetime2");
 
                     b.Property<string>("EstadoReserva")
-                        .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<DateOnly>("FechaHoraReserva")
-                        .HasMaxLength(20)
                         .HasColumnType("date");
 
                     b.Property<int>("IdReserva")
@@ -162,12 +161,9 @@ namespace Proyecto_LaGranSiete.BD.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("MetodoPago")
-                        .IsRequired()
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<decimal>("Monto")
-                        .HasMaxLength(12)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("PagoId")
