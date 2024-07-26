@@ -17,6 +17,13 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
         //cantidad de integrantes que conforman el equipo
         public int Integrantes { get; set; }
 
+        //--------------------------------------------------------
+        //Relaciones entre tablas
+        //Clave primaria de la tabla (Reserva)
+        public int PartidosId { get; set; }
+        public Partidos? Partidos { get; set; }
+        //--------------------------------------------------------
+
 
     }
 }

@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using Proyecto_LaGranSiete.BD.Data;
+using Proyecto_LaGranSiete.BD.Data;// se genera despues de hacer control punto para generar el using para el context
 
 
 //configuracion de los servivios en el constructor de la aplicacion

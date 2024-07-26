@@ -10,12 +10,13 @@ using System.Threading.Tasks;
 
 namespace Proyecto_LaGranSiete.BD.Data
 {
+    //context, que hereda de DbContext
     public class Context : DbContext
     {
         //constructor del Context (Base de datos)
         public Context(DbContextOptions options) : base(options)
         {
-
+            //para realizar este constructor hacer control punto y elegir "Generar contructor con options"
         }
 
         //Tablas de la base de datos

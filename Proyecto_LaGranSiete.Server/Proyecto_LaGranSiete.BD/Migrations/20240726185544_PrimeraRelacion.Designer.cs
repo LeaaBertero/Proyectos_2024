@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Proyecto_LaGranSiete.BD.Data;
 
@@ -11,9 +12,11 @@ using Proyecto_LaGranSiete.BD.Data;
 namespace Proyecto_LaGranSiete.BD.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20240726185544_PrimeraRelacion")]
+    partial class PrimeraRelacion
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -61,12 +64,7 @@ namespace Proyecto_LaGranSiete.BD.Migrations
                     b.Property<string>("NombreEquipos")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PartidosId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("PartidosId");
 
                     b.ToTable("Equipos");
                 });
@@ -78,9 +76,6 @@ namespace Proyecto_LaGranSiete.BD.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("CanchasId")
-                        .HasColumnType("int");
 
                     b.Property<DateOnly>("FechaPago")
                         .HasColumnType("date");
@@ -96,8 +91,6 @@ namespace Proyecto_LaGranSiete.BD.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CanchasId");
-
                     b.ToTable("Pagos");
                 });
 
@@ -108,9 +101,6 @@ namespace Proyecto_LaGranSiete.BD.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("CanchasId")
-                        .HasColumnType("int");
 
                     b.Property<DateOnly?>("FechaHoraPartidos")
                         .HasColumnType("date");
@@ -128,8 +118,6 @@ namespace Proyecto_LaGranSiete.BD.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CanchasId");
 
                     b.ToTable("Partidos");
                 });
@@ -163,20 +151,7 @@ namespace Proyecto_LaGranSiete.BD.Migrations
                     b.Property<decimal>("Monto")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("PagoId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("PagosId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PartidosId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("PagosId");
-
-                    b.HasIndex("PartidosId");
 
                     b.ToTable("Reservas");
                 });
@@ -221,56 +196,6 @@ namespace Proyecto_LaGranSiete.BD.Migrations
                     b.HasIndex("ReservasId");
 
                     b.ToTable("Usuarios");
-                });
-
-            modelBuilder.Entity("Proyecto_LaGranSiete.BD.Data.Entity.Equipos", b =>
-                {
-                    b.HasOne("Proyecto_LaGranSiete.BD.Data.Entity.Partidos", "Partidos")
-                        .WithMany()
-                        .HasForeignKey("PartidosId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Partidos");
-                });
-
-            modelBuilder.Entity("Proyecto_LaGranSiete.BD.Data.Entity.Pagos", b =>
-                {
-                    b.HasOne("Proyecto_LaGranSiete.BD.Data.Entity.Canchas", "Canchas")
-                        .WithMany()
-                        .HasForeignKey("CanchasId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Canchas");
-                });
-
-            modelBuilder.Entity("Proyecto_LaGranSiete.BD.Data.Entity.Partidos", b =>
-                {
-                    b.HasOne("Proyecto_LaGranSiete.BD.Data.Entity.Canchas", "Canchas")
-                        .WithMany()
-                        .HasForeignKey("CanchasId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Canchas");
-                });
-
-            modelBuilder.Entity("Proyecto_LaGranSiete.BD.Data.Entity.Reservas", b =>
-                {
-                    b.HasOne("Proyecto_LaGranSiete.BD.Data.Entity.Pagos", "Pagos")
-                        .WithMany()
-                        .HasForeignKey("PagosId");
-
-                    b.HasOne("Proyecto_LaGranSiete.BD.Data.Entity.Partidos", "Partidos")
-                        .WithMany()
-                        .HasForeignKey("PartidosId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Pagos");
-
-                    b.Navigation("Partidos");
                 });
 
             modelBuilder.Entity("Proyecto_LaGranSiete.BD.Data.Entity.Usuarios", b =>

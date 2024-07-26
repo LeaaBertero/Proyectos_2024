@@ -17,5 +17,13 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
         public decimal? Monto_Pago { get; set; }
 
         public DateOnly FechaPago { get; set; }
+
+
+        //--------------------------------------------------------
+        //Relaciones entre tablas
+        //Clave primaria de la tabla (Reserva)
+        public int CanchasId { get; set; }
+        public Canchas? Canchas { get; set; }
+        //--------------------------------------------------------
     }
 }

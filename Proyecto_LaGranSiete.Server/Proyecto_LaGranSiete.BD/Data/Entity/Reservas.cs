@@ -23,5 +23,18 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
         public string? MetodoPago { get; set; }
 
         public string? EstadoReserva { get; set; }
+
+        //--------------------------------------------------------
+        //Relaciones entre tablas
+        //Clave primaria de la tabla (Reserva)
+        public int PartidosId { get; set; }
+        public Partidos? Partidos { get; set; }
+        
+        public int PagoId { get; set; }
+        public Pagos? Pagos { get; set; }
+        
+        //--------------------------------------------------------
+
+
     }
 }
