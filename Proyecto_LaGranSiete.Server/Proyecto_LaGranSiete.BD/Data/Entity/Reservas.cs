@@ -26,6 +26,8 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
         //Propiedades de la tabla
         //----------------------------------------------------
 
+
+        //----------------------------------------------------
         [Required(ErrorMessage = "La fecha es obligatoria")]
         [MaxLength(20,ErrorMessage = "Máximo número de caracteres {1}")]
         public DateOnly FechaHoraReserva { get; set; }
@@ -38,7 +40,7 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
         
         [Required(ErrorMessage = "El monto es obligatorio")]
         [MaxLength(12, ErrorMessage = "Máximo número de caracteres {1}")]
-        public decimal Monto { get; set; }
+        public float Monto { get; set; }
 
         
         [Required(ErrorMessage = "El método de pago es obligatorio")]
@@ -57,7 +59,7 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
         public Partidos? Partidos { get; set; }
         
 
-        //(Clave primaria de la tabla (Pagos))
+        //(Clave primaria de la tabla (Pagos) que se relaciona con la tabla (Reservas))
         public int PagoId { get; set; }
         public Pagos? Pagos { get; set; }
         

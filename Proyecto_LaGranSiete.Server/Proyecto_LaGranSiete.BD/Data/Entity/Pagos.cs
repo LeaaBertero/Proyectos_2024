@@ -17,7 +17,7 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
         //------------------------------------------------------
         //Propiedades de la tabla
         //------------------------------------------------------
-        public decimal? Monto_Pago { get; set; }
+        public float? Monto_Pago { get; set; }
 
         public DateOnly FechaPago { get; set; }
         //-------------------------------------------------------
