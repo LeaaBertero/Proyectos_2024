@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Proyecto_LaGranSiete.BD.Data;
 
@@ -11,9 +12,11 @@ using Proyecto_LaGranSiete.BD.Data;
 namespace Proyecto_LaGranSiete.BD.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20240726234407_RequiredTablas")]
+    partial class RequiredTablas
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -31,24 +34,15 @@ namespace Proyecto_LaGranSiete.BD.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<bool?>("Disponibilidad")
-                        .IsRequired()
-                        .HasMaxLength(30)
                         .HasColumnType("bit");
 
                     b.Property<int>("IdCanchas")
                         .HasColumnType("int");
 
                     b.Property<string>("NombreCancha")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex(new[] { "IdCanchas" }, "IdCanchas")
-                        .IsUnique();
-
-                    b.HasIndex(new[] { "NombreCancha", "Disponibilidad" }, "NombreCancha_Disponibilidad");
 
                     b.ToTable("Canchas");
                 });
@@ -79,11 +73,6 @@ namespace Proyecto_LaGranSiete.BD.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("PartidosId");
-
-                    b.HasIndex(new[] { "IdEquipos" }, "IdEquipos")
-                        .IsUnique();
-
-                    b.HasIndex(new[] { "NombreEquipos", "Integrantes" }, "NombreEquipos_Integrantes");
 
                     b.ToTable("Equipos");
                 });
@@ -117,11 +106,6 @@ namespace Proyecto_LaGranSiete.BD.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CanchasId");
-
-                    b.HasIndex(new[] { "IdPago" }, "IdPago")
-                        .IsUnique();
-
-                    b.HasIndex(new[] { "Monto_Pago", "FechaPago" }, "Monto_Pago_FechaPago");
 
                     b.ToTable("Pagos");
                 });
@@ -157,11 +141,6 @@ namespace Proyecto_LaGranSiete.BD.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CanchasId");
-
-                    b.HasIndex(new[] { "FechaHoraPartidos" }, "FechaHoraPartidos");
-
-                    b.HasIndex(new[] { "IdPartidos" }, "IdPartidos")
-                        .IsUnique();
 
                     b.ToTable("Partidos");
                 });
