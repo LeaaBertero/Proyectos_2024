@@ -75,7 +75,29 @@ namespace Proyecto_LaGranSiete.Server.Controllers
                 return BadRequest(e.Message);
                 //throw;
             }
-        
         }
+
+        //Delete
+        [HttpDelete("{id:int}")]
+        public async Task<ActionResult> Delete(int id) 
+        {
+            var existe = await context.Usuarios.AnyAsync(x =>x.Id == id);
+
+            if (!existe) 
+            {
+                return NotFound($"El usuario buscado {id}, no se encuentra");
+            }
+
+            Usuarios EntidadBorrar = new Usuarios();
+            EntidadBorrar.Id = id;
+
+            context.Remove(EntidadBorrar);
+
+            await context.SaveChangesAsync();
+
+            return Ok();
+        }
+        
+        
     }
 }
