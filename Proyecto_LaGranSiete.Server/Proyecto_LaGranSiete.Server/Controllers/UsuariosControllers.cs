@@ -20,10 +20,51 @@ namespace Proyecto_LaGranSiete.Server.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Usuarios>>> Get() 
+        public async Task<ActionResult<List<Usuarios>>> Get()
         {
-            return await context.Usuarios.ToListAsync();    
+            return await context.Usuarios.ToListAsync();
         }
+
+        //get 1
+        [HttpGet("{id:int}")]
+        public async Task<ActionResult<Usuarios>> Get(int id)
+        {
+            Usuarios? lean = await context.Usuarios
+                .FirstOrDefaultAsync(x => x.Id == id);
+
+            if (lean == null)
+            {
+                return NotFound();
+            }
+
+            return lean;
+        }
+
+        //get 2
+        [HttpGet("GetByCod/{cod}")]
+        public async Task<ActionResult<Usuarios>> GetByCod(string cod)
+        {
+            Usuarios? lean = await context.Usuarios
+                .FirstOrDefaultAsync(x => x.Nombre == cod);
+
+            if (lean == null)
+            {
+                return NotFound();
+            }
+
+            return lean;
+        }
+
+
+
+
+        [HttpGet("Existe/{id:int}")]
+        public async Task<ActionResult<bool>> Existe(int id)
+        {
+            var existe = await context.Usuarios.AnyAsync(x => x.Id == id);
+            return existe;
+        }
+        
 
         [HttpPost]
         public async Task<ActionResult<int>> Post(Usuarios entidad)
