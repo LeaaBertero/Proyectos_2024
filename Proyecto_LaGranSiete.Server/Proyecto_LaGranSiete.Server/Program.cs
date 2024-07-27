@@ -1,9 +1,17 @@
 using Microsoft.EntityFrameworkCore;
-using Proyecto_LaGranSiete.BD.Data;// se genera despues de hacer control punto para generar el using para el context
+using Proyecto_LaGranSiete.BD.Data;
+using System.Text.Json.Serialization;// se genera despues de hacer control punto para generar el using para el context
 
 
 //configuracion de los servivios en el constructor de la aplicacion
 var builder = WebApplication.CreateBuilder(args);
+
+//-----------------------------------------------------------------------------
+//codigo para ignorar ciclos
+builder.Services.AddControllersWithViews().AddJsonOptions(x =>
+    x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
+//-----------------------------------------------------------------------------
+
 
 // Add services to the container.
 

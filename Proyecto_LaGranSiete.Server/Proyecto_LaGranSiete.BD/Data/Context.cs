@@ -47,10 +47,10 @@ namespace Proyecto_LaGranSiete.BD.Data
             }
 
             base.OnModelCreating(modelBuilder);
-
         }
     }
 }
+
 
 
         
