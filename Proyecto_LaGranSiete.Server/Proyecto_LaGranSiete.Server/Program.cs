@@ -21,8 +21,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 
-//constrictor de la base de datos (Context)
 
+//Builder (constructor) de la base de datos (Context)
 builder.Services.AddDbContext<Context>(op => op.UseSqlServer("name=conn"));
 
 
@@ -33,14 +33,17 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+    //Use swagger(cuando está en ejecución)
     app.UseSwagger();
+    //use la interfáz de usuario de swagger
     app.UseSwaggerUI();
 }
 
+//use Https para redireccionar
 app.UseHttpsRedirection();
-
+//Use la autorizacion
 app.UseAuthorization();
-
+//Mapeé los controles
 app.MapControllers();
-
+//Arranque
 app.Run();
