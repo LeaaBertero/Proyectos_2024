@@ -19,6 +19,7 @@ namespace Proyecto_LaGranSiete.Server.Controllers
             context = Context;
         }
 
+        //EndPoint (Get)
         [HttpGet]
         public async Task<ActionResult<List<Usuarios>>> Get()
         {
