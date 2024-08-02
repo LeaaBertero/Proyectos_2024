@@ -29,8 +29,8 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
         //cantidad de integrantes que conforman el equipo
         //-------------------------------------------------------
 
-        [Required(ErrorMessage = "Los integrantes del equipo son obligatorios")]
-        [MaxLength(10, ErrorMessage = "Máximo número de caracteres {1}")]
+        [Required(ErrorMessage = "El campo integrantes es obligatorio (especificar en número)")]
+        [MaxLength(2, ErrorMessage = "Máximo número de caracteres {1}")]
         public int Integrantes { get; set; }
         //-------------------------------------------------------
 

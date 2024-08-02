@@ -19,27 +19,27 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
         //----------------------------------------------------
         //Propiedades de la tabla
         //----------------------------------------------------
-        [Required(ErrorMessage = "El nombre es obligatorio")]
+        [Required(ErrorMessage = "El campo nombre, es obligatorio")]
         [MaxLength(100, ErrorMessage = "Máximo número de caracteres {1}")]
         public string? Nombre { get; set; }
 
-        [Required(ErrorMessage = "El apellido es obligatorio")]
+        [Required(ErrorMessage = "El campo apellido, es obligatorio")]
         [MaxLength(30, ErrorMessage = "Máximo número de caracteres {1}")]
         public string? Apellido { get; set; }
 
-        [Required(ErrorMessage = "La fecha de nacimiento es oblgatoria")]
+        [Required(ErrorMessage = "El campo fecha Nacimiento, es obligatorio")]
         [MaxLength(30, ErrorMessage = "Máximo número de caracteres {1}")]
         public DateOnly? FechaNacimiento { get; set; }
 
-        [Required(ErrorMessage = "El número de teléfono es obligatorio")]
+        [Required(ErrorMessage = "El campo teléfono, es obligatorio")]
         [MaxLength(25, ErrorMessage = "Máximo número de caracteres {1}")]
         public  string? Telefono { get; set; } //Telefono
 
-        [Required(ErrorMessage = "El mail es obligatorio")]
+        [Required(ErrorMessage = "El campo e-mail, es obligatorio")]
         [MaxLength(150, ErrorMessage = "Máximo número de caracteres {1}")]
         public string? CorreoElectronico { get; set; }
 
-        [Required(ErrorMessage = "El prentesco es obligatorio")]
+        [Required(ErrorMessage = "El campo prentesco, es obligatorio")]
         [MaxLength(50, ErrorMessage = "Máximo número de caracteres {1}")]
         public string? Parentesco { get; set; }
         //--------------------------------------------------------

@@ -25,12 +25,12 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
         //Propiedades de la tabla
         //------------------------------------------------------
 
-        [Required(ErrorMessage = "El monto es obligatorio")]
-        [MaxLength(20, ErrorMessage = "Máximo número de caracteres {1}")]
+        [Required(ErrorMessage = "El monto de pago es obligatorio")]
+        [MaxLength(10, ErrorMessage = "Máximo número de caracteres {1}")]
         public float? Monto_Pago { get; set; }
 
         [Required(ErrorMessage = "La fecha del pago es obligatoria")]
-        [MaxLength(30, ErrorMessage = "Máximo número de caracteres {1}")]
+        [MaxLength(10, ErrorMessage = "Máximo número de caracteres {1}")]
         public DateOnly FechaPago { get; set; }
         //-------------------------------------------------------
 

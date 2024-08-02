@@ -28,7 +28,7 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
 
 
         //----------------------------------------------------
-        [Required(ErrorMessage = "La fecha es obligatoria")]
+        [Required(ErrorMessage = "El campo fecha/hora obligatorio")]
         [MaxLength(20,ErrorMessage = "Máximo número de caracteres {1}")]
         public DateOnly FechaHoraReserva { get; set; }
 
@@ -38,17 +38,17 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
         public DateTime DuracionAlquiler { get; set; }
 
         
-        [Required(ErrorMessage = "El monto es obligatorio")]
+        [Required(ErrorMessage = "El campo Monto, es obligatorio")]
         [MaxLength(12, ErrorMessage = "Máximo número de caracteres {1}")]
         public float Monto { get; set; }
 
         
-        [Required(ErrorMessage = "El método de pago es obligatorio")]
-        [MaxLength(25, ErrorMessage = "Máximo número de caracteres {1}")]
+        [Required(ErrorMessage = "El campo método de pago, es obligatorio")]
+        [MaxLength(20, ErrorMessage = "Máximo número de caracteres {1}")]
         public string? MetodoPago { get; set; }
 
         
-        [Required(ErrorMessage = "El estado de la reserva es obligatoria")]
+        [Required(ErrorMessage = "El campo estado de la reserva es obligatoria")]
         [MaxLength(30, ErrorMessage = "Máximo número de caracteres {1}")]
         public string? EstadoReserva { get; set; }
 

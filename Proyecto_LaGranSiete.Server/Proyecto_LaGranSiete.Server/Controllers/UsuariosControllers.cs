@@ -122,7 +122,7 @@ namespace Proyecto_LaGranSiete.Server.Controllers
         //Delete
         [HttpDelete("{id:int}")]
         public async Task<ActionResult> Delete(int id) 
-        {
+        {                                            //(expresión en lambda)
             var existe = await context.Usuarios.AnyAsync(x =>x.Id == id);
 
             if (!existe) 

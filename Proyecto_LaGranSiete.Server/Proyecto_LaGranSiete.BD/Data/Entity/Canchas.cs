@@ -25,12 +25,12 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
         //Propiedades de la tabla
         //----------------------------------------------
         [Required(ErrorMessage = "El nombre de la cancha es obligatorio")]
-        [MaxLength(50, ErrorMessage = "Máximo número de caracteres {1}")]
+        [MaxLength(20, ErrorMessage = "Máximo número de caracteres {1}")]
         public string? NombreCancha { get; set; }
 
         //Disponibilidad para el usuario (si / no)
 
-        [Required(ErrorMessage = "La disponibilidad es obligatoria")]
+        [Required(ErrorMessage = "El campo disponibilidad es obligatorio")]
         [MaxLength(30, ErrorMessage = "Máximo número de caracteres {1}")]
         public bool? Disponibilidad { get; set; }
     }
