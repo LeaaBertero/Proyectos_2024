@@ -7,7 +7,7 @@ using Proyecto_LaGranSiete.BD.Data.Entity;
 namespace Proyecto_LaGranSiete.Server.Controllers
 {
     [ApiController]
-    [Route("Api/Usuarios")]
+    [Route("Api/Usuarios")] //Ruta de controllers
     public class UsuariosControllers : ControllerBase
     {
         //crear y asignar campo context

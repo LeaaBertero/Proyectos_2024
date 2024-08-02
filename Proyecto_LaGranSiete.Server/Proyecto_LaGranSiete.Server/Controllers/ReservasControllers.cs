@@ -5,6 +5,9 @@ using Proyecto_LaGranSiete.BD.Data.Entity;
 
 namespace Proyecto_LaGranSiete.Server.Controllers
 {
+    [ApiController]
+    [Route("Api/Reservas")] //Ruta de controllers
+
     public class ReservasControllers : ControllerBase
     {
         private readonly Context context;
