@@ -42,7 +42,7 @@ namespace Proyecto_LaGranSiete.BD.Data
                                             .Where(fk => !fk.IsOwnership
                                                         && fk.DeleteBehavior == DeleteBehavior.Casca­de);
             foreach (var fk in cascadeFKs)
-            {
+            {        //Elimina el cmportamiento               
                 fk.DeleteBehavior = DeleteBehavior.Restr­ict;
             }
 

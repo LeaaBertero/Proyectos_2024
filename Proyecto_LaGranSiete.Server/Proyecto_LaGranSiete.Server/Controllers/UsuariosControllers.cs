@@ -21,7 +21,7 @@ namespace Proyecto_LaGranSiete.Server.Controllers
 
         //EndPoint (Get)
         [HttpGet]
-        public async Task<ActionResult<List<Usuarios>>> Get()
+        public async Task<ActionResult<List<Usuarios>>> Get() //Task == "Tarea"
         {
             return await context.Usuarios.ToListAsync();
         }
