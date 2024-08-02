@@ -26,7 +26,7 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
         //-----------------------------------------------------
 
 
-        [Required(ErrorMessage = "Indique la fecha y hora del partido")]
+        [Required(ErrorMessage = "La fecha y hora del partido es obligatorio")]
         [MaxLength(30, ErrorMessage = "Máximo número de caracteres {1}")]
         public DateOnly? FechaHoraPartidos { get; set; }
         //-----------------------------------------------------

@@ -20,7 +20,7 @@ namespace Proyecto_LaGranSiete.BD.Data
         }
         
         //-------------------------------------------
-        //Tablas de la base de datos
+        //Tablas o entidades de la base de datos
         public DbSet<Canchas> Canchas { get; set; }
 
         public DbSet<Equipos> Equipos { get; set; }

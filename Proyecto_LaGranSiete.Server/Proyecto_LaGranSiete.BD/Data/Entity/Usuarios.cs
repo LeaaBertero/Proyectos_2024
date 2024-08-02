@@ -27,7 +27,7 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
         [MaxLength(30, ErrorMessage = "Máximo número de caracteres {1}")]
         public string? Apellido { get; set; }
 
-        [Required(ErrorMessage = "El campo fecha Nacimiento, es obligatorio")]
+        [Required(ErrorMessage = "La fecha Nacimiento, es obligatoria")]
         [MaxLength(30, ErrorMessage = "Máximo número de caracteres {1}")]
         public DateOnly? FechaNacimiento { get; set; }
 

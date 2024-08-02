@@ -28,7 +28,7 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
 
 
         //----------------------------------------------------
-        [Required(ErrorMessage = "El campo fecha/hora obligatorio")]
+        [Required(ErrorMessage = "La fecha y hora obligatoria")]
         [MaxLength(20,ErrorMessage = "Máximo número de caracteres {1}")]
         public DateOnly FechaHoraReserva { get; set; }
 
