@@ -62,8 +62,12 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
         //(Clave primaria de la tabla (Pagos) que se relaciona con la tabla (Reservas))
         public int PagoId { get; set; }
         public Pagos? Pagos { get; set; }
-        
+
+        public int IdEquipos { get; set; }
+        public Equipos? Equipos { get; set; }
+
         //--------------------------------------------------------
+        
 
         //Lista de los usuarios que realizan reservas
         //--Renueva la lista por cada usuario que realice una reserva
