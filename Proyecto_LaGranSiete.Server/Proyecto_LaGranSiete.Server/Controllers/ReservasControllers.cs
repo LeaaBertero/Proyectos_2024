@@ -78,7 +78,7 @@ namespace Proyecto_LaGranSiete.Server.Controllers
             }
         }
 
-        [HttpPut("{id:int}")] //Api / Usuarios
+        [HttpPut("{id:int}")] //Api / Reservas
         public async Task<ActionResult> Put(int id, [FromBody] Reservas entidad)
         {
             if (id == entidad.Id)
@@ -90,7 +90,7 @@ namespace Proyecto_LaGranSiete.Server.Controllers
 
             if (Lean == null)
             {
-                return NotFound("No existe el usuario buscado");
+                return NotFound("No existe la reserva buscada");
             }
 
             Lean.FechaHoraReserva = entidad.FechaHoraReserva;
