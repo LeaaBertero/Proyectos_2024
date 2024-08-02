@@ -18,7 +18,8 @@ namespace Proyecto_LaGranSiete.BD.Data
         {
             //para realizar este constructor hacer control punto y elegir "Generar contructor con options"
         }
-
+        
+        //-------------------------------------------
         //Tablas de la base de datos
         public DbSet<Canchas> Canchas { get; set; }
 
@@ -31,6 +32,8 @@ namespace Proyecto_LaGranSiete.BD.Data
         public DbSet<Reservas> Reservas { get; set; }
 
         public DbSet<Usuarios> Usuarios { get; set; }
+        //-------------------------------------------
+
 
 
         //codigo que evita que un registro de la base de datos, pueda borrarse en cascada
