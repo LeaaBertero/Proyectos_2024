@@ -25,6 +25,9 @@ builder.Services.AddSwaggerGen();
 //Builder (constructor) de la base de datos (Context)
 builder.Services.AddDbContext<Context>(op => op.UseSqlServer("name=conn"));
 
+//AutoMapper (construyendo el objeto)
+builder.Services.AddAutoMapper(typeof(Program));
+
 
 //constructor de la aplicacion
 var app = builder.Build();
