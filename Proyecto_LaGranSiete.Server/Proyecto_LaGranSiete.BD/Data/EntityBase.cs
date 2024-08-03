@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Proyecto_LaGranSiete.BD.Data
 {
-    public class EntityBase
+    public class EntityBase : IEntityBase
     {
         //Id de cada una de las tablas
-        public int Id { get; set; } 
+        public int Id { get; set; }
     }
 }
