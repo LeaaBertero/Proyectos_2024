@@ -86,7 +86,8 @@ namespace Proyecto_LaGranSiete.Server.Controllers
             }
             catch (Exception ErrorMessage)
             {
-                return BadRequest(ErrorMessage.Message);
+                //InnerException = quiere decir que el error vino por un tercero, en este caso por la base de datos
+                return BadRequest(ErrorMessage.InnerException.Message);
                 //throw;
             }
         }
