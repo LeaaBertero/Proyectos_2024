@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Proyecto_LaGranSiete.BD.Data;
 using Proyecto_LaGranSiete.BD.Data.Entity;
+using Proyecto_LaGranSiete.Shared.DTO;
 
 namespace Proyecto_LaGranSiete.Server.Controllers
 {
@@ -66,10 +67,19 @@ namespace Proyecto_LaGranSiete.Server.Controllers
 
 
         [HttpPost]
-        public async Task<ActionResult<int>> Post(Reservas entidad)
+        public async Task<ActionResult<int>> Post(CrearReservaDTO entidadDTO)
         {
             try
             {
+                //----------------------------------------------------------------------------
+                //entidad que voy a adicionar a la tabla reservas en el context(Base de dato)
+                Reservas entidad = new Reservas();
+                entidad.FechaHoraReserva = entidadDTO.FechaHoraReserva;
+                entidad.DuracionAlquiler = entidadDTO.DuracionAlquiler;
+                entidad.Monto = entidadDTO.Monto;
+                entidad.MetodoPago = entidadDTO.MetodoPago;
+                entidad.EstadoReserva = entidadDTO.EstadoReserva;
+                //----------------------------------------------------------------------------
                 context.Reservas.Add(entidad);
                 await context.SaveChangesAsync(); //espera y guarda los cambios del context
                 return entidad.Id; //Id de la entidad 
