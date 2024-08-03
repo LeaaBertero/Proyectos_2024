@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Proyecto_LaGranSiete.BD\Proyecto_LaGranSiete.BD.csproj" />
+    <ProjectReference Include="..\Proyecto_LaGranSiete.Shared\Proyecto_LaGranSiete.Shared.csproj" />
   </ItemGroup>
 
 </Project>

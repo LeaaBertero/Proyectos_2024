@@ -30,7 +30,7 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
         //----------------------------------------------------
         [Required(ErrorMessage = "La fecha y hora obligatoria")]
         [MaxLength(20,ErrorMessage = "Máximo número de caracteres {1}")]
-        public DateOnly FechaHoraReserva { get; set; }
+        public DateTime FechaHoraReserva { get; set; }
 
 
         [Required(ErrorMessage = "La duración del alquiler es obligatoria")]
@@ -72,6 +72,9 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
         //Lista de los usuarios que realizan reservas
         //--Renueva la lista por cada usuario que realice una reserva
         public List<Usuarios> Usuarios { get; set; } = new List<Usuarios>();
+
+        //Lista de los usuarios que realizaron reservas
+        public List<Reservas> Reserva { get; set; } = new List<Reservas>();
 
 
     }
