@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Proyecto_LaGranSiete.BD.Data;
 using Proyecto_LaGranSiete.BD.Data.Entity;
@@ -12,10 +13,12 @@ namespace Proyecto_LaGranSiete.Server.Controllers
     public class ReservasControllers : ControllerBase
     {
         private readonly Context context;
+        private readonly IMapper mapper;
 
-        public ReservasControllers(Context Context)
+        public ReservasControllers(Context Context, IMapper mapper)
         {
             context = Context;
+            this.mapper = mapper;
         }
 
         //EndPoint (Get)
@@ -73,13 +76,17 @@ namespace Proyecto_LaGranSiete.Server.Controllers
             {
                 //----------------------------------------------------------------------------
                 //entidad que voy a adicionar a la tabla reservas en el context(Base de dato)
-                Reservas entidad = new Reservas();
-                entidad.FechaHoraReserva = entidadDTO.FechaHoraReserva;
-                entidad.DuracionAlquiler = entidadDTO.DuracionAlquiler;
-                entidad.Monto = entidadDTO.Monto;
-                entidad.MetodoPago = entidadDTO.MetodoPago;
-                entidad.EstadoReserva = entidadDTO.EstadoReserva;
-                //----------------------------------------------------------------------------
+                //Reservas entidad = new Reservas();
+                //entidad.FechaHoraReserva = entidadDTO.FechaHoraReserva;
+                //entidad.DuracionAlquiler = entidadDTO.DuracionAlquiler;
+                //entidad.Monto = entidadDTO.Monto;
+                //entidad.MetodoPago = entidadDTO.MetodoPago;
+                //entidad.EstadoReserva = entidadDTO.EstadoReserva;
+
+                //Reemplazo de Inyeccion (En una sola linea)
+                Reservas entidad = mapper.Map<Reservas>(entidadDTO);
+
+                //---------------------------------------------------------------------------- //Comentar acá despues de hacer la inyección en el context
                 context.Reservas.Add(entidad);
                 await context.SaveChangesAsync(); //espera y guarda los cambios del context
                 return entidad.Id; //Id de la entidad 
@@ -112,7 +119,7 @@ namespace Proyecto_LaGranSiete.Server.Controllers
             Lean.Monto = entidad.Monto;
             Lean.MetodoPago = entidad.MetodoPago;
             Lean.EstadoReserva = entidad.EstadoReserva;
-            //Lean.Parentesco = entidad.Parentesco;
+           
 
             try
             {
