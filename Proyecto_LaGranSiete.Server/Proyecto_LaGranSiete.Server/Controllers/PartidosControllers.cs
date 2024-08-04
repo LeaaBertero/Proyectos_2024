@@ -1,21 +1,22 @@
-﻿using Microsoft.AspNetCore.Mvc; //Model View Controller
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using Proyecto_LaGranSiete.BD.Data.Entity;
 using Proyecto_LaGranSiete.BD.Data;
-using Microsoft.EntityFrameworkCore;
-using AutoMapper;
 using Proyecto_LaGranSiete.Shared.DTO;
+using Microsoft.EntityFrameworkCore;
 
 namespace Proyecto_LaGranSiete.Server.Controllers
 {
     [ApiController]
-    [Route("Api/Pagos")] //Ruta de controllers
-    
-    public class PagosControllers : ControllerBase
+    [Route("Api/Partidos")]
+
+    public class PartidosControllers : ControllerBase
     {
+
         private readonly Context context;
         private readonly IMapper mapper;
 
-        public PagosControllers(Context Context, IMapper mapper)
+        public PartidosControllers(Context Context, IMapper mapper)
         {
             context = Context;
             this.mapper = mapper;
@@ -23,16 +24,16 @@ namespace Proyecto_LaGranSiete.Server.Controllers
 
         //EndPoint (Get)
         [HttpGet]
-        public async Task<ActionResult<List<Pagos>>> Get() //Task == "Tarea"
+        public async Task<ActionResult<List<Partidos>>> Get() //Task == "Tarea"
         {
-            return await context.Pagos.ToListAsync();
+            return await context.Partidos.ToListAsync();
         }
 
         //get 1
         [HttpGet("{id:int}")]
-        public async Task<ActionResult<Pagos>> Get(int id)
+        public async Task<ActionResult<Partidos>> Get(int id)
         {
-            Pagos? lean = await context.Pagos
+            Partidos? lean = await context.Partidos
                 .FirstOrDefaultAsync(x => x.Id == id);
 
             if (lean == null)
@@ -44,19 +45,19 @@ namespace Proyecto_LaGranSiete.Server.Controllers
         }
 
         //get 2
-        [HttpGet("GetByCod/{cod}")]
-        public async Task<ActionResult<Pagos>> GetByCod(string cod)
-        {
-            Pagos? lean = await context.Pagos
-                .FirstOrDefaultAsync(x => x.MetodoPago == cod);
+        //[HttpGet("GetByCod/{cod}")]
+        //public async Task<ActionResult<Partidos>> GetByCod(string cod)
+        //{
+        //    Partidos? lean = await context.Partidos
+        //        .FirstOrDefaultAsync(x => x.FechaHoraPartidos == cod);
 
-            if (lean == null)
-            {
-                return NotFound();
-            }
+        //    if (lean == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            return lean;
-        }
+        //    return lean;
+        //}
 
 
 
@@ -64,13 +65,13 @@ namespace Proyecto_LaGranSiete.Server.Controllers
         [HttpGet("Existe/{id:int}")]
         public async Task<ActionResult<bool>> Existe(int id)
         {
-            var existe = await context.Pagos.AnyAsync(x => x.Id == id);
+            var existe = await context.Partidos.AnyAsync(x => x.Id == id);
             return existe;
         }
 
-        //cambiar cuando haga el DTO de la tabla Pagos
+
         [HttpPost]
-        public async Task<ActionResult<int>> Post(CrearPagosDTO entidadDTO)
+        public async Task<ActionResult<int>> Post(CrearReservaDTO entidadDTO)
         {
             try
             {
@@ -84,10 +85,10 @@ namespace Proyecto_LaGranSiete.Server.Controllers
                 //entidad.EstadoReserva = entidadDTO.EstadoReserva;
 
                 //Reemplazo de Inyeccion (En una sola linea)
-                Pagos entidad = mapper.Map<Pagos>(entidadDTO);
+                Partidos entidad = mapper.Map<Partidos>(entidadDTO);
 
                 //---------------------------------------------------------------------------- //Comentar acá despues de hacer la inyección en el context
-                context.Pagos.Add(entidad);
+                context.Partidos.Add(entidad);
                 await context.SaveChangesAsync(); //espera y guarda los cambios del context
                 return entidad.Id; //Id de la entidad 
             }
@@ -99,31 +100,31 @@ namespace Proyecto_LaGranSiete.Server.Controllers
             }
         }
 
-        [HttpPut("{id:int}")] //Api / Pagos
-        public async Task<ActionResult> Put(int id, [FromBody] Pagos entidad)
+        [HttpPut("{id:int}")] //Api / Reservas
+        public async Task<ActionResult> Put(int id, [FromBody] Partidos entidad)
         {
             if (id == entidad.Id)
             {
                 return BadRequest("Datos incorrectos");
             }
 
-            var Lean = await context.Pagos.Where(e => e.Id == id).FirstOrDefaultAsync();
+            var Lean = await context.Partidos.Where(e => e.Id == id).FirstOrDefaultAsync();
 
             if (Lean == null)
             {
-                return NotFound("El pago buscado, no se encuentra");
+                return NotFound("No existe la reserva buscada");
             }
 
+            //--------- (Propiedades de la tabla) -----------
+            Lean.FechaHoraPartidos = entidad.FechaHoraPartidos;
+           
+            //--------- (Propiedades de la tabla) -----------
 
-            Lean.Monto = entidad.Monto;
-            Lean.MetodoPago = entidad.MetodoPago;
-            Lean.FechaPago = entidad.FechaPago;
-            
 
 
             try
             {
-                context.Pagos.Update(Lean);
+                context.Partidos.Update(Lean);
                 await context.SaveChangesAsync();
                 return Ok();
             }
@@ -139,14 +140,14 @@ namespace Proyecto_LaGranSiete.Server.Controllers
         [HttpDelete("{id:int}")]
         public async Task<ActionResult> Delete(int id)
         {                                            //(expresión en lambda)
-            var existe = await context.Pagos.AnyAsync(x => x.Id == id);
+            var existe = await context.Partidos.AnyAsync(x => x.Id == id);
 
             if (!existe)
             {
-                return NotFound($"El pago buscado {id}, no se encuentra");
+                return NotFound($"El usuario buscado {id}, no se encuentra");
             }
 
-            Pagos EntidadBorrar = new Pagos();
+            Partidos EntidadBorrar = new Partidos();
             EntidadBorrar.Id = id;
 
             context.Remove(EntidadBorrar);
@@ -155,7 +156,7 @@ namespace Proyecto_LaGranSiete.Server.Controllers
 
             return Ok();
         }
+
     }
 }
-
 

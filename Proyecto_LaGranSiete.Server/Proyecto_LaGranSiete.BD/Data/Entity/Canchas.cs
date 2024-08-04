@@ -28,11 +28,11 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
         [MaxLength(20, ErrorMessage = "Máximo número de caracteres {1}")]
         public string? NombreCancha { get; set; }
 
-        //Disponibilidad para el usuario (si / no)
+        //Disponibilidad para el usuario (reservada / libre)
 
         [Required(ErrorMessage = "El campo disponibilidad es obligatorio")]
         [MaxLength(30, ErrorMessage = "Máximo número de caracteres {1}")]
-        public bool? Disponibilidad { get; set; }
+        public string? Disponibilidad { get; set; }
     }
 }
 

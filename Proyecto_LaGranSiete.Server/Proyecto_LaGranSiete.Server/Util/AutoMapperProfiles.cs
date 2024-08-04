@@ -10,8 +10,12 @@ namespace Proyecto_LaGranSiete.Server.Util
         //constructor AutoMapper
         protected AutoMapperProfiles()
         {
+            CreateMap<CrearUsuariosDTO, Usuarios>();
             CreateMap<CrearReservaDTO, Reservas>();
             CreateMap<CrearPagosDTO, Pagos>();
+            CreateMap<CrearEquiposDTO, Equipos>();
+            CreateMap<CrearCanchasDTO, Canchas>();
+            CreateMap<CrearPartidosDTO, Partidos>();
         }
     }
 }

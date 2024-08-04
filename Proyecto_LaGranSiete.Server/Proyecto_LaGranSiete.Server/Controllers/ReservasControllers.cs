@@ -114,12 +114,15 @@ namespace Proyecto_LaGranSiete.Server.Controllers
                 return NotFound("No existe la reserva buscada");
             }
 
+            //--------- (Propiedades de la tabla) -----------
             Lean.FechaHoraReserva = entidad.FechaHoraReserva;
             Lean.DuracionAlquiler = entidad.DuracionAlquiler;
             Lean.Monto = entidad.Monto;
             Lean.MetodoPago = entidad.MetodoPago;
             Lean.EstadoReserva = entidad.EstadoReserva;
-           
+            //--------- (Propiedades de la tabla) -----------
+
+
 
             try
             {

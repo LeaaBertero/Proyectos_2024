@@ -98,12 +98,15 @@ namespace Proyecto_LaGranSiete.Server.Controllers
                 return NotFound("No existe el usuario buscado");
             }
 
+
+            //--------- (Propiedades de la tabla) -----------
             Lean.Nombre = entidad.Nombre;
             Lean.Apellido = entidad.Apellido;
             Lean.FechaNacimiento = entidad.FechaNacimiento;
             Lean.Telefono = entidad.Telefono;
             Lean.CorreoElectronico = entidad.CorreoElectronico;
             Lean.Parentesco = entidad.Parentesco;
+            //--------- (Propiedades de la tabla) -----------
 
             try
             {
