@@ -99,7 +99,7 @@ namespace Proyecto_LaGranSiete.Server.Controllers
             }
         }
 
-        [HttpPut("{id:int}")] //Api / Reservas
+        [HttpPut("{id:int}")] //Api / Pagos
         public async Task<ActionResult> Put(int id, [FromBody] Pagos entidad)
         {
             if (id == entidad.Id)
@@ -107,7 +107,7 @@ namespace Proyecto_LaGranSiete.Server.Controllers
                 return BadRequest("Datos incorrectos");
             }
 
-            var Lean = await context.Reservas.Where(e => e.Id == id).FirstOrDefaultAsync();
+            var Lean = await context.Pagos.Where(e => e.Id == id).FirstOrDefaultAsync();
 
             if (Lean == null)
             {
@@ -116,13 +116,13 @@ namespace Proyecto_LaGranSiete.Server.Controllers
 
             Lean.Monto = entidad.Monto;
             Lean.MetodoPago = entidad.MetodoPago;
-            Lean.FechaHoraReserva = entidad.fechaHoraReserva;
+            Lean.FechaPago = entidad.FechaPago;
             
 
 
             try
             {
-                context.Reservas.Update(Lean);
+                context.Pagos.Update(Lean);
                 await context.SaveChangesAsync();
                 return Ok();
             }
