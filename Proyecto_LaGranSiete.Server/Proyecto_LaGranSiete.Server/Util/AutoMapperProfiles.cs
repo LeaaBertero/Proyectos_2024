@@ -11,6 +11,7 @@ namespace Proyecto_LaGranSiete.Server.Util
         protected AutoMapperProfiles()
         {
             CreateMap<CrearReservaDTO, Reservas>();
+            CreateMap<CrearPagosDTO, Pagos>();
         }
     }
 }
