@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Http.HttpResults;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc; //Model View Controller
 using Microsoft.EntityFrameworkCore;
 using Proyecto_LaGranSiete.BD.Data;
 using Proyecto_LaGranSiete.BD.Data.Entity;
+using Proyecto_LaGranSiete.Shared.DTO;
 
 namespace Proyecto_LaGranSiete.Server.Controllers
 {
@@ -72,6 +74,8 @@ namespace Proyecto_LaGranSiete.Server.Controllers
         {
             try
             {
+              
+
                 context.Usuarios.Add(entidad);
                 await context.SaveChangesAsync(); //espera y guarda los cambios del context
                 return entidad.Id; //Id de la entidad 
