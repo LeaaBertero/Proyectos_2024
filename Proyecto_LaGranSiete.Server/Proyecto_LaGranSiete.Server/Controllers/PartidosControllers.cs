@@ -71,7 +71,7 @@ namespace Proyecto_LaGranSiete.Server.Controllers
 
 
         [HttpPost]
-        public async Task<ActionResult<int>> Post(CrearReservaDTO entidadDTO)
+        public async Task<ActionResult<int>> Post(CrearPartidosDTO entidadDTO)
         {
             try
             {
@@ -112,7 +112,7 @@ namespace Proyecto_LaGranSiete.Server.Controllers
 
             if (Lean == null)
             {
-                return NotFound("No existe la reserva buscada");
+                return NotFound("No existe el partido reservado");
             }
 
             //--------- (Propiedades de la tabla) -----------
@@ -128,10 +128,10 @@ namespace Proyecto_LaGranSiete.Server.Controllers
                 await context.SaveChangesAsync();
                 return Ok();
             }
-            catch (Exception e)
+            catch (Exception err)
             {
 
-                return BadRequest(e.Message);
+                return BadRequest(err.Message);
                 //throw;
             }
         }

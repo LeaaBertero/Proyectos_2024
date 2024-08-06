@@ -70,11 +70,17 @@ namespace Proyecto_LaGranSiete.Server.Controllers
         
 
         [HttpPost]
-        public async Task<ActionResult<int>> Post(Usuarios entidad)
+        public async Task<ActionResult<int>> Post(CrearUsuariosDTO entidadDTO)
         {
             try
             {
-              
+                Usuarios entidad = new Usuarios();
+                entidad.Nombre = entidadDTO.Nombre;
+                entidad.Apellido = entidadDTO.Apellido;
+                entidad.FechaNacimiento = entidadDTO.FechaNacimiento;
+                entidad.Telefono = entidadDTO.Telefono;
+                entidad.CorreoElectronico = entidadDTO.CorreoElectronico;
+                entidad.Parentesco = entidadDTO.Parentesco; 
 
                 context.Usuarios.Add(entidad);
                 await context.SaveChangesAsync(); //espera y guarda los cambios del context
@@ -102,16 +108,6 @@ namespace Proyecto_LaGranSiete.Server.Controllers
                 return NotFound("No existe el usuario buscado");
             }
 
-
-            //--------- (Propiedades de la tabla) -----------
-            Lean.Nombre = entidad.Nombre;
-            Lean.Apellido = entidad.Apellido;
-            Lean.FechaNacimiento = entidad.FechaNacimiento;
-            Lean.Telefono = entidad.Telefono;
-            Lean.CorreoElectronico = entidad.CorreoElectronico;
-            Lean.Parentesco = entidad.Parentesco;
-            //--------- (Propiedades de la tabla) -----------
-
             try
             {
                 context.Usuarios.Update(Lean);
@@ -120,11 +116,11 @@ namespace Proyecto_LaGranSiete.Server.Controllers
             }
             catch (Exception e)
             {
-
                 return BadRequest(e.Message);
                 //throw;
             }
         }
+
 
         //Delete
         [HttpDelete("{id:int}")]

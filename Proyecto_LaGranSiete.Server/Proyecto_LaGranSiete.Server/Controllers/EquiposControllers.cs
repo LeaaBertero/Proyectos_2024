@@ -70,7 +70,7 @@ namespace Proyecto_LaGranSiete.Server.Controllers
 
 
         [HttpPost]
-        public async Task<ActionResult<int>> Post(CrearReservaDTO entidadDTO)
+        public async Task<ActionResult<int>> Post(CrearEquiposDTO entidadDTO)
         {
             try
             {
@@ -111,7 +111,7 @@ namespace Proyecto_LaGranSiete.Server.Controllers
 
             if (Lean == null)
             {
-                return NotFound("No existe la reserva buscada");
+                return NotFound("No existe el equipo buscado");
             }
 
             Lean.NombreEquipos = entidad.NombreEquipos;
@@ -141,7 +141,7 @@ namespace Proyecto_LaGranSiete.Server.Controllers
 
             if (!existe)
             {
-                return NotFound($"El usuario buscado {id}, no se encuentra");
+                return NotFound($"El equipo buscado {id}, no se encuentra");
             }
 
             Equipos EntidadBorrar = new Equipos();

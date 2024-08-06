@@ -70,7 +70,7 @@ namespace Proyecto_LaGranSiete.Server.Controllers
 
 
         [HttpPost]
-        public async Task<ActionResult<int>> Post(CrearReservaDTO entidadDTO)
+        public async Task<ActionResult<int>> Post(CrearCanchasDTO entidadDTO)
         {
             try
             {
@@ -111,7 +111,7 @@ namespace Proyecto_LaGranSiete.Server.Controllers
 
             if (Lean == null)
             {
-                return NotFound("No existe la reserva buscada");
+                return NotFound("No existe la reserva de la cancha");
             }
 
             //-------- (Formato sugerido por entity) -----------
@@ -146,7 +146,7 @@ namespace Proyecto_LaGranSiete.Server.Controllers
 
             if (!existe)
             {
-                return NotFound($"El usuario buscado {id}, no se encuentra");
+                return NotFound($"La reserva de la cancha {id}, no se encuentra");
             }
 
             Canchas EntidadBorrar = new Canchas();

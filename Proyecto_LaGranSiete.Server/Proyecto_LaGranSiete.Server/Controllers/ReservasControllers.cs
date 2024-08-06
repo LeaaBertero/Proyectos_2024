@@ -48,7 +48,7 @@ namespace Proyecto_LaGranSiete.Server.Controllers
         public async Task<ActionResult<Reservas>> GetByCod(string cod)
         {
             Reservas? lean = await context.Reservas
-                .FirstOrDefaultAsync(x => x.MetodoPago == cod);
+                .FirstOrDefaultAsync(x => x.EstadoReserva == cod);
 
             if (lean == null)
             {
@@ -114,13 +114,6 @@ namespace Proyecto_LaGranSiete.Server.Controllers
                 return NotFound("No existe la reserva buscada");
             }
 
-            //--------- (Propiedades de la tabla) -----------
-            Lean.FechaHoraReserva = entidad.FechaHoraReserva;
-            Lean.DuracionAlquiler = entidad.DuracionAlquiler;
-            Lean.Monto = entidad.Monto;
-            Lean.MetodoPago = entidad.MetodoPago;
-            Lean.EstadoReserva = entidad.EstadoReserva;
-            //--------- (Propiedades de la tabla) -----------
 
 
 
