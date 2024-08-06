@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Proyecto_LaGranSiete.BD.Data;
+using Proyecto_LaGranSiete.BD.Data.Entity;
+using Proyecto_LaGranSiete.Server.Repositorio;
 using System.Text.Json.Serialization;// se genera despues de hacer control punto para generar el using para el context
 
 
@@ -25,8 +27,13 @@ builder.Services.AddSwaggerGen();
 //Builder (constructor) de la base de datos (Context)
 builder.Services.AddDbContext<Context>(op => op.UseSqlServer("name=conn"));
 
+
+
 //AutoMapper (construyendo el objeto)
 IServiceCollection serviceCollection = builder.Services.AddAutoMapper(typeof(Program));
+
+//servicios de interfaz
+builder.Services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>(); 
 
 
 //constructor de la aplicacion

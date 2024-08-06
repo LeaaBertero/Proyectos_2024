@@ -113,6 +113,13 @@ namespace Proyecto_LaGranSiete.Server.Controllers
                 return NotFound("No existe el usuario buscado");
             }
 
+            Lean.Nombre = entidad.Nombre;
+            Lean.Apellido = entidad.Apellido;
+            Lean.FechaNacimiento = entidad.FechaNacimiento;
+            Lean.Telefono = entidad.Telefono;
+            Lean.CorreoElectronico = entidad.CorreoElectronico;
+            Lean.Parentesco = entidad.Parentesco;
+
             try
             {
                 context.Usuarios.Update(Lean);
