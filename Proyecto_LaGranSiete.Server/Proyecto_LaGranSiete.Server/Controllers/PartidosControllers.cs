@@ -16,7 +16,9 @@ namespace Proyecto_LaGranSiete.Server.Controllers
         private readonly Context context;
         private readonly IMapper mapper;
 
-        public PartidosControllers(Context Context, IMapper mapper)
+        //constructor
+        public PartidosControllers(Context Context, 
+                                    IMapper mapper)
         {
             context = Context;
             this.mapper = mapper;
@@ -49,7 +51,7 @@ namespace Proyecto_LaGranSiete.Server.Controllers
         //public async Task<ActionResult<Partidos>> GetByCod(string cod)
         //{
         //    Partidos? lean = await context.Partidos
-        //        .FirstOrDefaultAsync(x => x.FechaHoraPartidos == cod);
+        //        .FirstOrDefaultAsync(x => x.FechaHoraPartidos = cod);
 
         //    if (lean == null)
         //    {

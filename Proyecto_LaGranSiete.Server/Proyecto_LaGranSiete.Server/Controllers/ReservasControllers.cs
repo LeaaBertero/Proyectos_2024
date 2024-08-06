@@ -15,7 +15,9 @@ namespace Proyecto_LaGranSiete.Server.Controllers
         private readonly Context context;
         private readonly IMapper mapper;
 
-        public ReservasControllers(Context Context, IMapper mapper)
+        //constructor
+        public ReservasControllers(Context Context, 
+                                    IMapper mapper)
         {
             context = Context;
             this.mapper = mapper;

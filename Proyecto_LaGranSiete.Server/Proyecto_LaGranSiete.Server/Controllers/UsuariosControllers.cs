@@ -14,11 +14,14 @@ namespace Proyecto_LaGranSiete.Server.Controllers
     {
         //crear y asignar campo context
         private readonly Context context;
+        private readonly IMapper mapper;
 
         //constructor
-        public UsuariosControllers(Context Context) //<--(inyección de dependencia)
+        public UsuariosControllers(Context Context,
+                                    IMapper mapper) //<--(inyección de dependencia)
         {
             context = Context;
+            this.mapper = mapper;
         }
 
         //EndPoint (Get)
@@ -74,13 +77,15 @@ namespace Proyecto_LaGranSiete.Server.Controllers
         {
             try
             {
-                Usuarios entidad = new Usuarios();
-                entidad.Nombre = entidadDTO.Nombre;
-                entidad.Apellido = entidadDTO.Apellido;
-                entidad.FechaNacimiento = entidadDTO.FechaNacimiento;
-                entidad.Telefono = entidadDTO.Telefono;
-                entidad.CorreoElectronico = entidadDTO.CorreoElectronico;
-                entidad.Parentesco = entidadDTO.Parentesco; 
+                //Usuarios entidad = new Usuarios();
+                //entidad.Nombre = entidadDTO.Nombre;
+                //entidad.Apellido = entidadDTO.Apellido;
+                //entidad.FechaNacimiento = entidadDTO.FechaNacimiento;
+                //entidad.Telefono = entidadDTO.Telefono;
+                //entidad.CorreoElectronico = entidadDTO.CorreoElectronico;
+                //entidad.Parentesco = entidadDTO.Parentesco; 
+
+                Usuarios entidad = mapper.Map<Usuarios>(entidadDTO);
 
                 context.Usuarios.Add(entidad);
                 await context.SaveChangesAsync(); //espera y guarda los cambios del context
