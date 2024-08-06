@@ -21,7 +21,22 @@ namespace Proyecto_LaGranSiete.Server.Repositorio
     //        return await context.Set<E>().ToListAsync();
     //    }
 
-       
+    //    //public async Task<int> Insert(E entidad)
+    //    //{
+    //    //    try
+    //    //    {
+    //    //        Usuarios entidad = Mapper.Map<Usuarios>(entidad);
+
+    //    //        await context.Set<E>().Add(entidad);
+    //    //        await context.SaveChangesAsync(); //espera y guarda los cambios del context
+    //    //        return entidad.Id; //Id de la entidad 
+    //    //    }
+    //    //    catch (Exception Err)
+    //    //    {
+    //    //        //return BadRequest(ErrorMessage.Message);
+    //    //        throw;
+    //    //    }
+    //    //}
     //}
 }
 
