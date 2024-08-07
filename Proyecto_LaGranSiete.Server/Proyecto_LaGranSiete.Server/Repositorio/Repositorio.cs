@@ -12,9 +12,11 @@ namespace Proyecto_LaGranSiete.Server.Repositorio
     public class Repositorio<E> : IRepositorio<E> 
         where E : class, IEntityBase
     {
+        //Método privado (de solo lectura)
         private readonly Context context;
 
         //Constructor de la clase Repositorio
+        //posteriormente hacer (Control + .) en context, y elegir la opcion Crer y asignar campo Context
         public Repositorio(Context Context)
         {
             context = Context;
