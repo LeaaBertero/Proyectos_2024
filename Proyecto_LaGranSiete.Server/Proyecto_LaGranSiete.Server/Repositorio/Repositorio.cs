@@ -7,6 +7,8 @@ using Proyecto_LaGranSiete.Shared.DTO;
 
 namespace Proyecto_LaGranSiete.Server.Repositorio
 {
+    //Repositorio_ es una clase especializada en hacer un CRUD sobre una tabla cualquiera de la base de datos
+    //<E> => (Entidad)
     public class Repositorio<E> : IRepositorio<E> 
         where E : class, IEntityBase
     {
