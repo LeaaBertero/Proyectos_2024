@@ -22,7 +22,7 @@ namespace Proyecto_LaGranSiete.Server.Repositorio
             context = Context;
         }
 
-        public async Task<List<E>> Insert() //Task == "Tarea"
+        public async Task<List<E>> Select() //Task == "Tarea"
         {
             return await context.Set<E>().ToListAsync();
         }

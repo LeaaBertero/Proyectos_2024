@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Proyecto_LaGranSiete.BD.Data;
 using Proyecto_LaGranSiete.BD.Data.Entity;
+using Proyecto_LaGranSiete.Server.Repositorio;
 using Proyecto_LaGranSiete.Shared.DTO;
 
 namespace Proyecto_LaGranSiete.Server.Controllers
@@ -12,30 +13,32 @@ namespace Proyecto_LaGranSiete.Server.Controllers
 
     public class ReservasControllers : ControllerBase
     {
-        private readonly Context context;
-        private readonly IMapper mapper;
+       
+        private readonly IReservaRepositorio repositorio;
+
+        public ReservasControllers(IReservaRepositorio repositorio)
+        {
+            //this.context = context;
+            this.repositorio = repositorio;
+        }
+
+        //private readonly IMapper mapper;
 
         //constructor
-        public ReservasControllers(Context Context, 
-                                    IMapper mapper)
-        {
-            context = Context;
-            this.mapper = mapper;
-        }
+       
 
         //EndPoint (Get)
         [HttpGet]
         public async Task<ActionResult<List<Reservas>>> Get() //Task == "Tarea"
         {
-            return await context.Reservas.ToListAsync();
+            return await repositorio.Select();
         }
 
         //get 1
         [HttpGet("{id:int}")]
         public async Task<ActionResult<Reservas>> Get(int id)
         {
-            Reservas? lean = await context.Reservas
-                .FirstOrDefaultAsync(x => x.Id == id);
+            Reservas? lean = await repositorio.SelectById(id);
 
             if (lean == null)
             {
@@ -46,19 +49,19 @@ namespace Proyecto_LaGranSiete.Server.Controllers
         }
 
         //get 2
-        [HttpGet("GetByCod/{cod}")]
-        public async Task<ActionResult<Reservas>> GetByCod(string cod)
-        {
-            Reservas? lean = await context.Reservas
-                .FirstOrDefaultAsync(x => x.EstadoReserva == cod);
+        //[HttpGet("GetByCod/{cod}")]
+        //public async Task<ActionResult<Reservas>> GetByCod(string cod)
+        //{
+        //    Reservas? lean = await context.Reservas
+        //        .FirstOrDefaultAsync(x => x.EstadoReserva == cod);
 
-            if (lean == null)
-            {
-                return NotFound();
-            }
+        //    if (lean == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            return lean;
-        }
+        //    return lean;
+        //}
 
 
 
@@ -66,32 +69,17 @@ namespace Proyecto_LaGranSiete.Server.Controllers
         [HttpGet("Existe/{id:int}")]
         public async Task<ActionResult<bool>> Existe(int id)
         {
-            var existe = await context.Reservas.AnyAsync(x => x.Id == id);
-            return existe;
+            return await repositorio.Existe(id);
         }
+            
 
 
         [HttpPost]
-        public async Task<ActionResult<int>> Post(CrearReservaDTO entidadDTO)
+        public async Task<ActionResult<int>> Post(Reservas entidad)
         {
             try
             {
-                //----------------------------------------------------------------------------
-                //entidad que voy a adicionar a la tabla reservas en el context(Base de dato)
-                //Reservas entidad = new Reservas();
-                //entidad.FechaHoraReserva = entidadDTO.FechaHoraReserva;
-                //entidad.DuracionAlquiler = entidadDTO.DuracionAlquiler;
-                //entidad.Monto = entidadDTO.Monto;
-                //entidad.MetodoPago = entidadDTO.MetodoPago;
-                //entidad.EstadoReserva = entidadDTO.EstadoReserva;
-
-                //Reemplazo de Inyeccion (En una sola linea)
-                Reservas entidad = mapper.Map<Reservas>(entidadDTO);
-
-                //---------------------------------------------------------------------------- //Comentar acá despues de hacer la inyección en el context
-                context.Reservas.Add(entidad);
-                await context.SaveChangesAsync(); //espera y guarda los cambios del context
-                return entidad.Id; //Id de la entidad 
+                return await repositorio.Insert(entidad);
             }
             catch (Exception ErrorMessage)
             {
@@ -100,6 +88,9 @@ namespace Proyecto_LaGranSiete.Server.Controllers
                 //throw;
             }
         }
+                
+
+         
 
         [HttpPut("{id:int}")] //Api / Reservas
         public async Task<ActionResult> Put(int id, [FromBody] Reservas entidad)
@@ -109,25 +100,27 @@ namespace Proyecto_LaGranSiete.Server.Controllers
                 return BadRequest("Datos incorrectos");
             }
 
-            var Lean = await context.Reservas.Where(e => e.Id == id).FirstOrDefaultAsync();
-
-            if (Lean == null)
-            {
-                return NotFound("No existe la reserva buscada");
-            }
-
-
-
 
             try
             {
-                context.Reservas.Update(Lean);
-                await context.SaveChangesAsync();
+                if (id != entidad.Id)
+                {
+                    return BadRequest("Datos incorrectos");
+                }
+
+                var Lean = await repositorio.Update(id, entidad);
+
+                if (!Lean )
+                {
+                    return BadRequest("No se pudo actualizar la reserva");
+                }
+
                 return Ok();
+
             }
             catch (Exception e)
             {
-
+                
                 return BadRequest(e.Message);
                 //throw;
             }
@@ -136,22 +129,16 @@ namespace Proyecto_LaGranSiete.Server.Controllers
         //Delete
         [HttpDelete("{id:int}")]
         public async Task<ActionResult> Delete(int id)
-        {                                            //(expresión en lambda)
-            var existe = await context.Reservas.AnyAsync(x => x.Id == id);
+        {                                            
+           var resp = await repositorio.Borrar(id);
 
-            if (!existe)
+            if (!resp)
             {
-                return NotFound($"El usuario buscado {id}, no se encuentra");
+                return BadRequest("No se pudo eliminar la reserva");
             }
+           
 
-            Reservas EntidadBorrar = new Reservas();
-            EntidadBorrar.Id = id;
-
-            context.Remove(EntidadBorrar);
-
-            await context.SaveChangesAsync();
-
-            return Ok();
+           return Ok();
         }
 
     }

@@ -33,7 +33,8 @@ builder.Services.AddDbContext<Context>(op => op.UseSqlServer("name=conn"));
 IServiceCollection serviceCollection = builder.Services.AddAutoMapper(typeof(Program));
 
 //servicios de interfaz
-builder.Services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>(); 
+builder.Services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
+builder.Services.AddScoped<IReservaRepositorio, ReservaRepositorio>();
 
 
 //constructor de la aplicacion

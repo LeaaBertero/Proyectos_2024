@@ -45,19 +45,19 @@ namespace Proyecto_LaGranSiete.Server.Controllers
         }
 
         //get 2
-        [HttpGet("GetByCod/{cod}")]
-        public async Task<ActionResult<Pagos>> GetByCod(string cod)
-        {
-            Pagos? lean = await context.Pagos
-                .FirstOrDefaultAsync(x => x.MetodoPago == cod);
+        //[HttpGet("GetByCod/{cod}")]
+        //public async Task<ActionResult<Pagos>> GetByCod(string cod)
+        //{
+        //    Pagos? lean = await context.Pagos
+        //        .FirstOrDefaultAsync(x => x.MetodoPago == cod);
 
-            if (lean == null)
-            {
-                return NotFound();
-            }
+        //    if (lean == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            return lean;
-        }
+        //    return lean;
+        //}
 
 
 

@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc; //Model View Controller
 using Microsoft.EntityFrameworkCore;
 using Proyecto_LaGranSiete.BD.Data;
 using Proyecto_LaGranSiete.BD.Data.Entity;
+using Proyecto_LaGranSiete.Server.Repositorio;
 using Proyecto_LaGranSiete.Shared.DTO;
 
 namespace Proyecto_LaGranSiete.Server.Controllers
@@ -12,15 +13,18 @@ namespace Proyecto_LaGranSiete.Server.Controllers
     [Route("Api/Usuarios")] //Ruta de controllers
     public class UsuariosControllers : ControllerBase
     {
+        private readonly IUsuarioRepositorio repositorio;
+
         //crear y asignar campo context
-        private readonly Context context;
+
         private readonly IMapper mapper;
 
         //constructor
-        public UsuariosControllers(Context Context,
-                                    IMapper mapper) //<--(inyección de dependencia)
+        public UsuariosControllers(IUsuarioRepositorio repositorio,
+            IMapper mapper) //<--(inyección de dependencia)
+
         {
-            context = Context;
+            this.repositorio = repositorio;
             this.mapper = mapper;
         }
 
@@ -28,15 +32,14 @@ namespace Proyecto_LaGranSiete.Server.Controllers
         [HttpGet]
         public async Task<ActionResult<List<Usuarios>>> Get() //Task == "Tarea"
         {
-            return await context.Usuarios.ToListAsync();
+            return await repositorio.Select();
         }
 
         //get 1
         [HttpGet("{id:int}")]
         public async Task<ActionResult<Usuarios>> Get(int id)
         {
-            Usuarios? lean = await context.Usuarios
-                .FirstOrDefaultAsync(x => x.Id == id);
+            Usuarios? lean = await repositorio.SelectById(id);
 
             if (lean == null)
             {
@@ -47,19 +50,19 @@ namespace Proyecto_LaGranSiete.Server.Controllers
         }
 
         //get 2
-        [HttpGet("GetByCod/{cod}")]
-        public async Task<ActionResult<Usuarios>> GetByCod(string cod)
-        {
-            Usuarios? lean = await context.Usuarios
-                .FirstOrDefaultAsync(x => x.Nombre == cod);
+        //[HttpGet("GetByCod/{cod}")]
+        //public async Task<ActionResult<Usuarios>> GetByCod(string cod)
+        //{
+        //    Usuarios? lean = await context.Usuarios
+        //        .FirstOrDefaultAsync(x => x.Nombre == cod);
 
-            if (lean == null)
-            {
-                return NotFound();
-            }
+        //    if (lean == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            return lean;
-        }
+        //    return lean;
+        //}
 
 
 
@@ -67,7 +70,7 @@ namespace Proyecto_LaGranSiete.Server.Controllers
         [HttpGet("Existe/{id:int}")]
         public async Task<ActionResult<bool>> Existe(int id)
         {
-            var existe = await context.Usuarios.AnyAsync(x => x.Id == id);
+            var existe = await repositorio.Existe(id);
             return existe;
         }
         
@@ -77,19 +80,8 @@ namespace Proyecto_LaGranSiete.Server.Controllers
         {
             try
             {
-                //Usuarios entidad = new Usuarios();
-                //entidad.Nombre = entidadDTO.Nombre;
-                //entidad.Apellido = entidadDTO.Apellido;
-                //entidad.FechaNacimiento = entidadDTO.FechaNacimiento;
-                //entidad.Telefono = entidadDTO.Telefono;
-                //entidad.CorreoElectronico = entidadDTO.CorreoElectronico;
-                //entidad.Parentesco = entidadDTO.Parentesco; 
-
                 Usuarios entidad = mapper.Map<Usuarios>(entidadDTO);
-
-                context.Usuarios.Add(entidad);
-                await context.SaveChangesAsync(); //espera y guarda los cambios del context
-                return entidad.Id; //Id de la entidad 
+                return await repositorio.Insert(entidad); //Id de la entidad 
             }
             catch (Exception ErrorMessage)
             {
@@ -97,6 +89,7 @@ namespace Proyecto_LaGranSiete.Server.Controllers
                 //throw;
             }
         }
+            
 
         [HttpPut("{id:int}")] //Api / Usuarios
         public async Task<ActionResult> Put(int id, [FromBody] Usuarios entidad) 
@@ -106,7 +99,7 @@ namespace Proyecto_LaGranSiete.Server.Controllers
                 return BadRequest("Datos incorrectos");
             }
 
-            var Lean = await context.Usuarios.Where(e => e.Id == id).FirstOrDefaultAsync();
+            var Lean = await repositorio.SelectById(id);
 
             if (Lean == null)
             {
@@ -122,8 +115,8 @@ namespace Proyecto_LaGranSiete.Server.Controllers
 
             try
             {
-                context.Usuarios.Update(Lean);
-                await context.SaveChangesAsync();
+                await repositorio.Update(id, Lean);
+                
                 return Ok();
             }
             catch (Exception e)
@@ -138,23 +131,28 @@ namespace Proyecto_LaGranSiete.Server.Controllers
         [HttpDelete("{id:int}")]
         public async Task<ActionResult> Delete(int id) 
         {                                            //(expresión en lambda)
-            var existe = await context.Usuarios.AnyAsync(x =>x.Id == id);
+            var existe = await repositorio.Existe(id);
 
             if (!existe) 
             {
                 return NotFound($"El usuario buscado {id}, no se encuentra");
             }
+            if (await repositorio.Borrar(id))
+            {
+                return Ok();
 
-            Usuarios EntidadBorrar = new Usuarios();
-            EntidadBorrar.Id = id;
-
-            context.Remove(EntidadBorrar);
-
-            await context.SaveChangesAsync();
-
-            return Ok();
+            }
+            else 
+            {
+                return BadRequest();
+            }
         }
-        
-        
     }
 }
+
+
+
+
+
+        
+        

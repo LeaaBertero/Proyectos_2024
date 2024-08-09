@@ -46,19 +46,19 @@ namespace Proyecto_LaGranSiete.Server.Controllers
         }
 
         //get 2
-        [HttpGet("GetByCod/{cod}")]
-        public async Task<ActionResult<Equipos>> GetByCod(string cod)
-        {
-            Equipos? lean = await context.Equipos
-                .FirstOrDefaultAsync(x => x.NombreEquipos == cod);
+        //[HttpGet("GetByCod/{cod}")]
+        //public async Task<ActionResult<Equipos>> GetByCod(string cod)
+        //{
+        //    Equipos? lean = await context.Equipos
+        //        .FirstOrDefaultAsync(x => x.NombreEquipos == cod);
 
-            if (lean == null)
-            {
-                return NotFound();
-            }
+        //    if (lean == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            return lean;
-        }
+        //    return lean;
+        //}
 
 
 
