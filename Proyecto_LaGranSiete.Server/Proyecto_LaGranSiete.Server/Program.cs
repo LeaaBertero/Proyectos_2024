@@ -14,6 +14,9 @@ builder.Services.AddControllersWithViews().AddJsonOptions(x =>
     x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 //-----------------------------------------------------------------------------
 
+//Agregar Paginas de Razor
+builder.Services.AddControllersWithViews();
+builder.Services.AddRazorPages();
 
 // Add services to the container.
 
@@ -50,11 +53,17 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseBlazorFrameworkFiles();
+app.UseStaticFiles();
+app.UseRouting();
+app.MapRazorPages();    
+
 //use Https para redireccionar
 app.UseHttpsRedirection();
 //Use la autorizacion
 app.UseAuthorization();
 //Mapeé los controles
 app.MapControllers();
+app.MapFallbackToFile("index.html");
 //Arranque
 app.Run();
