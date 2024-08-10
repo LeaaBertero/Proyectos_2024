@@ -53,9 +53,13 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+//Se utiliza para habilitar el uso de archivos del framework de blazor en una aplicación web
 app.UseBlazorFrameworkFiles();
+//Habilita el servicio de archivos estaticos como html , css y JavaScript 
 app.UseStaticFiles();
+//habilita el enrutamiento de solicitudes en un aplicación web
 app.UseRouting();
+//Se utiliza para habilitar el uso de Razor Page en una aplicación web
 app.MapRazorPages();    
 
 //use Https para redireccionar
