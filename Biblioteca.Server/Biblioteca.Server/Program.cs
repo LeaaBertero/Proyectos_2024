@@ -1,6 +1,7 @@
 using Biblioteca.BD.Data;
 using Microsoft.EntityFrameworkCore;
-
+//------------------------------------------------------------------------------------
+//configuracion de los servicios en el constructor de la aplicación
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -15,6 +16,13 @@ builder.Services.AddDbContext<Context>(op => op.UseSqlServer("name=conn"));
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+
+
+
+
+
+//-----------------------------------------------------------------------------------------
+//constructor de la aplicacion  
 var app = builder.Build();
 
 
