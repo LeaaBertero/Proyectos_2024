@@ -29,7 +29,7 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
 
         [Required(ErrorMessage = "El monto de pago es obligatorio")]
         [MaxLength(10, ErrorMessage = "Máximo número de caracteres {1}")]
-        public decimal? Monto_Pago { get; set; }
+        public double? Monto_Pago { get; set; }
 
 
         [Required(ErrorMessage = "El método de pago es obligatorio")]
