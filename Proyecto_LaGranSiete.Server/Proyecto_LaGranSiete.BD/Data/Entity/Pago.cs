@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Proyecto_LaGranSiete.BD.Data.Entity
 {
     //Indices de la tabla
-    [Index(nameof(IdPago), Name = "IdPago", IsUnique = true)]
+    [Index(nameof(PagoId), Name = "PagoId", IsUnique = true)]
     [Index(nameof(Monto_Pago), nameof(FechaPago),
     Name = "Monto_Pago_FechaPago", IsUnique = false)]
 
@@ -18,7 +18,7 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
         public DateTime fechaHoraReserva;
 
         //Clave primaria de la tabla
-        public int IdPago { get; set; }
+        public int PagoId { get; set; }
 
         //clave foranea de la tabla Reserva
        
@@ -51,7 +51,7 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
         public int CanchasId { get; set; }
         public Cancha? Canchas { get; set; }
 
-        public int IdReserva { get; set; }
+        public int ReservaId { get; set; }
         public Reserva? Reservas { get; set; }
 
         public int EquiposId { get; set; }

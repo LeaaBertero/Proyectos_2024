@@ -21,7 +21,7 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
         public int ReservaId { get; set; }
 
         //Relaciones entre tablas
-        public Reserva? Reserva { get; set; }
+        public Reserva? Reservas { get; set; }
 
 
         public List<Pago> Pagos { get; set; } = new List<Pago>();

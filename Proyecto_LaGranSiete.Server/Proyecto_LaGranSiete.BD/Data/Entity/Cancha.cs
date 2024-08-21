@@ -10,14 +10,14 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
 {
 
     //Indices de la tabla
-    [Index(nameof(IdCanchas), Name = "IdCanchas", IsUnique = true)]
+    [Index(nameof(CanchasId), Name = "CanchasId", IsUnique = true)]
     [Index(nameof(NombreCancha), nameof(Disponibilidad),
     Name = "NombreCancha_Disponibilidad", IsUnique = false)]
 
     public class Cancha : EntityBase
     {
         //clave primaria de la tabla 
-        public int IdCanchas { get; set; }
+        public int CanchasId { get; set; }
 
         //Identificacion de la cancha para el usuario que realiza la reserva
 

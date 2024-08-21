@@ -53,15 +53,15 @@ namespace Proyecto_LaGranSiete.Server.Controllers
         //[HttpGet("GetByCod/{cod}")]
         //public async Task<ActionResult<Usuarios>> GetByCod(string cod)
         //{
-        //    Usuarios? lean = await context.Usuarios
+        //    Usuarios? variableAuxiliar = await context.Usuarios
         //        .FirstOrDefaultAsync(x => x.Nombre == cod);
 
-        //    if (lean == null)
+        //    if (variableAuxiliar == null)
         //    {
         //        return NotFound();
         //    }
 
-        //    return lean;
+        //    return variableAuxiliar;
         //}
 
 
@@ -99,23 +99,23 @@ namespace Proyecto_LaGranSiete.Server.Controllers
                 return BadRequest("Datos incorrectos");
             }
 
-            var Lean = await repositorio.SelectById(id);
+            var VarAuxiliar = await repositorio.SelectById(id);
 
-            if (Lean == null)
+            if (VarAuxiliar == null)
             {
                 return NotFound("No existe el usuario buscado");
             }
 
-            Lean.Nombre = entidad.Nombre;
-            Lean.Apellido = entidad.Apellido;
-            Lean.FechaNacimiento = entidad.FechaNacimiento;
-            Lean.Telefono = entidad.Telefono;
-            Lean.CorreoElectronico = entidad.CorreoElectronico;
-            Lean.Parentesco = entidad.Parentesco;
+            VarAuxiliar.Nombre = entidad.Nombre;
+            VarAuxiliar.Apellido = entidad.Apellido;
+            VarAuxiliar.FechaNacimiento = entidad.FechaNacimiento;
+            VarAuxiliar.Telefono = entidad.Telefono;
+            VarAuxiliar.CorreoElectronico = entidad.CorreoElectronico;
+            VarAuxiliar.Parentesco = entidad.Parentesco;
 
             try
             {
-                await repositorio.Update(id, Lean);
+                await repositorio.Update(id, VarAuxiliar);
                 
                 return Ok();
             }

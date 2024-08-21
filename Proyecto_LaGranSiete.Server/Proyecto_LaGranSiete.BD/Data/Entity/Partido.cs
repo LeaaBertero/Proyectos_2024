@@ -9,14 +9,14 @@ using System.Threading.Tasks;
 namespace Proyecto_LaGranSiete.BD.Data.Entity
 {
     //Indices de la tabla
-    [Index(nameof(IdPartidos), Name = "IdPartidos", IsUnique = true)]
+    [Index(nameof(PartidosId), Name = "PartidosId", IsUnique = true)]
     [Index(nameof(FechaHoraPartidos),
     Name = "FechaHoraPartidos", IsUnique = false)]
 
     public class Partido : EntityBase
     {
         //Clave primaria de la tabla Partidos
-        public int IdPartidos { get; set; }
+        public int PartidosId { get; set; }
 
         //clave foránea de la tabla Reserva
 
@@ -52,6 +52,8 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
 
         public int UsuarioId { get; set; }
         public Usuario? Usuario { get; set; }
+
+        public List<Reserva> Reservas { get; set; } = new List<Reserva>();
         //--------------------------------------------------------
 
     }

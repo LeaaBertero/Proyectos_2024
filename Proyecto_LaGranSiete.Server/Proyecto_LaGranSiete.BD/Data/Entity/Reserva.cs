@@ -55,8 +55,7 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
         //--------------------------------------------------------
         //Relaciones entre tablas
         //Clave primaria de la tabla (Partidos)
-        public int PartidosId { get; set; }
-        public Partido? Partidos { get; set; }
+       
         
 
         //(Clave primaria de la tabla (Pagos) que se relaciona con la tabla (Reservas))
@@ -66,10 +65,10 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
         //---------------------------------------------------------
         //Relacion entre tablas
         public int EquiposId { get; set; }
-        public Equipo? Equipo { get; set; }
+        public Equipo? Equipos { get; set; }
 
         public int PartidoId { get; set; }
-        public Partido? Partido { get; set; }
+        public Partido? Partidos { get; set; }
 
         public int CanchasId { get; set; }
         public Cancha? Canchas { get; set; }
@@ -95,9 +94,9 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
         //Lista de los usuarios que realizaron reservas
         public List<Reserva> Reservas { get; set; } = new List<Reserva>();
 
-        public List<Equipo> Equipos { get; set; } = new List<Equipo>();
+        
 
-        //public List<Pago> Pagos { get; set; } = new List<Pago>();
+       
 
 
         //Tabla lista

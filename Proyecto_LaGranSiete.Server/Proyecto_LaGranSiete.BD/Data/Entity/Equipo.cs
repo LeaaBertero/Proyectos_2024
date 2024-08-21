@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 namespace Proyecto_LaGranSiete.BD.Data.Entity
 {
     //Indices de la tabla
-    [Index(nameof(IdEquipos), Name = "IdEquipos", IsUnique = true)]
+    [Index(nameof(EquipoId), Name = "IdEquipos", IsUnique = true)]
     [Index(nameof(NombreEquipos), nameof(Integrantes),
     Name = "NombreEquipos_Integrantes", IsUnique = false)]
 
@@ -17,6 +18,8 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
     {
         //Clave primaria de la tabla
         public int IdEquipos { get; set; }
+        
+                                                            
 
         //-------------------------------------------------------
         //Propiedades de la tabla
@@ -30,18 +33,17 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
         //-------------------------------------------------------
 
         [Required(ErrorMessage = "El campo integrantes es obligatorio (especificar en número), máximo por equipo 7 personas")]
-        [MaxLength(2, ErrorMessage = "Máximo número de caracteres {1}")]
+        [MaxLength(7, ErrorMessage = "Máximo de jugadores por equipo")]
         public int Integrantes { get; set; }
         //-------------------------------------------------------
 
 
         //--------------------------------------------------------
-        //Relaciones entre tablas
-        //Clave primaria de la tabla (Reserva)
+       
         
         //Partidos
-        public int PartidosId { get; set; }
-        public Partido? Partidos { get; set; }
+        public int EquipoId { get; set; }
+        public Equipo? Equipos { get; set; }
 
         //Canchas
         public int CanchasId { get; set; }
@@ -51,9 +53,7 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
         public int PagoId { get; set; }
         public Pago? Pagos { get; set; }
 
-        //Reservas
-        public int ReservasId { get; set; }
-        public Reserva? Reservas { get; set; }
+        
         //--------------------------------------------------------
     }
 }

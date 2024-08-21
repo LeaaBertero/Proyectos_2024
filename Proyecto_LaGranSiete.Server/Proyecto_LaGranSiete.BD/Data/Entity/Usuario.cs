@@ -54,11 +54,11 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
         public Reserva? Reservas { get; set; }
 
         //Equipo Uno
-        public string? EquipoUnoId { get; set; }
+        public int? EquipoUnoId { get; set; }
         public EquipoUno? EquipoUno { get; set; }
 
         //Equipo Dos
-        public string? EquipoDosId { get; set; }
+        public int? EquipoDosId { get; set; }
         public EquipoDos? EquipoDos { get; set; }
         //--------------------------------------------------------
 
