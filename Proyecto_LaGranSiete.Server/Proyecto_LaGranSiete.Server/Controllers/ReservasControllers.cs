@@ -38,14 +38,14 @@ namespace Proyecto_LaGranSiete.Server.Controllers
         [HttpGet("{id:int}")]
         public async Task<ActionResult<Reserva>> Get(int id)
         {
-            Reserva? lean = await repositorio.SelectById(id);
+            Reserva? VariableAuxiliar = await repositorio.SelectById(id);
 
-            if (lean == null)
+            if (VariableAuxiliar == null)
             {
                 return NotFound();
             }
 
-            return lean;
+            return VariableAuxiliar;
         }
 
         //get 2

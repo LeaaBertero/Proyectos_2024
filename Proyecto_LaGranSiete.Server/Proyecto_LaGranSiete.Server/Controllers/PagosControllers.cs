@@ -33,15 +33,15 @@ namespace Proyecto_LaGranSiete.Server.Controllers
         [HttpGet("{id:int}")]
         public async Task<ActionResult<Pago>> Get(int id)
         {
-            Pago? lean = await context.Pagos
+            Pago? VariableAuxiliar = await context.Pagos
                 .FirstOrDefaultAsync(x => x.Id == id);
 
-            if (lean == null)
+            if (VariableAuxiliar == null)
             {
                 return NotFound();
             }
 
-            return lean;
+            return VariableAuxiliar;
         }
 
         //get 2

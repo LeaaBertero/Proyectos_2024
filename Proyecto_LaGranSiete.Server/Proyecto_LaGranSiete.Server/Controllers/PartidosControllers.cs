@@ -35,15 +35,15 @@ namespace Proyecto_LaGranSiete.Server.Controllers
         [HttpGet("{id:int}")]
         public async Task<ActionResult<Partido>> Get(int id)
         {
-            Partido? lean = await context.Partidos
+            Partido? VariableAuxiliar = await context.Partidos
                 .FirstOrDefaultAsync(x => x.Id == id);
 
-            if (lean == null)
+            if (VariableAuxiliar == null)
             {
                 return NotFound();
             }
 
-            return lean;
+            return VariableAuxiliar;
         }
 
         //get 2

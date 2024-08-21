@@ -34,15 +34,15 @@ namespace Proyecto_LaGranSiete.Server.Controllers
         [HttpGet("{id:int}")]
         public async Task<ActionResult<Cancha>> Get(int id)
         {
-            Cancha? lean = await context.Canchas
+            Cancha? VariableAuxiliar = await context.Canchas
                 .FirstOrDefaultAsync(x => x.Id == id);
 
-            if (lean == null)
+            if (VariableAuxiliar == null)
             {
                 return NotFound();
             }
 
-            return lean;
+            return VariableAuxiliar;
         }
 
         //get 2

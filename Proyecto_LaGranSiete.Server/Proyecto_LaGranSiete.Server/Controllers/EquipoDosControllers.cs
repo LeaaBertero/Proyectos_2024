@@ -38,14 +38,14 @@ namespace Proyecto_LaGranSiete.Server.Controllers
         {
             
 
-            Usuario? lean = await repositorio.SelectById(id);
+            Usuario? VariableAuxiliar = await repositorio.SelectById(id);
 
-            if (lean == null)
+            if (VariableAuxiliar == null)
             {
                 return NotFound();
             }
 
-            return lean;
+            return VariableAuxiliar;
         }
 
         //get 2
