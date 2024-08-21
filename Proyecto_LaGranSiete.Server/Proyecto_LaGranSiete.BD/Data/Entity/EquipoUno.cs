@@ -23,7 +23,7 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
 
         //Relacion de tablas con otrs tablas
         public Reserva? Reserva { get; set; }
-        public int Id { get; set; }
+        
 
         public List<Pago> Pagos { get; set; } = new List<Pago>();
     }
