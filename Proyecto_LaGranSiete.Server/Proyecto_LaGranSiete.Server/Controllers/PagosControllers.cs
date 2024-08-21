@@ -24,16 +24,16 @@ namespace Proyecto_LaGranSiete.Server.Controllers
 
         //EndPoint (Get)
         [HttpGet]
-        public async Task<ActionResult<List<Pagos>>> Get() //Task == "Tarea"
+        public async Task<ActionResult<List<Pago>>> Get() //Task == "Tarea"
         {
             return await context.Pagos.ToListAsync();
         }
 
         //get 1
         [HttpGet("{id:int}")]
-        public async Task<ActionResult<Pagos>> Get(int id)
+        public async Task<ActionResult<Pago>> Get(int id)
         {
-            Pagos? lean = await context.Pagos
+            Pago? lean = await context.Pagos
                 .FirstOrDefaultAsync(x => x.Id == id);
 
             if (lean == null)
@@ -85,7 +85,7 @@ namespace Proyecto_LaGranSiete.Server.Controllers
                 //entidad.EstadoReserva = entidadDTO.EstadoReserva;
 
                 //Reemplazo de Inyeccion (En una sola linea)
-                Pagos entidad = mapper.Map<Pagos>(entidadDTO);
+                Pago entidad = mapper.Map<Pago>(entidadDTO);
 
                 //---------------------------------------------------------------------------- //Comentar acá despues de hacer la inyección en el context
                 context.Pagos.Add(entidad);
@@ -101,7 +101,7 @@ namespace Proyecto_LaGranSiete.Server.Controllers
         }
 
         [HttpPut("{id:int}")] //Api / Pagos
-        public async Task<ActionResult> Put(int id, [FromBody] Pagos entidad)
+        public async Task<ActionResult> Put(int id, [FromBody] Pago entidad)
         {
             if (id == entidad.Id)
             {
@@ -117,8 +117,8 @@ namespace Proyecto_LaGranSiete.Server.Controllers
 
 
             Lean.Monto = entidad.Monto;
-            Lean.MetodoPago = entidad.MetodoPago;
             Lean.FechaPago = entidad.FechaPago;
+            
             
 
 
@@ -147,7 +147,7 @@ namespace Proyecto_LaGranSiete.Server.Controllers
                 return NotFound($"El pago buscado {id}, no se encuentra");
             }
 
-            Pagos EntidadBorrar = new Pagos();
+            Pago EntidadBorrar = new Pago();
             EntidadBorrar.Id = id;
 
             context.Remove(EntidadBorrar);

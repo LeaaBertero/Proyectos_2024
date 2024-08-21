@@ -13,13 +13,12 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
     [Index(nameof(FechaHoraPartidos),
     Name = "FechaHoraPartidos", IsUnique = false)]
 
-    public class Partidos : EntityBase
+    public class Partido : EntityBase
     {
         //Clave primaria de la tabla Partidos
         public int IdPartidos { get; set; }
 
         //clave foránea de la tabla Reserva
-        public int IdReserva { get; set; }
 
         //-----------------------------------------------------
         //Propiedades de la tabla
@@ -27,20 +26,32 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
 
 
         [Required(ErrorMessage = "La fecha y hora del partido es obligatorio")]
-        [MaxLength(30, ErrorMessage = "Máximo número de caracteres {1}")]
+        //[MaxLength(30, ErrorMessage = "Máximo número de caracteres {1}")]
         public DateTime? FechaHoraPartidos { get; set; }
         //-----------------------------------------------------
 
         //Clave foranea de la tabla
-        public int IdEquipoUno { get; set; }
+        public int EquipoUnoId { get; set; }
 
-        public int IdEquipoDos { get; set; }
+        public int EquipoDosId { get; set; }
 
         //--------------------------------------------------------
         //Relaciones entre tablas
         //Clave primaria de la tabla (Reserva)
         public int CanchasId { get; set; }
-        public Canchas? Canchas { get; set; }
+        public Cancha? Canchas { get; set; }
+
+        public int PagosId { get; set; }
+        public Pago? Pagos { get; set; }
+
+        public int EquiposId { get; set; }
+        public Equipo? Equipos { get; set; }
+
+        public int ReservaId { get; set; }
+        public Reserva? Reserva { get; set; }
+
+        public int UsuarioId { get; set; }
+        public Usuario? Usuario { get; set; }
         //--------------------------------------------------------
 
     }

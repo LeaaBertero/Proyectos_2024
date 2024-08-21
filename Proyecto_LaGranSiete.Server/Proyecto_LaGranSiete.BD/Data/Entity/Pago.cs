@@ -13,7 +13,7 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
     [Index(nameof(Monto_Pago), nameof(FechaPago),
     Name = "Monto_Pago_FechaPago", IsUnique = false)]
 
-    public class Pagos : EntityBase
+    public class Pago : EntityBase
     {
         public DateTime fechaHoraReserva;
 
@@ -21,7 +21,7 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
         public int IdPago { get; set; }
 
         //clave foranea de la tabla Reserva
-        public int IdReserva { get; set; }
+       
 
         //------------------------------------------------------
         //Propiedades de la tabla
@@ -33,14 +33,15 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
 
 
         [Required(ErrorMessage = "El método de pago es obligatorio")]
-        [MaxLength(15, ErrorMessage = "Máximo número de caracteres {1}")]
-        public string? MetodoPago { get; set; }
+        //[MaxLength(15, ErrorMessage = "Máximo número de caracteres {1}")]
+        public string? MetodoPagado { get; set; } 
 
 
 
         [Required(ErrorMessage = "La fecha del pago es obligatoria")]
-        [MaxLength(10, ErrorMessage = "Máximo número de caracteres {1}")]
+        //[MaxLength(10, ErrorMessage = "Máximo número de caracteres {1}")]
         public DateOnly FechaPago { get; set; }
+        public decimal Monto { get; set; }
         //-------------------------------------------------------
 
 
@@ -48,8 +49,22 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
         //Relaciones entre tablas
         //Clave primaria de la tabla (Reserva)
         public int CanchasId { get; set; }
-        public Canchas? Canchas { get; set; }
-        public float Monto { get; set; }
+        public Cancha? Canchas { get; set; }
+
+        public int IdReserva { get; set; }
+        public Reserva? Reservas { get; set; }
+
+        public int EquiposId { get; set; }
+        public Equipo? Equipos { get; set; }
+
+        public int PartidosId { get; set; }
+        public Partido? Partidos { get; set; }
+
+        public int UsuarioId { get; set; }
+        public Usuario? Usuario { get; set; }
+
+
+
         //--------------------------------------------------------
     }
 }

@@ -3,7 +3,7 @@ using Proyecto_LaGranSiete.BD.Data.Entity;
 
 namespace Proyecto_LaGranSiete.Server.Repositorio
 {
-    public class ReservaRepositorio : Repositorio<Reservas>, IReservaRepositorio
+    public class ReservaRepositorio : Repositorio<Reserva>, IReservaRepositorio
     {
         private readonly Context context;
 

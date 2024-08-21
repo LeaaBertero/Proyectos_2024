@@ -16,17 +16,19 @@ namespace Proyecto_LaGranSiete.BD.Data
         //constructor del Context (Base de datos)
         public Context(DbContextOptions options) : base(options)
         {
-            //para realizar este constructor hacer control punto y elegir "Generar contructor con options"
+            //para realizar este constructor hacer control punto + (.) y elegir "Generar contructor con options"
         }
         
         //-------------------------------------------
         //Tablas o entidades de la base de datos
-        public DbSet<Usuarios> Usuarios { get; set; }
-        public DbSet<Reservas> Reservas { get; set; }
-        public DbSet<Partidos> Partidos { get; set; }
-        public DbSet<Pagos> Pagos { get; set; }
-        public DbSet<Equipos> Equipos { get; set; }
-        public DbSet<Canchas> Canchas { get; set; }
+        public DbSet<Cancha> Canchas { get; set; }
+        public DbSet<Equipo> Equipos { get; set; }
+        public DbSet<EquipoDos> EquipoDos { get; set; }
+        public DbSet<EquipoUno> EquipoUno { get; set; }
+        public DbSet<Pago> Pagos { get; set; }
+        public DbSet<Partido> Partidos { get; set; }
+        public DbSet<Reserva> Reservas { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }
 
 
 

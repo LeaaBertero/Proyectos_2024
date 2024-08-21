@@ -1,8 +1,5 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.AspNetCore.Mvc; //Model View Controller
-using Microsoft.EntityFrameworkCore;
-using Proyecto_LaGranSiete.BD.Data;
+using Microsoft.AspNetCore.Mvc;
 using Proyecto_LaGranSiete.BD.Data.Entity;
 using Proyecto_LaGranSiete.Server.Repositorio;
 using Proyecto_LaGranSiete.Shared.DTO;
@@ -10,8 +7,8 @@ using Proyecto_LaGranSiete.Shared.DTO;
 namespace Proyecto_LaGranSiete.Server.Controllers
 {
     [ApiController]
-    [Route("Api/Usuarios")] //Ruta de controllers
-    public class UsuariosControllers : ControllerBase
+    [Route("Api/EquipoUno")] //Ruta de controllers
+    public class EquipoUnoControllers : ControllerBase
     {
         private readonly IUsuarioRepositorio repositorio;
 
@@ -20,7 +17,7 @@ namespace Proyecto_LaGranSiete.Server.Controllers
         private readonly IMapper mapper;
 
         //constructor
-        public UsuariosControllers(IUsuarioRepositorio repositorio,
+        public EquipoUnoControllers(IUsuarioRepositorio repositorio,
             IMapper mapper) //<--(inyección de dependencia)
 
         {
@@ -73,14 +70,14 @@ namespace Proyecto_LaGranSiete.Server.Controllers
             var existe = await repositorio.Existe(id);
             return existe;
         }
-        
+
 
         [HttpPost]
         public async Task<ActionResult<int>> Post(CrearUsuariosDTO entidadDTO)
         {
             try
             {
-                Usuario entidad = mapper.Map<Usuario>(entidadDTO);
+                EquipoUno entidad = mapper.Map<EquipoUno>(entidadDTO);
                 return await repositorio.Insert(entidad); //Id de la entidad 
             }
             catch (Exception ErrorMessage)
@@ -89,10 +86,10 @@ namespace Proyecto_LaGranSiete.Server.Controllers
                 //throw;
             }
         }
-            
+
 
         [HttpPut("{id:int}")] //Api / Usuarios
-        public async Task<ActionResult> Put(int id, [FromBody] Usuario entidad) 
+        public async Task<ActionResult> Put(int id, [FromBody] EquipoUno entidad)
         {
             if (id == entidad.Id)
             {
@@ -103,20 +100,16 @@ namespace Proyecto_LaGranSiete.Server.Controllers
 
             if (Lean == null)
             {
-                return NotFound("No existe el usuario buscado");
+                return NotFound("Equipo inexistente");
             }
 
-            Lean.Nombre = entidad.Nombre;
-            Lean.Apellido = entidad.Apellido;
-            Lean.FechaNacimiento = entidad.FechaNacimiento;
-            Lean.Telefono = entidad.Telefono;
-            Lean.CorreoElectronico = entidad.CorreoElectronico;
-            Lean.Parentesco = entidad.Parentesco;
+            Lean.Nombre = entidad.NombreEquipoUno;
+           
 
             try
             {
                 await repositorio.Update(id, Lean);
-                
+
                 return Ok();
             }
             catch (Exception e)
@@ -129,11 +122,11 @@ namespace Proyecto_LaGranSiete.Server.Controllers
 
         //Delete
         [HttpDelete("{id:int}")]
-        public async Task<ActionResult> Delete(int id) 
+        public async Task<ActionResult> Delete(int id)
         {                                            //(expresión en lambda)
             var existe = await repositorio.Existe(id);
 
-            if (!existe) 
+            if (!existe)
             {
                 return NotFound($"El usuario buscado {id}, no se encuentra");
             }
@@ -142,17 +135,10 @@ namespace Proyecto_LaGranSiete.Server.Controllers
                 return Ok();
 
             }
-            else 
+            else
             {
                 return BadRequest();
             }
         }
     }
 }
-
-
-
-
-
-        
-        

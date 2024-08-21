@@ -17,6 +17,6 @@ namespace Proyecto_LaGranSiete.Shared.DTO
 
         [Required(ErrorMessage = "El campo disponibilidad es obligatorio")]
         [MaxLength(30, ErrorMessage = "Máximo número de caracteres {1}")]
-        public string? Disponibilidad { get; set; }
+        public int? Disponibilidad { get; set; } //cantidad dde personas por canchas
     }
 }

@@ -11,28 +11,36 @@ namespace Proyecto_LaGranSiete.Server.Util
         //constructor AutoMapper
         protected AutoMapperProfiles()
         {
-            CreateMap<CrearCanchasDTO, Canchas>();
-            CreateMap<Canchas, CrearCanchasDTO>();
+            //Data Transfer Objetct (Objeto de transferencia de datos)
+            CreateMap<CrearEquipoUnoDTO, EquipoUno>();
+            CreateMap<EquipoDos, CrearEquipoDosDTO>();
+
+            CreateMap<CrearEquipoDosDTO, EquipoDos>();
+            CreateMap<EquipoDos, CrearEquipoDosDTO>();
 
 
-            CreateMap<CrearEquiposDTO, Equipos>();
-            CreateMap<Equipos, CrearEquiposDTO>();
+            CreateMap<CrearCanchasDTO, Cancha>();
+            CreateMap<Cancha, CrearCanchasDTO>();
 
 
-            CreateMap<CrearPagosDTO, Pagos>();
-            CreateMap<Pagos, CrearPagosDTO>();
+            CreateMap<CrearEquiposDTO, Equipo>();
+            CreateMap<Equipo, CrearEquiposDTO>();
 
 
-            CreateMap<CrearPartidosDTO, Partidos>();
-            CreateMap<Partidos, CrearPartidosDTO>();
+            CreateMap<CrearPagosDTO, Pago>();
+            CreateMap<Pago, CrearPagosDTO>();
 
 
-            CreateMap<CrearReservaDTO, Reservas>();
-            CreateMap<Reservas, CrearReservaDTO>();
+            CreateMap<CrearPartidosDTO, Partido>();
+            CreateMap<Partido, CrearPartidosDTO>();
 
 
-            CreateMap<CrearUsuariosDTO, Usuarios>();
-            CreateMap<Usuarios, CrearUsuariosDTO>();
+            CreateMap<CrearReservaDTO, Reserva>();
+            CreateMap<Reserva, CrearReservaDTO>();
+
+
+            CreateMap<CrearUsuariosDTO, Usuario>();
+            CreateMap<Usuario, CrearUsuariosDTO>();
         }
     }
 }

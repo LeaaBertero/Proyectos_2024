@@ -25,16 +25,16 @@ namespace Proyecto_LaGranSiete.Server.Controllers
 
         //EndPoint (Get)
         [HttpGet]
-        public async Task<ActionResult<List<Equipos>>> Get() //Task == "Tarea"
+        public async Task<ActionResult<List<Equipo>>> Get() //Task == "Tarea"
         {
             return await context.Equipos.ToListAsync();
         }
 
         //get 1
         [HttpGet("{id:int}")]
-        public async Task<ActionResult<Equipos>> Get(int id)
+        public async Task<ActionResult<Equipo>> Get(int id)
         {
-            Equipos? lean = await context.Equipos
+            Equipo? lean = await context.Equipos
                 .FirstOrDefaultAsync(x => x.Id == id);
 
             if (lean == null)
@@ -86,7 +86,7 @@ namespace Proyecto_LaGranSiete.Server.Controllers
                 //entidad.EstadoReserva = entidadDTO.EstadoReserva;
 
                 //Reemplazo de Inyeccion (En una sola linea)
-                Equipos entidad = mapper.Map<Equipos>(entidadDTO);
+                Equipo entidad = mapper.Map<Equipo>(entidadDTO);
 
                 //---------------------------------------------------------------------------- //Comentar acá despues de hacer la inyección en el context
                 context.Equipos.Add(entidad);
@@ -102,7 +102,7 @@ namespace Proyecto_LaGranSiete.Server.Controllers
         }
 
         [HttpPut("{id:int}")] //Api / Equipos
-        public async Task<ActionResult> Put(int id, [FromBody] Equipos entidad)
+        public async Task<ActionResult> Put(int id, [FromBody] Equipo entidad)
         {
             if (id == entidad.Id)
             {
@@ -146,7 +146,7 @@ namespace Proyecto_LaGranSiete.Server.Controllers
                 return NotFound($"El equipo buscado {id}, no se encuentra");
             }
 
-            Equipos EntidadBorrar = new Equipos();
+            Equipo EntidadBorrar = new Equipo();
             EntidadBorrar.Id = id;
 
             context.Remove(EntidadBorrar);

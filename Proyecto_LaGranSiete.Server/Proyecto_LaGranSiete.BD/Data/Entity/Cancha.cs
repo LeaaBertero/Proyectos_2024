@@ -14,7 +14,7 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
     [Index(nameof(NombreCancha), nameof(Disponibilidad),
     Name = "NombreCancha_Disponibilidad", IsUnique = false)]
 
-    public class Canchas : EntityBase
+    public class Cancha : EntityBase
     {
         //clave primaria de la tabla 
         public int IdCanchas { get; set; }
@@ -32,7 +32,30 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
 
         [Required(ErrorMessage = "El campo disponibilidad es obligatorio")]
         [MaxLength(30, ErrorMessage = "Máximo número de caracteres {1}")]
-        public string? Disponibilidad { get; set; }
+        public int? Disponibilidad { get; set; } //cantidad dde personas por canchas
+
+        //---------------------------------------------------------------------------
+        //Relaciones entre tablas
+        
+        //Partidos
+        public int PartidosId { get; set; }
+        public Partido? Partidos { get; set; }
+
+        //Pagos
+        public int PagosId { get; set; }
+        public Pago? Pagos { get; set; }
+
+        //Equipos
+        public int EquiposId { get; set; }
+        public Equipo? Equipos { get; set; }
+
+        public int ReservaId { get; set; }
+        public Reserva? Reserva { get; set; }
+
+        public int UsuarioId { get; set; }
+        public Usuario? Usuarios { get; set; }
+
+        //---------------------------------------------------------------------------
     }
 }
 

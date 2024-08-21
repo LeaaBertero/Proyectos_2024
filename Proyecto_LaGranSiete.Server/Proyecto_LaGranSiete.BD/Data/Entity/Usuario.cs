@@ -10,10 +10,10 @@ using System.Threading.Tasks;
 namespace Proyecto_LaGranSiete.BD.Data.Entity
 {
     
-    public class Usuarios : EntityBase
+    public class Usuario : EntityBase
     {
         //Clave primaria de la tabla
-        public int IdUsuario { get; set; }
+        public int UsuarioId { get; set; }
 
 
         //----------------------------------------------------
@@ -32,8 +32,8 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
         public DateTime FechaNacimiento { get; set; }
 
         [Required(ErrorMessage = "El campo teléfono, es obligatorio")]
-        [MaxLength(25, ErrorMessage = "Máximo número de caracteres {1}")]
-        public  string? Telefono { get; set; } //Telefono
+        //[MaxLength(25, ErrorMessage = "Máximo número de caracteres {1}")]
+        public  int? Telefono { get; set; } //Telefono
 
         [Required(ErrorMessage = "El campo e-mail, es obligatorio")]
         [MaxLength(150, ErrorMessage = "Máximo número de caracteres {1}")]
@@ -50,8 +50,19 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
         //Relaciones entre tablas
         //Clave primaria de la tabla (Reserva)
         public int ReservaId { get; set; }
-        public Reservas? Reservas { get; set; }
+        //Tabla (Reserva), de la base de datos
+        public Reserva? Reservas { get; set; }
+
+        //Equipo Uno
+        public string? EquipoUnoId { get; set; }
+        public EquipoUno? EquipoUno { get; set; }
+
+        //Equipo Dos
+        public string? EquipoDosId { get; set; }
+        public EquipoDos? EquipoDos { get; set; }
         //--------------------------------------------------------
 
+
+        //Tabla lista
     }
 }

@@ -26,16 +26,16 @@ namespace Proyecto_LaGranSiete.Server.Controllers
 
         //EndPoint (Get)
         [HttpGet]
-        public async Task<ActionResult<List<Partidos>>> Get() //Task == "Tarea"
+        public async Task<ActionResult<List<Partido>>> Get() //Task == "Tarea"
         {
             return await context.Partidos.ToListAsync();
         }
 
         //get 1
         [HttpGet("{id:int}")]
-        public async Task<ActionResult<Partidos>> Get(int id)
+        public async Task<ActionResult<Partido>> Get(int id)
         {
-            Partidos? lean = await context.Partidos
+            Partido? lean = await context.Partidos
                 .FirstOrDefaultAsync(x => x.Id == id);
 
             if (lean == null)
@@ -87,7 +87,7 @@ namespace Proyecto_LaGranSiete.Server.Controllers
                 //entidad.EstadoReserva = entidadDTO.EstadoReserva;
 
                 //Reemplazo de Inyeccion (En una sola linea)
-                Partidos entidad = mapper.Map<Partidos>(entidadDTO);
+                Partido entidad = mapper.Map<Partido>(entidadDTO);
 
                 //---------------------------------------------------------------------------- //Comentar acá despues de hacer la inyección en el context
                 context.Partidos.Add(entidad);
@@ -103,7 +103,7 @@ namespace Proyecto_LaGranSiete.Server.Controllers
         }
 
         [HttpPut("{id:int}")] //Api / Reservas
-        public async Task<ActionResult> Put(int id, [FromBody] Partidos entidad)
+        public async Task<ActionResult> Put(int id, [FromBody] Partido entidad)
         {
             if (id == entidad.Id)
             {
@@ -146,10 +146,10 @@ namespace Proyecto_LaGranSiete.Server.Controllers
 
             if (!existe)
             {
-                return NotFound($"El usuario buscado {id}, no se encuentra");
+                return NotFound($"El partido reservado {id}, no se encuentra");
             }
 
-            Partidos EntidadBorrar = new Partidos();
+            Partido EntidadBorrar = new Partido();
             EntidadBorrar.Id = id;
 
             context.Remove(EntidadBorrar);

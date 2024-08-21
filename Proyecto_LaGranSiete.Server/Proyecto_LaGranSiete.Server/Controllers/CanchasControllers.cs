@@ -25,16 +25,16 @@ namespace Proyecto_LaGranSiete.Server.Controllers
 
         //EndPoint (Get)
         [HttpGet]
-        public async Task<ActionResult<List<Canchas>>> Get() //Task == "Tarea"
+        public async Task<ActionResult<List<Cancha>>> Get() //Task == "Tarea"
         {
             return await context.Canchas.ToListAsync();
         }
 
         //get 1
         [HttpGet("{id:int}")]
-        public async Task<ActionResult<Canchas>> Get(int id)
+        public async Task<ActionResult<Cancha>> Get(int id)
         {
-            Canchas? lean = await context.Canchas
+            Cancha? lean = await context.Canchas
                 .FirstOrDefaultAsync(x => x.Id == id);
 
             if (lean == null)
@@ -86,7 +86,7 @@ namespace Proyecto_LaGranSiete.Server.Controllers
                 //entidad.EstadoReserva = entidadDTO.EstadoReserva;
 
                 //Reemplazo de Inyeccion (En una sola linea)
-                Canchas entidad = mapper.Map<Canchas>(entidadDTO);
+                Cancha entidad = mapper.Map<Cancha>(entidadDTO);
 
                 //---------------------------------------------------------------------------- //Comentar acá despues de hacer la inyección en el context
                 context.Canchas.Add(entidad);
@@ -102,7 +102,7 @@ namespace Proyecto_LaGranSiete.Server.Controllers
         }
 
         [HttpPut("{id:int}")] //Api / Equipos
-        public async Task<ActionResult> Put(int id, [FromBody] Canchas entidad)
+        public async Task<ActionResult> Put(int id, [FromBody] Cancha entidad)
         {
             if (id == entidad.Id)
             {
@@ -151,7 +151,7 @@ namespace Proyecto_LaGranSiete.Server.Controllers
                 return NotFound($"La reserva de la cancha {id}, no se encuentra");
             }
 
-            Canchas EntidadBorrar = new Canchas();
+            Cancha EntidadBorrar = new Cancha();
             EntidadBorrar.Id = id;
 
             context.Remove(EntidadBorrar);

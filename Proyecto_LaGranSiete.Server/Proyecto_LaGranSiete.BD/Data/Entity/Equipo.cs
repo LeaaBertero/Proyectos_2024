@@ -13,7 +13,7 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
     [Index(nameof(NombreEquipos), nameof(Integrantes),
     Name = "NombreEquipos_Integrantes", IsUnique = false)]
 
-    public class Equipos : EntityBase
+    public class Equipo : EntityBase
     {
         //Clave primaria de la tabla
         public int IdEquipos { get; set; }
@@ -38,8 +38,22 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
         //--------------------------------------------------------
         //Relaciones entre tablas
         //Clave primaria de la tabla (Reserva)
+        
+        //Partidos
         public int PartidosId { get; set; }
-        public Partidos? Partidos { get; set; }
+        public Partido? Partidos { get; set; }
+
+        //Canchas
+        public int CanchasId { get; set; }
+        public Cancha? Canchas { get; set; }
+
+        //Pagos
+        public int PagoId { get; set; }
+        public Pago? Pagos { get; set; }
+
+        //Reservas
+        public int ReservasId { get; set; }
+        public Reserva? Reservas { get; set; }
         //--------------------------------------------------------
     }
 }

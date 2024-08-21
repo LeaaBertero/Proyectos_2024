@@ -29,16 +29,16 @@ namespace Proyecto_LaGranSiete.Server.Controllers
 
         //EndPoint (Get)
         [HttpGet]
-        public async Task<ActionResult<List<Reservas>>> Get() //Task == "Tarea"
+        public async Task<ActionResult<List<Reserva>>> Get() //Task == "Tarea"
         {
             return await repositorio.Select();
         }
 
         //get 1
         [HttpGet("{id:int}")]
-        public async Task<ActionResult<Reservas>> Get(int id)
+        public async Task<ActionResult<Reserva>> Get(int id)
         {
-            Reservas? lean = await repositorio.SelectById(id);
+            Reserva? lean = await repositorio.SelectById(id);
 
             if (lean == null)
             {
@@ -75,7 +75,7 @@ namespace Proyecto_LaGranSiete.Server.Controllers
 
 
         [HttpPost]
-        public async Task<ActionResult<int>> Post(Reservas entidad)
+        public async Task<ActionResult<int>> Post(Reserva entidad)
         {
             try
             {
@@ -93,7 +93,7 @@ namespace Proyecto_LaGranSiete.Server.Controllers
          
 
         [HttpPut("{id:int}")] //Api / Reservas
-        public async Task<ActionResult> Put(int id, [FromBody] Reservas entidad)
+        public async Task<ActionResult> Put(int id, [FromBody] Reserva entidad)
         {
             if (id == entidad.Id)
             {

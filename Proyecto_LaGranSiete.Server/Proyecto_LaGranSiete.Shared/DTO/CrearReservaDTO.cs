@@ -16,17 +16,17 @@ namespace Proyecto_LaGranSiete.Shared.DTO
 
         [Required(ErrorMessage = "La duración del alquiler es obligatoria")]
         [MaxLength(10, ErrorMessage = "Máximo número de caracteres {1}")]
-        public DateTime DuracionAlquiler { get; set; }
+        public int DuracionAlquiler { get; set; }
 
 
         [Required(ErrorMessage = "El campo Monto, es obligatorio")]
         [MaxLength(12, ErrorMessage = "Máximo número de caracteres {1}")]
-        public float Monto { get; set; }
+        public int Monto { get; set; }
 
 
         [Required(ErrorMessage = "El campo método de pago, es obligatorio")]
         [MaxLength(20, ErrorMessage = "Máximo número de caracteres {1}")]
-        public string? MetodoPago { get; set; }
+        public int? MetodoPago { get; set; } //puede ser (int) también
 
 
         [Required(ErrorMessage = "El campo estado de la reserva es obligatoria")]

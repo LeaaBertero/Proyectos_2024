@@ -2,7 +2,7 @@
 
 namespace Proyecto_LaGranSiete.Server.Repositorio
 {
-    public interface IReservaRepositorio : IRepositorio<Reservas>
+    public interface IReservaRepositorio : IRepositorio<Reserva>
     {
     }
 }
