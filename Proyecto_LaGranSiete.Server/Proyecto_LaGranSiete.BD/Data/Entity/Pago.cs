@@ -15,10 +15,9 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
 
     public class Pago : EntityBase
     {
-        public DateTime fechaHoraReserva;
+        public int PagoId { get; set; }
 
         //Clave primaria de la tabla
-        public int PagoId { get; set; }
 
         //clave foranea de la tabla Reserva
        
@@ -26,6 +25,9 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
         //------------------------------------------------------
         //Propiedades de la tabla
         //------------------------------------------------------
+        
+        
+        public TimeOnly fechaHora { get; set; }
 
         [Required(ErrorMessage = "El monto de pago es obligatorio")]
         [MaxLength(10, ErrorMessage = "Máximo número de caracteres {1}")]

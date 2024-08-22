@@ -27,7 +27,7 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
 
         [Required(ErrorMessage = "La fecha y hora del partido es obligatorio")]
         //[MaxLength(30, ErrorMessage = "Máximo número de caracteres {1}")]
-        public DateTime? FechaHoraPartidos { get; set; }
+        public TimeOnly? FechaHoraPartidos { get; set; }
         //-----------------------------------------------------
 
         //Clave foranea de la tabla
