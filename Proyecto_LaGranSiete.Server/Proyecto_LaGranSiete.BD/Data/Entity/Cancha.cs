@@ -31,31 +31,10 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
         //Disponibilidad para el usuario (reservada / libre)
 
         [Required(ErrorMessage = "El campo disponibilidad es obligatorio")]
-        [MaxLength(30, ErrorMessage = "Máximo número de caracteres {1}")]
+        //[MaxLength(30, ErrorMessage = "Máximo número de caracteres {1}")]
         public int? Disponibilidad { get; set; } //cantidad dde personas por canchas
 
-        //---------------------------------------------------------------------------
-        //Relaciones entre tablas
-        
-        //Partidos
-        public int PartidosId { get; set; }
-        public Partido? Partidos { get; set; }
-
-        //Pagos
-        public int PagosId { get; set; }
-        public Pago? Pagos { get; set; }
-
-        //Equipos
-        public int EquiposId { get; set; }
-        public Equipo? Equipos { get; set; }
-
-        public int ReservaId { get; set; }
-        public Reserva? Reserva { get; set; }
-
-        public int UsuarioId { get; set; }
-        public Usuario? Usuarios { get; set; }
-
-        //---------------------------------------------------------------------------
+       
     }
 }
 

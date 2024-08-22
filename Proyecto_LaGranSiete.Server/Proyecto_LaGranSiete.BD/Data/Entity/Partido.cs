@@ -9,14 +9,14 @@ using System.Threading.Tasks;
 namespace Proyecto_LaGranSiete.BD.Data.Entity
 {
     //Indices de la tabla
-    [Index(nameof(PartidosId), Name = "PartidosId", IsUnique = true)]
+    [Index(nameof(PartidoId), Name = "PartidosId", IsUnique = true)]
     [Index(nameof(FechaHoraPartidos),
     Name = "FechaHoraPartidos", IsUnique = false)]
 
     public class Partido : EntityBase
     {
         //Clave primaria de la tabla Partidos
-        public int PartidosId { get; set; }
+        public int PartidoId { get; set; }
 
         //clave foránea de la tabla Reserva
 
@@ -31,30 +31,33 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
         //-----------------------------------------------------
 
         //Clave foranea de la tabla
-        public int EquipoUnoId { get; set; }
+        
 
-        public int EquipoDosId { get; set; }
+        
 
         //--------------------------------------------------------
         //Relaciones entre tablas
         //Clave primaria de la tabla (Reserva)
-        public int CanchasId { get; set; }
-        public Cancha? Canchas { get; set; }
-
-        public int PagosId { get; set; }
-        public Pago? Pagos { get; set; }
-
-        public int EquiposId { get; set; }
+       
+        public int EquipoId { get; set; }
         public Equipo? Equipos { get; set; }
 
-        public int ReservaId { get; set; }
-        public Reserva? Reserva { get; set; }
-
-        public int UsuarioId { get; set; }
-        public Usuario? Usuario { get; set; }
-
-        public List<Reserva> Reservas { get; set; } = new List<Reserva>();
+        public int CanchaId { get; set; }
+        public Cancha? Canchas { get; set; }
         //--------------------------------------------------------
-
     }
 }
+        
+       
+
+      
+
+        
+
+
+       
+
+
+
+       
+

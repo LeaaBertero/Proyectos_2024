@@ -46,25 +46,26 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
 
 
         //--------------------------------------------------------
+
+
         //Relaciones entre tablas
         //Clave primaria de la tabla (Reserva)
-        public int CanchasId { get; set; }
-        public Cancha? Canchas { get; set; }
 
-        public int ReservaId { get; set; }
-        public Reserva? Reservas { get; set; }
+     
 
-        public int EquiposId { get; set; }
+        public int EquipoId { get; set; }
         public Equipo? Equipos { get; set; }
 
-        public int PartidosId { get; set; }
+        public int PartidoId { get; set; }
         public Partido? Partidos { get; set; }
 
-        public int UsuarioId { get; set; }
-        public Usuario? Usuario { get; set; }
 
 
 
         //--------------------------------------------------------
     }
 }
+        
+
+
+

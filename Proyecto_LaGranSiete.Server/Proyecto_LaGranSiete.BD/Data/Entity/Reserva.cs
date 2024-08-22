@@ -38,17 +38,17 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
         public int DuracionAlquiler { get; set; }
 
         
-        [Required(ErrorMessage = "El campo Monto, es obligatorio")]
+        [Required(ErrorMessage = "El monto, es obligatorio")]
         [MaxLength(5, ErrorMessage = "Máximo número de caracteres {1}")]
-        public int Monto { get; set; }
+        public decimal Monto { get; set; }
 
         
-        [Required(ErrorMessage = "El campo método de pago, es obligatorio")]
+        [Required(ErrorMessage = "El método de pago, es obligatorio")]
         //[MaxLength(20, ErrorMessage = "Máximo número de caracteres {1}")]
         public string? MetodoPago { get; set; } 
 
         
-        [Required(ErrorMessage = "El campo estado de la reserva es obligatoria")]
+        [Required(ErrorMessage = "El estado de la reserva es obligatoria")]
         //[MaxLength(30, ErrorMessage = "Máximo número de caracteres {1}")]
         public bool? EstadoReserva { get; set; }
 
@@ -59,28 +59,23 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
         
 
         //(Clave primaria de la tabla (Pagos) que se relaciona con la tabla (Reservas))
-        public int PagoId { get; set; }
-        public Pago? Pagos { get; set; }
+       
 
         //---------------------------------------------------------
         //Relacion entre tablas
-        public int EquiposId { get; set; }
+       
+        public int EquipoId { get; set; }
         public Equipo? Equipos { get; set; }
+
+        public int PagoId { get; set; }
+        public Pago? Pagos { get; set; }
 
         public int PartidoId { get; set; }
         public Partido? Partidos { get; set; }
+        //---------------------------------------------------------
 
-        public int CanchasId { get; set; }
-        public Cancha? Canchas { get; set; }
 
-        public int EquipoUnoId { get; set; }
-        public EquipoUno? EquipoUno { get; set; }
 
-        public int EquipoDosId { get; set; }
-        public EquipoDos? EquipoDos { get; set; }
-
-        public int UsuarioId { get; set; }
-        public Usuario? Usuario { get; set; }
 
 
 
@@ -95,12 +90,12 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
         public List<Reserva> Reservas { get; set; } = new List<Reserva>();
 
         
+        //Tabla lista
+    }
+}
 
        
 
 
-        //Tabla lista
 
 
-    }
-}
