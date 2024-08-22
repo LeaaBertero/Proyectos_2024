@@ -98,19 +98,19 @@ namespace Proyecto_LaGranSiete.Server.Controllers
                 return BadRequest("Datos incorrectos");
             }
 
-            var Lean = await repositorio.SelectById(id);
+            var VarAuxiliar = await repositorio.SelectById(id);
 
-            if (Lean == null)
+            if (VarAuxiliar == null)
             {
                 return NotFound("Equipo dos no existe");
             }
 
-            Lean.Nombre = entidad.NombreEquipoDos;
+            VarAuxiliar.Nombre = entidad.NombreEquipoDos;
 
 
             try
             {
-                await repositorio.Update(id, Lean);
+                await repositorio.Update(id, VarAuxiliar);
 
                 return Ok();
             }
