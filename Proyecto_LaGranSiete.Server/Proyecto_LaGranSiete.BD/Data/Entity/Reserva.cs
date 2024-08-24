@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -22,10 +23,7 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
     nameof(MetodoPago), nameof(EstadoReserva),
     Name = "Reserva_FechaHoraReserva_DuracionAlquiler_Monto_MetodoPago_EstadoReserva", IsUnique = false)]
 
-    //------------------ INDICE NUEVO -----------------------
-
-
-
+   
     public class Reserva : EntityBase
     {
         //Clave primaria de la tabla Reservas
@@ -42,7 +40,7 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
         //----------------------------------------------------
         [Required(ErrorMessage = "La fecha y hora obligatoria")]
         //[MaxLength(20, ErrorMessage = "Máximo número de caracteres {1}")]
-        public DateTime FechaHoraReserva { get; set; }
+        public DateOnly? FechaHoraReserva { get; set; }
 
 
         //[Required(ErrorMessage = "La duración del alquiler es obligatoria")]
