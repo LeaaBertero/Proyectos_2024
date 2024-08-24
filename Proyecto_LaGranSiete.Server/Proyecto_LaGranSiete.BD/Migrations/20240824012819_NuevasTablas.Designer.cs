@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Proyecto_LaGranSiete.BD.Data;
 
@@ -11,9 +12,11 @@ using Proyecto_LaGranSiete.BD.Data;
 namespace Proyecto_LaGranSiete.BD.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20240824012819_NuevasTablas")]
+    partial class NuevasTablas
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -178,8 +181,8 @@ namespace Proyecto_LaGranSiete.BD.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("Monto")
-                        .HasColumnType("float");
+                    b.Property<decimal>("Monto")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<double?>("Monto_Pago")
                         .IsRequired()

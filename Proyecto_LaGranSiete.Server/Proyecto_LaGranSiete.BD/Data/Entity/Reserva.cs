@@ -9,10 +9,22 @@ using System.Threading.Tasks;
 namespace Proyecto_LaGranSiete.BD.Data.Entity
 {
     //indice de la tabla
+    //[Index(nameof(ReservaId), Name = "ReservaId_UQ", IsUnique = true)]
+    //[Index(nameof(FechaHoraReserva), nameof(DuracionAlquiler), nameof(Monto),
+    //nameof(MetodoPago), nameof(EstadoReserva),
+    //Name = "Reserva_FechaHoraReserva_DuracionAlquiler_Monto_MetodoPago_EstadoReserva", IsUnique = false)]
+
+    //------------------ INDICE NUEVO -----------------------
+
     [Index(nameof(ReservaId), Name = "ReservaId_UQ", IsUnique = true)]
+
     [Index(nameof(FechaHoraReserva), nameof(DuracionAlquiler), nameof(Monto),
     nameof(MetodoPago), nameof(EstadoReserva),
     Name = "Reserva_FechaHoraReserva_DuracionAlquiler_Monto_MetodoPago_EstadoReserva", IsUnique = false)]
+
+    //------------------ INDICE NUEVO -----------------------
+
+
 
     public class Reserva : EntityBase
     {
@@ -33,14 +45,14 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
         public DateTime FechaHoraReserva { get; set; }
 
 
-        [Required(ErrorMessage = "La duración del alquiler es obligatoria")]
+        //[Required(ErrorMessage = "La duración del alquiler es obligatoria")]
         //[MaxLength(10, ErrorMessage = "Máximo número de caracteres {1}")]
         public int DuracionAlquiler { get; set; }
 
         
         [Required(ErrorMessage = "El monto, es obligatorio")]
         [MaxLength(5, ErrorMessage = "Máximo número de caracteres {1}")]
-        public decimal Monto { get; set; }
+        public double Monto { get; set; }
 
         
         [Required(ErrorMessage = "El método de pago, es obligatorio")]
