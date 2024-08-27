@@ -9,21 +9,10 @@ using System.Threading.Tasks;
 
 namespace Proyecto_LaGranSiete.BD.Data.Entity
 {
-    //indice de la tabla
-    //[Index(nameof(ReservaId), Name = "ReservaId_UQ", IsUnique = true)]
-    //[Index(nameof(FechaHoraReserva), nameof(DuracionAlquiler), nameof(Monto),
-    //nameof(MetodoPago), nameof(EstadoReserva),
-    //Name = "Reserva_FechaHoraReserva_DuracionAlquiler_Monto_MetodoPago_EstadoReserva", IsUnique = false)]
-
-    //------------------ INDICE NUEVO -----------------------
-
-    [Index(nameof(ReservaId), Name = "ReservaId_UQ", IsUnique = true)]
-
-    [Index(nameof(FechaHoraReserva), nameof(DuracionAlquiler), nameof(Monto),
-    nameof(MetodoPago), nameof(EstadoReserva),
+    [Index(nameof(ReservaId), Name = "ReservaId", IsUnique = true)]
+    [Index(nameof(FechaHoraReserva), nameof(DuracionAlquiler), nameof(Monto), nameof(MetodoPago), nameof(EstadoReserva),
     Name = "FechaHoraReserva_DuracionAlquiler_Monto_MetodoPago_EstadoReserva", IsUnique = false)]
 
-    
 
     public class Reserva : EntityBase
     {
@@ -41,12 +30,12 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
         //----------------------------------------------------
         [Required(ErrorMessage = "La fecha y hora obligatoria")]
         //[MaxLength(20, ErrorMessage = "Máximo número de caracteres {1}")]
-        public DateTime? FechaHoraReserva { get; set; }
+        public DateTime FechaHoraReserva { get; set; }
 
 
         [Required(ErrorMessage = "La duración del alquiler es obligatoria")]
         //[MaxLength(10, ErrorMessage = "Máximo número de caracteres {1}")]
-        public int DuracionAlquiler { get; set; }
+        public int? DuracionAlquiler { get; set; }
 
         
         [Required(ErrorMessage = "El monto, es obligatorio")]
@@ -61,7 +50,7 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
         
         [Required(ErrorMessage = "El estado de la reserva es obligatoria")]
         //[MaxLength(30, ErrorMessage = "Máximo número de caracteres {1}")]
-        public bool? EstadoReserva { get; set; }
+        public string? EstadoReserva { get; set; }
 
         //--------------------------------------------------------
         //Relaciones entre tablas
@@ -97,7 +86,7 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
 
         //Lista de los usuarios que realizan reservas
         //--Renueva la lista por cada usuario que realice una reserva
-        //public List<Usuario> Usuarios { get; set; } = new List<Usuario>();
+        public List<Usuario> Usuarios { get; set; } = new List<Usuario>();
 
         //Lista de los usuarios que realizaron reservas
         public List<Reserva> Reservas { get; set; } = new List<Reserva>();

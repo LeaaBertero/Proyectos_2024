@@ -43,7 +43,7 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
         [Required(ErrorMessage = "La fecha del pago es obligatoria")]
         //[MaxLength(10, ErrorMessage = "Máximo número de caracteres {1}")]
         public DateOnly FechaPago { get; set; }
-        public double? Monto { get; set; }
+        public decimal? Monto { get; set; }
         //-------------------------------------------------------
 
 
