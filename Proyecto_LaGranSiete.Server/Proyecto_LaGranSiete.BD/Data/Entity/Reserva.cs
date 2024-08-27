@@ -21,9 +21,10 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
 
     [Index(nameof(FechaHoraReserva), nameof(DuracionAlquiler), nameof(Monto),
     nameof(MetodoPago), nameof(EstadoReserva),
-    Name = "Reserva_FechaHoraReserva_DuracionAlquiler_Monto_MetodoPago_EstadoReserva", IsUnique = false)]
+    Name = "FechaHoraReserva_DuracionAlquiler_Monto_MetodoPago_EstadoReserva", IsUnique = false)]
 
-   
+    
+
     public class Reserva : EntityBase
     {
         //Clave primaria de la tabla Reservas
@@ -40,10 +41,10 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
         //----------------------------------------------------
         [Required(ErrorMessage = "La fecha y hora obligatoria")]
         //[MaxLength(20, ErrorMessage = "Máximo número de caracteres {1}")]
-        public DateOnly? FechaHoraReserva { get; set; }
+        public DateTime? FechaHoraReserva { get; set; }
 
 
-        //[Required(ErrorMessage = "La duración del alquiler es obligatoria")]
+        [Required(ErrorMessage = "La duración del alquiler es obligatoria")]
         //[MaxLength(10, ErrorMessage = "Máximo número de caracteres {1}")]
         public int DuracionAlquiler { get; set; }
 
@@ -65,15 +66,17 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
         //--------------------------------------------------------
         //Relaciones entre tablas
         //Clave primaria de la tabla (Partidos)
-       
-        
+
+
 
         //(Clave primaria de la tabla (Pagos) que se relaciona con la tabla (Reservas))
-       
+
 
         //---------------------------------------------------------
         //Relacion entre tablas
-       
+
+      
+
         public int EquipoId { get; set; }
         public Equipo? Equipos { get; set; }
 
@@ -94,7 +97,7 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
 
         //Lista de los usuarios que realizan reservas
         //--Renueva la lista por cada usuario que realice una reserva
-        public List<Usuario> Usuarios { get; set; } = new List<Usuario>();
+        //public List<Usuario> Usuarios { get; set; } = new List<Usuario>();
 
         //Lista de los usuarios que realizaron reservas
         public List<Reserva> Reservas { get; set; } = new List<Reserva>();
