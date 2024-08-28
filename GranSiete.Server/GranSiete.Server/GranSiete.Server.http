@@ -1,0 +1,6 @@
+@GranSiete.Server_HostAddress = http://localhost:5239
+
+GET {{GranSiete.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
