@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualBasic;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,12 +9,20 @@ using System.Threading.Tasks;
 
 namespace GranSiete.BD.Data.Entity
 {
+    //indices de la tabla
+    [Index(nameof(UsuarioID), nameof(EstadoReserva), Name = "Reserva_UQ", IsUnique = true)]
+    [Index(nameof(Monto), nameof(MetodoPago), nameof(EstadoReserva), Name = "Reserva_Monto_MetodoPago_EstadoReserva", IsUnique = false)]
+
     public class Reserva : EntityBase
     {
         //-----------------------------
         //Clave primaria de la tabla
         //-----------------------------
         public int ReservaID { get; set; }
+        
+        //Tabla relacionada
+        public Usuario Usuarios { get; set; }
+
 
         //-----------------------------
         //Clave foránea de la tabla

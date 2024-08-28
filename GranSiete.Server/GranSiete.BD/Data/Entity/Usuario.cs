@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,11 +7,15 @@ using System.Threading.Tasks;
 
 namespace GranSiete.BD.Data.Entity
 {
+   
+
     public class Usuario : EntityBase
     {   //----------------------------
         //clave primaria de la tabla
         //----------------------------
         public int UsuarioID { get; set; }
+
+        
         
         
         //-----------------------
