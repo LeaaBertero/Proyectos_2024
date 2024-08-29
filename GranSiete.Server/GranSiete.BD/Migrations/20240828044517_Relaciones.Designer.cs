@@ -4,6 +4,7 @@ using GranSiete.BD.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GranSiete.BD.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20240828044517_Relaciones")]
+    partial class Relaciones
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -88,6 +91,10 @@ namespace GranSiete.BD.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ReservaID");
+
+                    b.HasIndex("UsuarioID");
+
                     b.ToTable("EquipoDos");
                 });
 
@@ -112,6 +119,10 @@ namespace GranSiete.BD.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ReservaID");
+
+                    b.HasIndex("UsuarioID");
 
                     b.ToTable("EquipoUno");
                 });
@@ -141,6 +152,8 @@ namespace GranSiete.BD.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ReservaID");
+
                     b.ToTable("Pagos");
                 });
 
@@ -168,6 +181,12 @@ namespace GranSiete.BD.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("EquipoDosID");
+
+                    b.HasIndex("EquipoUnoID");
+
+                    b.HasIndex("ReservaID");
 
                     b.ToTable("Partidos");
                 });
@@ -244,6 +263,93 @@ namespace GranSiete.BD.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Usuarios");
+                });
+
+            modelBuilder.Entity("GranSiete.BD.Data.Entity.EquipoDos", b =>
+                {
+                    b.HasOne("GranSiete.BD.Data.Entity.Reserva", "Reservas")
+                        .WithMany()
+                        .HasForeignKey("ReservaID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("GranSiete.BD.Data.Entity.Usuario", "Usuarios")
+                        .WithMany()
+                        .HasForeignKey("UsuarioID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Reservas");
+
+                    b.Navigation("Usuarios");
+                });
+
+            modelBuilder.Entity("GranSiete.BD.Data.Entity.EquipoUno", b =>
+                {
+                    b.HasOne("GranSiete.BD.Data.Entity.Reserva", "Reservas")
+                        .WithMany()
+                        .HasForeignKey("ReservaID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("GranSiete.BD.Data.Entity.Usuario", "Usuarios")
+                        .WithMany()
+                        .HasForeignKey("UsuarioID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Reservas");
+
+                    b.Navigation("Usuarios");
+                });
+
+            modelBuilder.Entity("GranSiete.BD.Data.Entity.Pago", b =>
+                {
+                    b.HasOne("GranSiete.BD.Data.Entity.Reserva", "Reservas")
+                        .WithMany()
+                        .HasForeignKey("ReservaID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Reservas");
+                });
+
+            modelBuilder.Entity("GranSiete.BD.Data.Entity.Partido", b =>
+                {
+                    b.HasOne("GranSiete.BD.Data.Entity.EquipoDos", "EquipoDos")
+                        .WithMany()
+                        .HasForeignKey("EquipoDosID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("GranSiete.BD.Data.Entity.EquipoUno", "EquipoUno")
+                        .WithMany()
+                        .HasForeignKey("EquipoUnoID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("GranSiete.BD.Data.Entity.Reserva", "Reservas")
+                        .WithMany()
+                        .HasForeignKey("ReservaID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("EquipoDos");
+
+                    b.Navigation("EquipoUno");
+
+                    b.Navigation("Reservas");
+                });
+
+            modelBuilder.Entity("GranSiete.BD.Data.Entity.Reserva", b =>
+                {
+                    b.HasOne("GranSiete.BD.Data.Entity.Usuario", "Usuarios")
+                        .WithMany()
+                        .HasForeignKey("UsuarioID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Usuarios");
                 });
 #pragma warning restore 612, 618
         }

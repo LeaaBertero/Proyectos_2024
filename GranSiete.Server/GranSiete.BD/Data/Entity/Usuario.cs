@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace GranSiete.BD.Data.Entity
 {
-   
+
 
     public class Usuario : EntityBase
     {   //----------------------------
         //clave primaria de la tabla
         //----------------------------
-        public int UsuarioID { get; set; }
+        public int UsuarioId { get; set; }
 
         
         

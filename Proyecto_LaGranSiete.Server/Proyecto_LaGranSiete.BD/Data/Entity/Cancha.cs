@@ -34,7 +34,9 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
         //[MaxLength(30, ErrorMessage = "Máximo número de caracteres {1}")]
         public int? Disponibilidad { get; set; } //cantidad dde personas por canchas
 
-       
+        //tablas que se relacionan
+        public int ReservaId { get; set; }
+        public Reserva Reserva { get; set; }
     }
 }
 

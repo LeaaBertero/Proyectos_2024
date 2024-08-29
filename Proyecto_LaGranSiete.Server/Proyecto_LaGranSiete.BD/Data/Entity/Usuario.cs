@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Proyecto_LaGranSiete.BD.Data.Entity
 {
-    
+
     public class Usuario : EntityBase
     {
         //Clave primaria de la tabla
@@ -54,12 +54,12 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
         public Reserva? Reservas { get; set; }
 
         //Equipo Uno
-        public int? EquipoUnoId { get; set; }
-        public EquipoUno? EquipoUno { get; set; }
+        public int EquipoUnoId { get; set; }
+        public EquipoUno EquipoUno { get; set; }
 
         //Equipo Dos
-        public int? EquipoDosId { get; set; }
-        public EquipoDos? EquipoDos { get; set; }
+        public int EquipoDosId { get; set; }
+        public EquipoDos EquipoDos { get; set; }
         //--------------------------------------------------------
 
 

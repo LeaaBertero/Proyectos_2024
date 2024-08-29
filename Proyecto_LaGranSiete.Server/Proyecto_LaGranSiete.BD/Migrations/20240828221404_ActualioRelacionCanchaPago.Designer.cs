@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Proyecto_LaGranSiete.BD.Data;
 
@@ -11,9 +12,11 @@ using Proyecto_LaGranSiete.BD.Data;
 namespace Proyecto_LaGranSiete.BD.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20240828221404_ActualioRelacionCanchaPago")]
+    partial class ActualioRelacionCanchaPago
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -186,8 +189,8 @@ namespace Proyecto_LaGranSiete.BD.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Monto")
-                        .HasColumnType("int");
+                    b.Property<decimal?>("Monto")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<double?>("Monto_Pago")
                         .IsRequired()
@@ -327,10 +330,10 @@ namespace Proyecto_LaGranSiete.BD.Migrations
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
 
-                    b.Property<int>("EquipoDosId")
+                    b.Property<int?>("EquipoDosId")
                         .HasColumnType("int");
 
-                    b.Property<int>("EquipoUnoId")
+                    b.Property<int?>("EquipoUnoId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("FechaNacimiento")
@@ -508,15 +511,11 @@ namespace Proyecto_LaGranSiete.BD.Migrations
                 {
                     b.HasOne("Proyecto_LaGranSiete.BD.Data.Entity.EquipoDos", "EquipoDos")
                         .WithMany()
-                        .HasForeignKey("EquipoDosId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .HasForeignKey("EquipoDosId");
 
                     b.HasOne("Proyecto_LaGranSiete.BD.Data.Entity.EquipoUno", "EquipoUno")
                         .WithMany()
-                        .HasForeignKey("EquipoUnoId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .HasForeignKey("EquipoUnoId");
 
                     b.HasOne("Proyecto_LaGranSiete.BD.Data.Entity.Reserva", "Reservas")
                         .WithMany("Usuarios")

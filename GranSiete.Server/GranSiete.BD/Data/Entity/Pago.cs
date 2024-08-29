@@ -12,7 +12,7 @@ namespace GranSiete.BD.Data.Entity
         //--------------------------
         //clave primaria de la tabla
         //---------------------------
-        public int PagoID { get; set; }
+        public int PagoId { get; set; }
 
         //--------------------------
         //clave foranea de la tabla
@@ -21,7 +21,14 @@ namespace GranSiete.BD.Data.Entity
         //--------------------------
         //clave foranea de la tabla
         //---------------------------
+        
+        //---------------------------
+        //tablas que se relacionan
+        //---------------------------
+       
 
+        //----------------------------
+        //----------------------------
 
         //--------------------------
         //Atributos de la tabla

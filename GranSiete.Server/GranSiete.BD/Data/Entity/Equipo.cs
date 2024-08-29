@@ -11,7 +11,7 @@ namespace GranSiete.BD.Data.Entity
         //------------------------------
         //clave primaria de la tabla
         //------------------------------
-        public int EquipoID { get; set; }
+        public int EquipoId { get; set; }
 
 
 

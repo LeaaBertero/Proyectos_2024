@@ -11,14 +11,16 @@ namespace GranSiete.BD.Data.Entity
         //--------------------------------
         //Clave primaria de la tabla
         //--------------------------------
-        public int EquipoDosID { get; set; }
+        public int EquipoDosId { get; set; }
 
         //--------------------------------
         //Clave foránea de la tabla
         //--------------------------------
         public int ReservaID { get; set; }
+        
 
-
+        public int UsuarioID { get; set; }
+        
         //--------------------------------
         //Atributos de la tabla
         //--------------------------------

@@ -12,15 +12,18 @@ namespace GranSiete.BD.Data.Entity
         //------------------------------
         //Clave primaria de la tabla
         //------------------------------
-        public int PartidoID { get; set; } 
+        public int PartidoId { get; set; } 
 
 
         //----------------------------------
         //clave foranea de la tabla
         //----------------------------------
         public int ReservaID { get; set; }
+       
         public int EquipoUnoID { get; set; }
+        
         public int EquipoDosID { get; set; }
+        
         //----------------------------------
         //clave foranea de la tabla
         //----------------------------------

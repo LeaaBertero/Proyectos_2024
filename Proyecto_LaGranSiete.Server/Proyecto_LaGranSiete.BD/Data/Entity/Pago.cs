@@ -43,7 +43,9 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
         [Required(ErrorMessage = "La fecha del pago es obligatoria")]
         //[MaxLength(10, ErrorMessage = "Máximo número de caracteres {1}")]
         public DateOnly FechaPago { get; set; }
-        public decimal? Monto { get; set; }
+
+        [Required(ErrorMessage = "El monto del pago es obligatoria")]
+        public int Monto { get; set; }
         //-------------------------------------------------------
 
 
@@ -56,12 +58,13 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
      
 
         public int EquipoId { get; set; }
-        public Equipo? Equipos { get; set; }
+        public Equipo Equipos { get; set; }
 
         public int PartidoId { get; set; }
-        public Partido? Partidos { get; set; }
+        public Partido Partidos { get; set; }
 
-
+        public int CanchaId { get; set; }
+        public Cancha Canchas { get; set; }
 
 
         //--------------------------------------------------------

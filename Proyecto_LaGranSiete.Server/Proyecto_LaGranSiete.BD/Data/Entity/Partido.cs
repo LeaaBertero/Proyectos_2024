@@ -40,10 +40,10 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
         //Clave primaria de la tabla (Reserva)
        
         public int EquipoId { get; set; }
-        public Equipo? Equipos { get; set; }
+        public Equipo Equipos { get; set; }
 
         public int CanchaId { get; set; }
-        public Cancha? Canchas { get; set; }
+        public Cancha Canchas { get; set; }
         //--------------------------------------------------------
     }
 }

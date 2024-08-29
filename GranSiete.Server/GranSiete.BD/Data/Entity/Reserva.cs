@@ -2,6 +2,7 @@
 using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
@@ -18,10 +19,11 @@ namespace GranSiete.BD.Data.Entity
         //-----------------------------
         //Clave primaria de la tabla
         //-----------------------------
-        public int ReservaID { get; set; }
+       
+        public int ReservaId { get; set; }
         
         //Tabla relacionada
-        public Usuario Usuarios { get; set; }
+        
 
 
         //-----------------------------

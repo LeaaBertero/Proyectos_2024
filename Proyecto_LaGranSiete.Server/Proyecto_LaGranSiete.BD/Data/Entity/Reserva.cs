@@ -9,9 +9,8 @@ using System.Threading.Tasks;
 
 namespace Proyecto_LaGranSiete.BD.Data.Entity
 {
-    [Index(nameof(ReservaId), Name = "ReservaId", IsUnique = true)]
-    [Index(nameof(FechaHoraReserva), nameof(DuracionAlquiler), nameof(Monto), nameof(MetodoPago), nameof(EstadoReserva),
-    Name = "FechaHoraReserva_DuracionAlquiler_Monto_MetodoPago_EstadoReserva", IsUnique = false)]
+    
+    
 
 
     public class Reserva : EntityBase
@@ -20,7 +19,8 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
         public int ReservaId { get; set; }
 
         //Clave foranea de la tabla (Usuarios)
-        
+
+        public int UsuarioId { get; set; }
 
         //----------------------------------------------------
         //Propiedades de la tabla
@@ -28,29 +28,28 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
 
 
         //----------------------------------------------------
-        [Required(ErrorMessage = "La fecha y hora obligatoria")]
+       
         //[MaxLength(20, ErrorMessage = "Máximo número de caracteres {1}")]
         public DateTime FechaHoraReserva { get; set; }
 
 
-        [Required(ErrorMessage = "La duración del alquiler es obligatoria")]
-        //[MaxLength(10, ErrorMessage = "Máximo número de caracteres {1}")]
-        public int? DuracionAlquiler { get; set; }
+       
+        
+        public int DuracionAlquiler { get; set; }
 
         
-        [Required(ErrorMessage = "El monto, es obligatorio")]
-        [MaxLength(5, ErrorMessage = "Máximo número de caracteres {1}")]
+       
         public double Monto { get; set; }
 
         
-        [Required(ErrorMessage = "El método de pago, es obligatorio")]
+      
         //[MaxLength(20, ErrorMessage = "Máximo número de caracteres {1}")]
-        public string? MetodoPago { get; set; } 
+        public string MetodoPago { get; set; } 
 
         
-        [Required(ErrorMessage = "El estado de la reserva es obligatoria")]
+        
         //[MaxLength(30, ErrorMessage = "Máximo número de caracteres {1}")]
-        public string? EstadoReserva { get; set; }
+        public string EstadoReserva { get; set; }
 
         //--------------------------------------------------------
         //Relaciones entre tablas
@@ -67,13 +66,13 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
       
 
         public int EquipoId { get; set; }
-        public Equipo? Equipos { get; set; }
+        public Equipo Equipos { get; set; }
 
         public int PagoId { get; set; }
-        public Pago? Pagos { get; set; }
+        public Pago Pagos { get; set; }
 
         public int PartidoId { get; set; }
-        public Partido? Partidos { get; set; }
+        public Partido Partidos { get; set; }
         //---------------------------------------------------------
 
 

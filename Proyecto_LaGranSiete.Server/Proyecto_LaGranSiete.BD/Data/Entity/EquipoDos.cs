@@ -26,10 +26,10 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
         //Clave foranea de la tabla
 
         public int PartidoId { get; set; }
-        public Partido? Partidos { get; set; }
+        public Partido Partidos { get; set; }
 
         public int ReservaId { get; set; }
-        public Reserva? Reserva { get; set; }
+        public Reserva Reserva { get; set; }
 
 
         public List<Pago> Pagos { get; set; } = new List<Pago>();
