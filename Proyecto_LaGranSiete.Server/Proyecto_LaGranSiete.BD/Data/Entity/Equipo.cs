@@ -38,6 +38,8 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
         public int Integrantes { get; set; }
         //-------------------------------------------------------
 
+        public int PartidoId { get; set; }
+        public Partido Partidos { get; set; }
 
        
     }
