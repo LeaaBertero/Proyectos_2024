@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Proyecto_LaGranSiete.BD.Data;
 
@@ -11,9 +12,11 @@ using Proyecto_LaGranSiete.BD.Data;
 namespace Proyecto_LaGranSiete.BD.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20240830043159_ModificoColumnaUsuario")]
+    partial class ModificoColumnaUsuario
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -354,8 +357,6 @@ namespace Proyecto_LaGranSiete.BD.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UsuarioId");
-
                     b.HasIndex(new[] { "Nombre", "Apellido", "UsuarioId" }, "UsuarioId_UQ")
                         .IsUnique();
 
@@ -506,15 +507,6 @@ namespace Proyecto_LaGranSiete.BD.Migrations
                     b.Navigation("Usuarios");
                 });
 
-            modelBuilder.Entity("Proyecto_LaGranSiete.BD.Data.Entity.Usuario", b =>
-                {
-                    b.HasOne("Proyecto_LaGranSiete.BD.Data.Entity.Usuario", null)
-                        .WithMany("Usuarios")
-                        .HasForeignKey("UsuarioId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("Proyecto_LaGranSiete.BD.Data.Entity.EquipoDos", b =>
                 {
                     b.Navigation("Pagos");
@@ -528,11 +520,6 @@ namespace Proyecto_LaGranSiete.BD.Migrations
             modelBuilder.Entity("Proyecto_LaGranSiete.BD.Data.Entity.Reserva", b =>
                 {
                     b.Navigation("Reservas");
-                });
-
-            modelBuilder.Entity("Proyecto_LaGranSiete.BD.Data.Entity.Usuario", b =>
-                {
-                    b.Navigation("Usuarios");
                 });
 #pragma warning restore 612, 618
         }

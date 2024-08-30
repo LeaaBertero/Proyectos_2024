@@ -10,17 +10,12 @@ using System.Threading.Tasks;
 namespace Proyecto_LaGranSiete.BD.Data.Entity
 {
     
-    
-
+  
 
     public class Reserva : EntityBase
     {
         //Clave primaria de la tabla Reservas
         public int ReservaId { get; set; }
-
-        //Clave foranea de la tabla (Usuarios)
-
-        public int UsuarioId { get; set; }
 
         //----------------------------------------------------
         //Propiedades de la tabla
@@ -28,28 +23,27 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
 
 
         //----------------------------------------------------
-       
-        //[MaxLength(20, ErrorMessage = "Máximo número de caracteres {1}")]
+
+        [Required(ErrorMessage = "la fecha y hora de la reserva, es obligatoria")]
         public DateTime FechaHoraReserva { get; set; }
 
 
-       
-        
+        [Required(ErrorMessage = "La duración del alquiler es obligatorio")]
         public int DuracionAlquiler { get; set; }
 
-        
-       
-        public double Monto { get; set; }
 
-        
-      
-        //[MaxLength(20, ErrorMessage = "Máximo número de caracteres {1}")]
-        public string MetodoPago { get; set; } 
+        [Required(ErrorMessage = "El monto es obligatorio")]
+        public decimal Monto { get; set; }
 
-        
-        
-        //[MaxLength(30, ErrorMessage = "Máximo número de caracteres {1}")]
+
+        [Required(ErrorMessage = "El método es obligatorio")]
+        public string MetodoPago { get; set; }
+
+
+        [Required(ErrorMessage = "El estado de la reserva es obligatorio")]
         public string EstadoReserva { get; set; }
+        
+        
 
         //--------------------------------------------------------
         //Relaciones entre tablas
@@ -60,34 +54,29 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
         //(Clave primaria de la tabla (Pagos) que se relaciona con la tabla (Reservas))
 
 
-        //---------------------------------------------------------
-        //Relacion entre tablas
 
       
 
+        //---------------------------------------------------------
+        //Relacion entre tablas
         public int EquipoId { get; set; }
         public Equipo Equipos { get; set; }
+
+        public int UsuarioId { get; set; }
+        public Usuario Usuarios { get; set; }
 
         public int PagoId { get; set; }
         public Pago Pagos { get; set; }
 
         public int PartidoId { get; set; }
         public Partido Partidos { get; set; }
-        //---------------------------------------------------------
+
+       
 
 
+      
 
-
-
-
-        //--------------------------------------------------------
-
-
-        //Lista de los usuarios que realizan reservas
-        //--Renueva la lista por cada usuario que realice una reserva
-        public List<Usuario> Usuarios { get; set; } = new List<Usuario>();
-
-        //Lista de los usuarios que realizaron reservas
+        //Lista de las reservas realizadas por los usuarios
         public List<Reserva> Reservas { get; set; } = new List<Reserva>();
 
         
