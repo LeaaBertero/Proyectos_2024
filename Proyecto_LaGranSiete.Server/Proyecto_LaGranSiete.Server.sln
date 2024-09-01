@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Proyecto_LaGranSiete.BD", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Proyecto_LaGranSiete.Shared", "Proyecto_LaGranSiete.Shared\Proyecto_LaGranSiete.Shared.csproj", "{11589BC7-00C6-420D-89BF-948CAC564078}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Proyecto_LaGranSiete.Client", "Proyecto_LaGranSiete.Client\Proyecto_LaGranSiete.Client.csproj", "{89299930-485F-4283-8303-DD4E9B61D286}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Proyecto_LaGranSiete.Client", "Proyecto_LaGranSiete.Client\Proyecto_LaGranSiete.Client.csproj", "{89299930-485F-4283-8303-DD4E9B61D286}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

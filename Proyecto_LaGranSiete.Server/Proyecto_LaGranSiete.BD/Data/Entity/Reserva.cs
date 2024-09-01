@@ -33,7 +33,7 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
 
 
         [Required(ErrorMessage = "El monto es obligatorio")]
-        public decimal Monto { get; set; }
+        public int Monto { get; set; }
 
 
         [Required(ErrorMessage = "El método es obligatorio")]
@@ -45,20 +45,6 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
         
         
 
-        //--------------------------------------------------------
-        //Relaciones entre tablas
-        //Clave primaria de la tabla (Partidos)
-
-
-
-        //(Clave primaria de la tabla (Pagos) que se relaciona con la tabla (Reservas))
-
-
-
-      
-
-        //---------------------------------------------------------
-        //Relacion entre tablas
        
 
         public int UsuarioId { get; set; }
