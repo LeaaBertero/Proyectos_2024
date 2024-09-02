@@ -14,6 +14,17 @@
        <th>Estado de la reserva</th>
    </tr>
 
+    @foreach (var item in listaReserva)
+    {
+        <tr>
+            <td>@item.FechaHoraReserva</td>
+            <td>@item.DuracionAlquiler</td>
+            <td>@item.Monto</td>
+            <td>@item.MetodoPago</td>
+            <td>@item.EstadoReserva</td>
+        </tr>
+    }
+
 </table>
 
 @code {
