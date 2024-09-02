@@ -279,8 +279,8 @@ namespace Proyecto_LaGranSiete.BD.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("Monto")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<int>("Monto")
+                        .HasColumnType("int");
 
                     b.Property<int>("PagoId")
                         .HasColumnType("int");

@@ -12,8 +12,8 @@ using Proyecto_LaGranSiete.BD.Data;
 namespace Proyecto_LaGranSiete.BD.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20240822035218_ActualizoMigration")]
-    partial class ActualizoMigration
+    [Migration("20240902150844_inicio")]
+    partial class inicio
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -45,7 +45,12 @@ namespace Proyecto_LaGranSiete.BD.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
+                    b.Property<int>("ReservaId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("ReservaId");
 
                     b.HasIndex(new[] { "CanchasId" }, "CanchasId")
                         .IsUnique();
@@ -75,7 +80,12 @@ namespace Proyecto_LaGranSiete.BD.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<int>("PartidoId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("PartidoId");
 
                     b.HasIndex(new[] { "EquipoId" }, "EquipoId")
                         .IsUnique();
@@ -104,14 +114,9 @@ namespace Proyecto_LaGranSiete.BD.Migrations
                     b.Property<int>("PartidoId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ReservaId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("PartidoId");
-
-                    b.HasIndex("ReservaId");
 
                     b.HasIndex(new[] { "EquipoDosId" }, "EquipoDosId")
                         .IsUnique();
@@ -140,14 +145,9 @@ namespace Proyecto_LaGranSiete.BD.Migrations
                     b.Property<int>("PartidoId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ReservaId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("PartidoId");
-
-                    b.HasIndex("ReservaId");
 
                     b.HasIndex(new[] { "EquipoUnoId" }, "EquipoUnoId")
                         .IsUnique();
@@ -165,6 +165,9 @@ namespace Proyecto_LaGranSiete.BD.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("CanchaId")
+                        .HasColumnType("int");
+
                     b.Property<int?>("EquipoDosId")
                         .HasColumnType("int");
 
@@ -181,8 +184,8 @@ namespace Proyecto_LaGranSiete.BD.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("Monto")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<int>("Monto")
+                        .HasColumnType("int");
 
                     b.Property<double?>("Monto_Pago")
                         .IsRequired()
@@ -199,6 +202,8 @@ namespace Proyecto_LaGranSiete.BD.Migrations
                         .HasColumnType("time");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CanchaId");
 
                     b.HasIndex("EquipoDosId");
 
@@ -227,9 +232,6 @@ namespace Proyecto_LaGranSiete.BD.Migrations
                     b.Property<int>("CanchaId")
                         .HasColumnType("int");
 
-                    b.Property<int>("EquipoId")
-                        .HasColumnType("int");
-
                     b.Property<TimeOnly?>("FechaHoraPartidos")
                         .IsRequired()
                         .HasColumnType("time");
@@ -240,8 +242,6 @@ namespace Proyecto_LaGranSiete.BD.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CanchaId");
-
-                    b.HasIndex("EquipoId");
 
                     b.HasIndex(new[] { "FechaHoraPartidos" }, "FechaHoraPartidos");
 
@@ -262,23 +262,28 @@ namespace Proyecto_LaGranSiete.BD.Migrations
                     b.Property<int>("DuracionAlquiler")
                         .HasColumnType("int");
 
+                    b.Property<int>("EquipoDosId")
+                        .HasColumnType("int");
+
                     b.Property<int>("EquipoId")
                         .HasColumnType("int");
 
-                    b.Property<bool?>("EstadoReserva")
+                    b.Property<int>("EquipoUnoId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("EstadoReserva")
                         .IsRequired()
-                        .HasColumnType("bit");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("FechaHoraReserva")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("MetodoPago")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("Monto")
-                        .HasMaxLength(5)
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<int>("Monto")
+                        .HasColumnType("int");
 
                     b.Property<int>("PagoId")
                         .HasColumnType("int");
@@ -289,18 +294,24 @@ namespace Proyecto_LaGranSiete.BD.Migrations
                     b.Property<int>("ReservaId")
                         .HasColumnType("int");
 
+                    b.Property<int>("UsuarioId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
+                    b.HasIndex("EquipoDosId");
+
                     b.HasIndex("EquipoId");
+
+                    b.HasIndex("EquipoUnoId");
 
                     b.HasIndex("PagoId");
 
                     b.HasIndex("PartidoId");
 
-                    b.HasIndex(new[] { "ReservaId" }, "ReservaId_UQ")
-                        .IsUnique();
+                    b.HasIndex("ReservaId");
 
-                    b.HasIndex(new[] { "FechaHoraReserva", "DuracionAlquiler", "Monto", "MetodoPago", "EstadoReserva" }, "Reserva_FechaHoraReserva_DuracionAlquiler_Monto_MetodoPago_EstadoReserva");
+                    b.HasIndex("UsuarioId");
 
                     b.ToTable("Reservas");
                 });
@@ -323,14 +334,7 @@ namespace Proyecto_LaGranSiete.BD.Migrations
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
 
-                    b.Property<int?>("EquipoDosId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("EquipoUnoId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("FechaNacimiento")
-                        .HasMaxLength(30)
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Nombre")
@@ -343,11 +347,12 @@ namespace Proyecto_LaGranSiete.BD.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<int>("ReservaId")
+                    b.Property<int?>("ReservaId")
                         .HasColumnType("int");
 
                     b.Property<int?>("Telefono")
                         .IsRequired()
+                        .HasMaxLength(25)
                         .HasColumnType("int");
 
                     b.Property<int>("UsuarioId")
@@ -355,13 +360,36 @@ namespace Proyecto_LaGranSiete.BD.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EquipoDosId");
-
-                    b.HasIndex("EquipoUnoId");
-
                     b.HasIndex("ReservaId");
 
+                    b.HasIndex("UsuarioId");
+
+                    b.HasIndex(new[] { "Nombre", "Apellido", "UsuarioId" }, "UsuarioId_UQ")
+                        .IsUnique();
+
                     b.ToTable("Usuarios");
+                });
+
+            modelBuilder.Entity("Proyecto_LaGranSiete.BD.Data.Entity.Cancha", b =>
+                {
+                    b.HasOne("Proyecto_LaGranSiete.BD.Data.Entity.Reserva", "Reserva")
+                        .WithMany()
+                        .HasForeignKey("ReservaId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Reserva");
+                });
+
+            modelBuilder.Entity("Proyecto_LaGranSiete.BD.Data.Entity.Equipo", b =>
+                {
+                    b.HasOne("Proyecto_LaGranSiete.BD.Data.Entity.Partido", "Partidos")
+                        .WithMany()
+                        .HasForeignKey("PartidoId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Partidos");
                 });
 
             modelBuilder.Entity("Proyecto_LaGranSiete.BD.Data.Entity.EquipoDos", b =>
@@ -372,15 +400,7 @@ namespace Proyecto_LaGranSiete.BD.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("Proyecto_LaGranSiete.BD.Data.Entity.Reserva", "Reserva")
-                        .WithMany()
-                        .HasForeignKey("ReservaId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
                     b.Navigation("Partidos");
-
-                    b.Navigation("Reserva");
                 });
 
             modelBuilder.Entity("Proyecto_LaGranSiete.BD.Data.Entity.EquipoUno", b =>
@@ -391,19 +411,17 @@ namespace Proyecto_LaGranSiete.BD.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("Proyecto_LaGranSiete.BD.Data.Entity.Reserva", "Reserva")
-                        .WithMany()
-                        .HasForeignKey("ReservaId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
                     b.Navigation("Partidos");
-
-                    b.Navigation("Reserva");
                 });
 
             modelBuilder.Entity("Proyecto_LaGranSiete.BD.Data.Entity.Pago", b =>
                 {
+                    b.HasOne("Proyecto_LaGranSiete.BD.Data.Entity.Cancha", "Canchas")
+                        .WithMany()
+                        .HasForeignKey("CanchaId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.HasOne("Proyecto_LaGranSiete.BD.Data.Entity.EquipoDos", null)
                         .WithMany("Pagos")
                         .HasForeignKey("EquipoDosId");
@@ -424,6 +442,8 @@ namespace Proyecto_LaGranSiete.BD.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.Navigation("Canchas");
+
                     b.Navigation("Equipos");
 
                     b.Navigation("Partidos");
@@ -437,22 +457,26 @@ namespace Proyecto_LaGranSiete.BD.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.Navigation("Canchas");
+                });
+
+            modelBuilder.Entity("Proyecto_LaGranSiete.BD.Data.Entity.Reserva", b =>
+                {
+                    b.HasOne("Proyecto_LaGranSiete.BD.Data.Entity.EquipoDos", "EquipoDos")
+                        .WithMany("Reservas")
+                        .HasForeignKey("EquipoDosId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.HasOne("Proyecto_LaGranSiete.BD.Data.Entity.Equipo", "Equipos")
                         .WithMany()
                         .HasForeignKey("EquipoId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.Navigation("Canchas");
-
-                    b.Navigation("Equipos");
-                });
-
-            modelBuilder.Entity("Proyecto_LaGranSiete.BD.Data.Entity.Reserva", b =>
-                {
-                    b.HasOne("Proyecto_LaGranSiete.BD.Data.Entity.Equipo", "Equipos")
-                        .WithMany()
-                        .HasForeignKey("EquipoId")
+                    b.HasOne("Proyecto_LaGranSiete.BD.Data.Entity.EquipoUno", "EquipoUno")
+                        .WithMany("Reservas")
+                        .HasForeignKey("EquipoUnoId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
@@ -474,26 +498,9 @@ namespace Proyecto_LaGranSiete.BD.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.Navigation("Equipos");
-
-                    b.Navigation("Pagos");
-
-                    b.Navigation("Partidos");
-                });
-
-            modelBuilder.Entity("Proyecto_LaGranSiete.BD.Data.Entity.Usuario", b =>
-                {
-                    b.HasOne("Proyecto_LaGranSiete.BD.Data.Entity.EquipoDos", "EquipoDos")
+                    b.HasOne("Proyecto_LaGranSiete.BD.Data.Entity.Usuario", "Usuarios")
                         .WithMany()
-                        .HasForeignKey("EquipoDosId");
-
-                    b.HasOne("Proyecto_LaGranSiete.BD.Data.Entity.EquipoUno", "EquipoUno")
-                        .WithMany()
-                        .HasForeignKey("EquipoUnoId");
-
-                    b.HasOne("Proyecto_LaGranSiete.BD.Data.Entity.Reserva", "Reservas")
-                        .WithMany("Usuarios")
-                        .HasForeignKey("ReservaId")
+                        .HasForeignKey("UsuarioId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
@@ -501,23 +508,51 @@ namespace Proyecto_LaGranSiete.BD.Migrations
 
                     b.Navigation("EquipoUno");
 
-                    b.Navigation("Reservas");
+                    b.Navigation("Equipos");
+
+                    b.Navigation("Pagos");
+
+                    b.Navigation("Partidos");
+
+                    b.Navigation("Usuarios");
+                });
+
+            modelBuilder.Entity("Proyecto_LaGranSiete.BD.Data.Entity.Usuario", b =>
+                {
+                    b.HasOne("Proyecto_LaGranSiete.BD.Data.Entity.Reserva", null)
+                        .WithMany("Usuario")
+                        .HasForeignKey("ReservaId");
+
+                    b.HasOne("Proyecto_LaGranSiete.BD.Data.Entity.Usuario", null)
+                        .WithMany("Usuarios")
+                        .HasForeignKey("UsuarioId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Proyecto_LaGranSiete.BD.Data.Entity.EquipoDos", b =>
                 {
                     b.Navigation("Pagos");
+
+                    b.Navigation("Reservas");
                 });
 
             modelBuilder.Entity("Proyecto_LaGranSiete.BD.Data.Entity.EquipoUno", b =>
                 {
                     b.Navigation("Pagos");
+
+                    b.Navigation("Reservas");
                 });
 
             modelBuilder.Entity("Proyecto_LaGranSiete.BD.Data.Entity.Reserva", b =>
                 {
                     b.Navigation("Reservas");
 
+                    b.Navigation("Usuario");
+                });
+
+            modelBuilder.Entity("Proyecto_LaGranSiete.BD.Data.Entity.Usuario", b =>
+                {
                     b.Navigation("Usuarios");
                 });
 #pragma warning restore 612, 618
