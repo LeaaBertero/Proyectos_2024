@@ -9,9 +9,6 @@ using System.Threading.Tasks;
 
 namespace Proyecto_LaGranSiete.BD.Data.Entity
 {
-    
-  
-
     public class Reserva : EntityBase
     {
         //Clave primaria de la tabla Reservas
