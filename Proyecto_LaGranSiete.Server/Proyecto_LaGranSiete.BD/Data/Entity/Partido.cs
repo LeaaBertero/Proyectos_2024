@@ -42,7 +42,7 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
         
 
         public int CanchaId { get; set; }
-        public Cancha Canchas { get; set; }
+        public Cancha? Canchas { get; set; }
 
         
         //--------------------------------------------------------
