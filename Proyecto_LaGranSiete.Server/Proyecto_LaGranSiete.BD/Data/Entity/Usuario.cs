@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Proyecto_LaGranSiete.BD.Data.Entity
 {
-    [Index(nameof(Nombre), nameof(Apellido), nameof(UsuarioId), Name = "UsuarioId_UQ", IsUnique = true)]
+    //[Index(nameof(Nombre), nameof(Apellido), nameof(UsuarioId), Name = "UsuarioId_UQ", IsUnique = true)]
     public class Usuario : EntityBase
     {
         //Clave primaria de la tabla

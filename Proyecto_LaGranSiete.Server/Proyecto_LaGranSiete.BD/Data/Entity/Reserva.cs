@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Proyecto_LaGranSiete.BD.Data.Entity
 {
-    [Index(nameof(ReservaId), Name = "ReservaId", IsUnique = true)]
+    [Index(nameof(UsuarioId), Name = "UsuarioId_UQ", IsUnique = true)]
     [Index(nameof(FechaHoraReserva), nameof(DuracionAlquiler), nameof(Monto), nameof(MetodoPago), nameof(EstadoReserva),
     Name = "FechaHoraReserva_DuracionAlquiler_Monto_MetodoPago_EstadoReserva", IsUnique = false)]
     public class Reserva : EntityBase
