@@ -3,7 +3,7 @@
 @inject IHTTPServicio http
 @using Proyecto_LaGranSiete.BD.Data.Entity
 
-<h3>lista de reservas ralizadas</h3>
+<h3>LISTA DE RESERVAS</h3>
 <table>
 
    <tr>
@@ -14,7 +14,7 @@
        <th>Estado de la reserva</th>
    </tr>
 
-    @foreach (var item in listaReserva)
+   @*  @foreach (var item in listaReserva)
     {
         <tr>
             <td>@item.FechaHoraReserva</td>
@@ -23,10 +23,10 @@
             <td>@item.MetodoPago</td>
             <td>@item.EstadoReserva</td>
         </tr>
-    }
+    } *@
 
 </table>
 
 @code {
-    List<Reserva> listaReserva;
+    List<Reserva>? listaReserva;
 }
