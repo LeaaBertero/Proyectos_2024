@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Proyecto_LaGranSiete.BD.Data;
 
@@ -11,9 +12,11 @@ using Proyecto_LaGranSiete.BD.Data;
 namespace Proyecto_LaGranSiete.BD.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20240904193537_ModificoTablaReserva")]
+    partial class ModificoTablaReserva
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -275,9 +278,9 @@ namespace Proyecto_LaGranSiete.BD.Migrations
                     b.Property<DateTime>("FechaHoraReserva")
                         .HasColumnType("datetime2");
 
-                    b.Property<bool?>("MetodoPago")
+                    b.Property<string>("MetodoPago")
                         .IsRequired()
-                        .HasColumnType("bit");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("Monto")
                         .HasColumnType("int");

@@ -39,11 +39,11 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
 
 
         [Required(ErrorMessage = "El método es obligatorio")]
-        public string? MetodoPago { get; set; }
+        public bool? MetodoPago { get; set; }
 
 
         [Required(ErrorMessage = "El estado de la reserva es obligatorio")]
-        public string? EstadoReserva { get; set; }
+        public bool? EstadoReserva { get; set; }
 
 
 
