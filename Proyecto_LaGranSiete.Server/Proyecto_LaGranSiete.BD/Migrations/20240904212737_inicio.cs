@@ -173,8 +173,8 @@ namespace Proyecto_LaGranSiete.BD.Migrations
                     FechaHoraReserva = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DuracionAlquiler = table.Column<int>(type: "int", nullable: false),
                     Monto = table.Column<int>(type: "int", nullable: false),
-                    MetodoPago = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    EstadoReserva = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    MetodoPago = table.Column<bool>(type: "bit", nullable: false),
+                    EstadoReserva = table.Column<bool>(type: "bit", nullable: false),
                     UsuarioId = table.Column<int>(type: "int", nullable: false),
                     EquipoUnoId = table.Column<int>(type: "int", nullable: false),
                     EquipoDosId = table.Column<int>(type: "int", nullable: false),
@@ -255,6 +255,11 @@ namespace Proyecto_LaGranSiete.BD.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "Cancha_NombreCancha_Disponibilidad",
+                table: "Canchas",
+                columns: new[] { "NombreCancha", "Disponibilidad" });
+
+            migrationBuilder.CreateIndex(
                 name: "CanchasId",
                 table: "Canchas",
                 column: "CanchasId",
@@ -266,9 +271,9 @@ namespace Proyecto_LaGranSiete.BD.Migrations
                 column: "ReservaId");
 
             migrationBuilder.CreateIndex(
-                name: "NombreCancha_Disponibilidad",
-                table: "Canchas",
-                columns: new[] { "NombreCancha", "Disponibilidad" });
+                name: "EquipoDos_NombreEquipoDos",
+                table: "EquipoDos",
+                column: "NombreEquipoDos");
 
             migrationBuilder.CreateIndex(
                 name: "EquipoDosId",
@@ -282,9 +287,9 @@ namespace Proyecto_LaGranSiete.BD.Migrations
                 column: "PartidoId");
 
             migrationBuilder.CreateIndex(
-                name: "NombreEquipoDos",
-                table: "EquipoDos",
-                column: "NombreEquipoDos");
+                name: "Equipo_NombreEquipos_Integrantes",
+                table: "Equipos",
+                columns: new[] { "NombreEquipos", "Integrantes" });
 
             migrationBuilder.CreateIndex(
                 name: "EquipoId",
@@ -298,9 +303,9 @@ namespace Proyecto_LaGranSiete.BD.Migrations
                 column: "PartidoId");
 
             migrationBuilder.CreateIndex(
-                name: "NombreEquipos_Integrantes",
-                table: "Equipos",
-                columns: new[] { "NombreEquipos", "Integrantes" });
+                name: "EquipoUno_NombreEquipoUno",
+                table: "EquipoUno",
+                column: "NombreEquipoUno");
 
             migrationBuilder.CreateIndex(
                 name: "EquipoUnoId",
@@ -312,11 +317,6 @@ namespace Proyecto_LaGranSiete.BD.Migrations
                 name: "IX_EquipoUno_PartidoId",
                 table: "EquipoUno",
                 column: "PartidoId");
-
-            migrationBuilder.CreateIndex(
-                name: "NombreEquipoUno",
-                table: "EquipoUno",
-                column: "NombreEquipoUno");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Pagos_CanchaId",
@@ -344,7 +344,7 @@ namespace Proyecto_LaGranSiete.BD.Migrations
                 column: "PartidoId");
 
             migrationBuilder.CreateIndex(
-                name: "Monto_Pago_FechaPago",
+                name: "Pago_Monto_Pago_FechaPago",
                 table: "Pagos",
                 columns: new[] { "Monto_Pago", "FechaPago" });
 
@@ -355,14 +355,14 @@ namespace Proyecto_LaGranSiete.BD.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "FechaHoraPartidos",
-                table: "Partidos",
-                column: "FechaHoraPartidos");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Partidos_CanchaId",
                 table: "Partidos",
                 column: "CanchaId");
+
+            migrationBuilder.CreateIndex(
+                name: "Partido_FechaHoraPartidos",
+                table: "Partidos",
+                column: "FechaHoraPartidos");
 
             migrationBuilder.CreateIndex(
                 name: "PartidosId",
@@ -401,9 +401,15 @@ namespace Proyecto_LaGranSiete.BD.Migrations
                 column: "ReservaId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Reservas_UsuarioId",
+                name: "Reserva_FechaHoraReserva_DuracionAlquiler_Monto_MetodoPago_EstadoReserva",
                 table: "Reservas",
-                column: "UsuarioId");
+                columns: new[] { "FechaHoraReserva", "DuracionAlquiler", "Monto", "MetodoPago", "EstadoReserva" });
+
+            migrationBuilder.CreateIndex(
+                name: "UsuarioId_UQ",
+                table: "Reservas",
+                column: "UsuarioId",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Usuarios_ReservaId",
@@ -414,12 +420,6 @@ namespace Proyecto_LaGranSiete.BD.Migrations
                 name: "IX_Usuarios_UsuarioId",
                 table: "Usuarios",
                 column: "UsuarioId");
-
-            migrationBuilder.CreateIndex(
-                name: "UsuarioId_UQ",
-                table: "Usuarios",
-                columns: new[] { "Nombre", "Apellido", "UsuarioId" },
-                unique: true);
 
             migrationBuilder.AddForeignKey(
                 name: "FK_Canchas_Reservas_ReservaId",

@@ -12,8 +12,8 @@ using Proyecto_LaGranSiete.BD.Data;
 namespace Proyecto_LaGranSiete.BD.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20240904194555_ActualizoEntidadReserva")]
-    partial class ActualizoEntidadReserva
+    [Migration("20240904212737_inicio")]
+    partial class inicio
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
