@@ -11,7 +11,7 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
     //Indices de la tabla
     [Index(nameof(PartidoId), Name = "PartidosId", IsUnique = true)]
     [Index(nameof(FechaHoraPartidos),
-    Name = "FechaHoraPartidos", IsUnique = false)]
+    Name = "Partido_FechaHoraPartidos", IsUnique = false)]
 
     public class Partido : EntityBase
     {

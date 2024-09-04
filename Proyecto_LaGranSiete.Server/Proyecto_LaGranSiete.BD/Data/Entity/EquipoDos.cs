@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Proyecto_LaGranSiete.BD.Data.Entity
 {
     [Index(nameof(EquipoDosId), Name = "EquipoDosId", IsUnique = true)]
-    [Index(nameof(NombreEquipoDos), Name = "NombreEquipoDos", IsUnique = false)]
+    [Index(nameof(NombreEquipoDos), Name = "EquipoDos_NombreEquipoDos", IsUnique = false)]
 
     public class EquipoDos : EntityBase
     {   //----------------------------------------------

@@ -12,7 +12,7 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
     //Indices de la tabla
     [Index(nameof(EquipoId), Name = "EquipoId", IsUnique = true)]
     [Index(nameof(NombreEquipos), nameof(Integrantes),
-    Name = "NombreEquipos_Integrantes", IsUnique = false)]
+    Name = "Equipo_NombreEquipos_Integrantes", IsUnique = false)]
 
     public class Equipo : EntityBase
     {

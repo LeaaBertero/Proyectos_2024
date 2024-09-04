@@ -11,7 +11,7 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
     //Indices de la tabla
     [Index(nameof(PagoId), Name = "PagoId", IsUnique = true)]
     [Index(nameof(Monto_Pago), nameof(FechaPago),
-    Name = "Monto_Pago_FechaPago", IsUnique = false)]
+    Name = "Pago_Monto_Pago_FechaPago", IsUnique = false)]
 
     public class Pago : EntityBase
     {

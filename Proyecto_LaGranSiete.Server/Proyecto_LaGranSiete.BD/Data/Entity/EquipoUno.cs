@@ -10,7 +10,7 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
 {
     [Index(nameof(EquipoUnoId), 
     Name = "EquipoUnoId", IsUnique = true)]
-    [Index(nameof(NombreEquipoUno),Name = "NombreEquipoUno", IsUnique = false)]
+    [Index(nameof(NombreEquipoUno),Name = "EquipoUno_NombreEquipoUno", IsUnique = false)]
 
     public class EquipoUno : EntityBase
     {

@@ -12,7 +12,7 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
     //Indices de la tabla
     [Index(nameof(CanchasId), Name = "CanchasId", IsUnique = true)]
     [Index(nameof(NombreCancha), nameof(Disponibilidad),
-    Name = "NombreCancha_Disponibilidad", IsUnique = false)]
+    Name = "Cancha_NombreCancha_Disponibilidad", IsUnique = false)]
 
     public class Cancha : EntityBase
     {

@@ -11,7 +11,9 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
 {
     [Index(nameof(UsuarioId), Name = "UsuarioId_UQ", IsUnique = true)]
     [Index(nameof(FechaHoraReserva), nameof(DuracionAlquiler), nameof(Monto), nameof(MetodoPago), nameof(EstadoReserva),
-    Name = "FechaHoraReserva_DuracionAlquiler_Monto_MetodoPago_EstadoReserva", IsUnique = false)]
+    Name = "Reserva_FechaHoraReserva_DuracionAlquiler_Monto_MetodoPago_EstadoReserva", IsUnique = false)]
+
+
     public class Reserva : EntityBase
     {
         //Clave primaria de la tabla Reservas
