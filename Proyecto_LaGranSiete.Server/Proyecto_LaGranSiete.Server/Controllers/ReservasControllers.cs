@@ -52,7 +52,7 @@ namespace Proyecto_LaGranSiete.Server.Controllers
         //[HttpGet("GetByCod/{cod}")]
         //public async Task<ActionResult<Reservas>> GetByCod(string cod)
         //{
-        //    Reservas? lean = await context.Reservas
+        //    Reservas? lean = await Context.Reservas
         //        .FirstOrDefaultAsync(x => x.EstadoReserva == cod);
 
         //    if (lean == null)

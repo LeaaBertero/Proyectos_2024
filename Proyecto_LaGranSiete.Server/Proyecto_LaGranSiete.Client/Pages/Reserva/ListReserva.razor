@@ -14,7 +14,7 @@
        <th>Estado de la reserva</th>
    </tr>
 
-   @*  @foreach (var item in listaReserva)
+    @* @foreach (var item in listaReserva)
     {
         <tr>
             <td>@item.FechaHoraReserva</td>
@@ -23,10 +23,54 @@
             <td>@item.MetodoPago</td>
             <td>@item.EstadoReserva</td>
         </tr>
+    }
+
+    @if (listaReserva == null)
+    {
+        <p>Buscando...</p>
+    }
+    else
+    {
+        @foreach (var item in listaReserva)
+        {
+            <tr>
+                <td>@item.FechaHoraReserva</td>
+                <td>@item.DuracionAlquiler</td>
+                <td>@item.Monto</td>
+                <td>@item.Monto</td>
+                <td>@item.MetodoPago</td>
+                <td>@item.EstadoReserva</td>
+            </tr>   
+        }
     } *@
 
 </table>
 
-@code {
+
+
+
+@* @code {
     List<Reserva>? listaReserva;
-}
+    string Mensaje = "";
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+        Leer();
+    }
+
+    private async Task Leer()
+    {
+        HTTPRespuesta<List<Reserva>> resp = 
+        await http.Get<List<Reserva>>("Api/Reservas");
+
+        if (!resp.Error)
+        {
+            listaReserva = resp.Respuesta;
+        }
+        else
+        {
+            Mensaje = "Error";       
+        } 
+
+    }
+} *@

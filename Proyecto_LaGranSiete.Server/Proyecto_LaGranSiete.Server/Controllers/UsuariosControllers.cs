@@ -49,11 +49,11 @@ namespace Proyecto_LaGranSiete.Server.Controllers
             return VariableAuxiliar;
         }
 
-        //get 2
+        // get 2
         //[HttpGet("GetByCod/{cod}")]
         //public async Task<ActionResult<Usuarios>> GetByCod(string cod)
         //{
-        //    Usuarios? variableAuxiliar = await context.Usuarios
+        //    Usuarios? variableAuxiliar = await Context.Usuarios
         //        .FirstOrDefaultAsync(x => x.Nombre == cod);
 
         //    if (variableAuxiliar == null)
