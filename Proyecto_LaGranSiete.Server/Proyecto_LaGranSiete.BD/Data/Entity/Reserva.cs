@@ -22,6 +22,7 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
         //----------------------------------------------------
         //Propiedades de la tabla
         //----------------------------------------------------
+        //Para duplicar lineas Presionar (Control + D)
 
 
         //----------------------------------------------------
