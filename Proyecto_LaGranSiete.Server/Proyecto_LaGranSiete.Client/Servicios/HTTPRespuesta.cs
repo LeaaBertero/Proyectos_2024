@@ -2,6 +2,7 @@
 {
     public class HTTPRespuesta<T>
     {
+        //Respuesta al objeto "T" - "Lista de Reservas"
         public T Respuesta { get; }
         public bool Error { get; } 
         //informacion que viene del cliente y el server
