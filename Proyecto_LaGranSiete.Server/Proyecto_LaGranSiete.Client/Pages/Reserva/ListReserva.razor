@@ -64,8 +64,10 @@
 
     private async Task Leer()
     {
+        // var resp = await http.Get<List<Reserva>>("/Api/Reservas");
+
         HTTPRespuesta<List<Reserva>> resp = 
-        await http.Get<List<Reserva>>("Api/Reservas");
+        await http.Get<List<Reserva>>("/Api/Reservas");
 
         if (!resp.Error)
         {
