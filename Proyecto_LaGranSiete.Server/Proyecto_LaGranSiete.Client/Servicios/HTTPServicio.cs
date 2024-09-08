@@ -5,6 +5,7 @@ namespace Proyecto_LaGranSiete.Client.Servicios
 {
     public class HTTPServicio : IHTTPServicio //Interfaz de HTTPServicio
     {
+        //control + . "crear y asignar campo" -  (campo privado)
         private readonly HttpClient http;
 
         //constructor

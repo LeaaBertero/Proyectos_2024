@@ -51,12 +51,15 @@
 
 
 @code {
+    
     List<Reserva>? listaReserva;
+    
     string Mensaje = "";
-    protected override async Task OnInitializedAsync()
+    
+    protected override async Task OnInitializedAsync() //"Task" = Equivale a un "VOID"
     {
-        await base.OnInitializedAsync();
-        Leer();
+        await base.OnInitializedAsync(); //Evento que se produce cuando se inicializa la pagina web
+        await Leer();
     }
 
     private async Task Leer()
