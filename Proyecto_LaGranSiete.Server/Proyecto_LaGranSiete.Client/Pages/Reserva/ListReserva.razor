@@ -3,27 +3,28 @@
 @inject IHTTPServicio http
 @using Proyecto_LaGranSiete.BD.Data.Entity
 
-<h3>LISTA DE RESERVAS</h3>
+<h3 class="">Lista de reservas realizadas</h3>
+
 <table>
 
    <tr>
-       <th>Fecha y hora de la reserva</th>
-       <th>Duración del alquiler</th>
-       <th>Monto</th>
-       <th>Método de pago</th>
-       <th>Estado de la reserva</th>
+       <th class="text-warning bg-dark">Fecha y hora de la reserva</th>
+       <th class="text-warning bg-dark">Duración del alquiler</th>
+       <th class="text-warning bg-dark">Monto</th>
+       <th class="text-warning bg-dark">Método de pago</th>
+       <th class="text-warning bg-dark">Estado de la reserva</th>
    </tr>
 
-    @* @foreach (var item in listaReserva)
+   @*  @foreach (var item in listaReserva)
     {
         <tr>
-            <td>@item.FechaHoraReserva</td>
-            <td>@item.DuracionAlquiler</td>
-            <td>@item.Monto</td>
-            <td>@item.MetodoPago</td>
-            <td>@item.EstadoReserva</td>
+            <th>@item.FechaHoraReserva</th>
+            <th>@item.DuracionAlquiler</th>
+            <th>@item.Monto</th>
+            <th>@item.MetodoPago</th>
+            <th>@item.EstadoReserva</th>
         </tr>
-    }
+    } *@
 
     @if (listaReserva == null)
     {
@@ -37,19 +38,19 @@
                 <td>@item.FechaHoraReserva</td>
                 <td>@item.DuracionAlquiler</td>
                 <td>@item.Monto</td>
-                <td>@item.Monto</td>
                 <td>@item.MetodoPago</td>
                 <td>@item.EstadoReserva</td>
             </tr>   
+               
         }
-    } *@
+    }
 
 </table>
 
 
 
 
-@* @code {
+@code {
     List<Reserva>? listaReserva;
     string Mensaje = "";
     protected override async Task OnInitializedAsync()
@@ -73,4 +74,4 @@
         } 
 
     }
-} *@
+}

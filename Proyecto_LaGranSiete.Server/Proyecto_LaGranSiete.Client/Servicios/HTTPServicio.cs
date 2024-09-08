@@ -3,7 +3,7 @@ using System.Text.Json;
 
 namespace Proyecto_LaGranSiete.Client.Servicios
 {
-    public class HTTPServicio : IHTTPServicio
+    public class HTTPServicio : IHTTPServicio //Interfaz de HTTPServicio
     {
         private readonly HttpClient http;
 
