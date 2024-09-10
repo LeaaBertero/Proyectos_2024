@@ -3,6 +3,7 @@
 @inject IHTTPServicio http
 @using Proyecto_LaGranSiete.BD.Data.Entity
 
+@* titulo del menu de navegacion *@
 <h3 class="">Lista de reservas realizadas</h3>
 
 <table>
@@ -15,16 +16,7 @@
        <th class="text-warning bg-dark">Estado de la reserva</th>
    </tr>
 
-    @*  @foreach (var item in listaReserva)
-    {
-        <tr>
-            <th>@item.FechaHoraReserva</th>
-            <th>@item.DuracionAlquiler</th>
-            <th>@item.Monto</th>
-            <th>@item.MetodoPago</th>
-            <th>@item.EstadoReserva</th>
-        </tr>
-    } *@
+  
 
     @if (listaReserva == null)
     {
@@ -46,7 +38,6 @@
     }
 
 </table>
-
 
 
 
