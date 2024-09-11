@@ -17,36 +17,45 @@
    </tr>
 
   
-
-    @if (listaReserva == null)
+    @if (Mensaje == "")
     {
-        <p>Buscando...</p>
+        @if (listaReserva == null)
+        {
+            <p>Buscando...</p>
+        }
+        else if(listaReserva.Count == 0)
+        {
+            <p>No existen reservas</p>
+        }
+        else
+        {
+            @foreach (var item in listaReserva)
+            {
+                <tr>
+                    <td>@item.FechaHoraReserva</td>
+                    <td>@item.DuracionAlquiler</td>
+                    <td>@item.Monto</td>
+                    <td>@item.MetodoPago</td>
+                    <td>@item.EstadoReserva</td>
+                </tr>   
+            }
+        }
     }
     else
     {
-        @foreach (var item in listaReserva)
-        {
-            <tr>
-                <td>@item.FechaHoraReserva</td>
-                <td>@item.DuracionAlquiler</td>
-                <td>@item.Monto</td>
-                <td>@item.MetodoPago</td>
-                <td>@item.EstadoReserva</td>
-            </tr>   
-               
-        }
+        <p>Error @Mensaje</p>
     }
+ 
 
 </table>
 
-
-
+               
 @code {
-    
+
     List<Reserva>? listaReserva;
-    
+
     string Mensaje = "";
-    
+
     protected override async Task OnInitializedAsync() //"Task" = Equivale a un "VOID"
     {
         await base.OnInitializedAsync(); //Evento que se produce cuando se inicializa la pagina web
@@ -66,8 +75,17 @@
         }
         else
         {
-            Mensaje = "Error";       
+            Mensaje = await resp.ObtenerError(); 
         } 
 
+
+
     }
+
+
+
+
+
+
+
 }
