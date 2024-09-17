@@ -8,9 +8,11 @@ using Proyecto_LaGranSiete.Shared.DTO;
 
 namespace Proyecto_LaGranSiete.Server.Controllers
 {
+    //etiqueta del controller
     [ApiController]
     [Route("Api/Reservas")] //Ruta de controllers
 
+    //Controller Reserva HEREDA de ControllerBase (Clase del framework)
     public class ReservasControllers : ControllerBase
     {
        
@@ -100,6 +102,7 @@ namespace Proyecto_LaGranSiete.Server.Controllers
                 return BadRequest("Datos incorrectos");
             }
 
+            
 
             try
             {
@@ -129,17 +132,19 @@ namespace Proyecto_LaGranSiete.Server.Controllers
         //Delete
         [HttpDelete("{id:int}")]
         public async Task<ActionResult> Delete(int id)
-        {                                            
-           var resp = await repositorio.Borrar(id);
+        {
+            var resp = await repositorio.Borrar(id);
 
             if (!resp)
             {
                 return BadRequest("No se pudo eliminar la reserva");
             }
-           
 
-           return Ok();
+
+            return Ok();
         }
+
+      
 
     }
 }

@@ -99,23 +99,23 @@ namespace Proyecto_LaGranSiete.Server.Controllers
                 return BadRequest("Datos incorrectos");
             }
 
-            var VarAuxiliar = await repositorio.SelectById(id);
+            var Registro = await repositorio.SelectById(id);
 
-            if (VarAuxiliar == null)
+            if (Registro == null)
             {
                 return NotFound("No existe el usuario buscado");
             }
 
-            VarAuxiliar.Nombre = entidad.Nombre;
-            VarAuxiliar.Apellido = entidad.Apellido;
-            VarAuxiliar.FechaNacimiento = entidad.FechaNacimiento;
-            VarAuxiliar.Telefono = entidad.Telefono;
-            VarAuxiliar.CorreoElectronico = entidad.CorreoElectronico;
-            VarAuxiliar.Parentesco = entidad.Parentesco;
+            Registro.Nombre = entidad.Nombre;
+            Registro.Apellido = entidad.Apellido;
+            Registro.FechaNacimiento = entidad.FechaNacimiento;
+            Registro.Telefono = entidad.Telefono;
+            Registro.CorreoElectronico = entidad.CorreoElectronico;
+            Registro.Parentesco = entidad.Parentesco;
 
             try
             {
-                await repositorio.Update(id, VarAuxiliar);
+                await repositorio.Update(id, Registro);
                 
                 return Ok();
             }
