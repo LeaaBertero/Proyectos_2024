@@ -11,7 +11,8 @@ namespace Proyecto_LaGranSiete.Server.Controllers
 {
     [ApiController]
     [Route("Api/Usuarios")] //Ruta de controllers
-    public class UsuariosControllers : ControllerBase
+    //Clase Usuario controller, que hereda de ControllerBase, que es una clase del framework
+    public class UsuariosControllers : ControllerBase 
     {
         private readonly IUsuarioRepositorio repositorio;
 
@@ -19,9 +20,9 @@ namespace Proyecto_LaGranSiete.Server.Controllers
 
         private readonly IMapper mapper;
 
-        //constructor
+        //constructor del controller Usuario, es un método que controye justamente ésta clase
         public UsuariosControllers(IUsuarioRepositorio repositorio,
-            IMapper mapper) //<--(inyección de dependencia)
+            IMapper mapper) //<--(inyección de dependencia) - Mapper
 
         {
             this.repositorio = repositorio;
