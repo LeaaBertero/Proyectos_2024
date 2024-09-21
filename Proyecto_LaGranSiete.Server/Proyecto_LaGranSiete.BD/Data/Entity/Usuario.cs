@@ -31,7 +31,7 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
         public DateTime FechaNacimiento { get; set; }
        
 
-        [Required(ErrorMessage = "El teléfono, es obligatorio")]
+        [Required(ErrorMessage = "El teléfono, es obligatorio - (con guión despues del 351)")]
         [MaxLength(25, ErrorMessage = "Máximo número de caracteres {1}")]
         public int? Telefono { get; set; } //Telefono
 

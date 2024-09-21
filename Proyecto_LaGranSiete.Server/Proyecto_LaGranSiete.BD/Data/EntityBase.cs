@@ -13,7 +13,7 @@ namespace Proyecto_LaGranSiete.BD.Data
     public class EntityBase : IEntityBase
     {
         //Id de cada una de las tablas
-        [Required(ErrorMessage = "El id es obligatorio")]
+        //[Required(ErrorMessage = "El id es obligatorio")]
         public int Id { get; set; }
     }
 }
