@@ -50,7 +50,7 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
 
 
 
-        [Required(ErrorMessage = "El estado de la reserva es obligatorio")]
+       
         public int UsuarioId { get; set; }
         public Usuario? Usuarios { get; set; }
 

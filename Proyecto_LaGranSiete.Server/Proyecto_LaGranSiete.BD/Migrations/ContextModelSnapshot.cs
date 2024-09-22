@@ -181,13 +181,13 @@ namespace Proyecto_LaGranSiete.BD.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Monto")
-                        .HasColumnType("int");
+                    b.Property<float>("Monto")
+                        .HasColumnType("real");
 
-                    b.Property<double?>("Monto_Pago")
+                    b.Property<float?>("Monto_Pago")
                         .IsRequired()
                         .HasMaxLength(10)
-                        .HasColumnType("float");
+                        .HasColumnType("real");
 
                     b.Property<int>("PagoId")
                         .HasColumnType("int");
@@ -195,8 +195,8 @@ namespace Proyecto_LaGranSiete.BD.Migrations
                     b.Property<int>("PartidoId")
                         .HasColumnType("int");
 
-                    b.Property<TimeOnly>("fechaHora")
-                        .HasColumnType("time");
+                    b.Property<DateTime>("fechaHora")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -229,9 +229,9 @@ namespace Proyecto_LaGranSiete.BD.Migrations
                     b.Property<int>("CanchaId")
                         .HasColumnType("int");
 
-                    b.Property<TimeOnly?>("FechaHoraPartidos")
+                    b.Property<DateTime?>("FechaHoraPartidos")
                         .IsRequired()
-                        .HasColumnType("time");
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("PartidoId")
                         .HasColumnType("int");

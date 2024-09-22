@@ -27,11 +27,11 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
         //------------------------------------------------------
         
         
-        public TimeOnly fechaHora { get; set; }
+        public DateTime fechaHora { get; set; }
 
         [Required(ErrorMessage = "El monto de pago es obligatorio")]
         [MaxLength(10, ErrorMessage = "Máximo número de caracteres {1}")]
-        public double? Monto_Pago { get; set; }
+        public float? Monto_Pago { get; set; }
 
 
         [Required(ErrorMessage = "El método de pago es obligatorio")]
@@ -45,7 +45,7 @@ namespace Proyecto_LaGranSiete.BD.Data.Entity
         public DateOnly FechaPago { get; set; }
 
         [Required(ErrorMessage = "El monto del pago es obligatoria")]
-        public int Monto { get; set; }
+        public float Monto { get; set; }
         //-------------------------------------------------------
 
 

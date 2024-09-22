@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Proyecto_LaGranSiete.BD.Migrations
 {
     /// <inheritdoc />
-    public partial class inicio : Migration
+    public partial class Inocio : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -34,7 +34,7 @@ namespace Proyecto_LaGranSiete.BD.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     PartidoId = table.Column<int>(type: "int", nullable: false),
-                    FechaHoraPartidos = table.Column<TimeOnly>(type: "time", nullable: false),
+                    FechaHoraPartidos = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CanchaId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -119,11 +119,11 @@ namespace Proyecto_LaGranSiete.BD.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     PagoId = table.Column<int>(type: "int", nullable: false),
-                    fechaHora = table.Column<TimeOnly>(type: "time", nullable: false),
-                    Monto_Pago = table.Column<double>(type: "float", maxLength: 10, nullable: false),
+                    fechaHora = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Monto_Pago = table.Column<float>(type: "real", maxLength: 10, nullable: false),
                     MetodoPagado = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     FechaPago = table.Column<DateOnly>(type: "date", nullable: false),
-                    Monto = table.Column<int>(type: "int", nullable: false),
+                    Monto = table.Column<float>(type: "real", nullable: false),
                     EquipoId = table.Column<int>(type: "int", nullable: false),
                     PartidoId = table.Column<int>(type: "int", nullable: false),
                     CanchaId = table.Column<int>(type: "int", nullable: false),
