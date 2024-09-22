@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Proyecto_LaGranSiete.BD.Migrations
 {
     /// <inheritdoc />
-    public partial class Inocio : Migration
+    public partial class Inicio : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -233,7 +233,7 @@ namespace Proyecto_LaGranSiete.BD.Migrations
                     Nombre = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Apellido = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
                     FechaNacimiento = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Telefono = table.Column<int>(type: "int", maxLength: 25, nullable: false),
+                    Telefono = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
                     CorreoElectronico = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
                     Parentesco = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     ReservaId = table.Column<int>(type: "int", nullable: true)

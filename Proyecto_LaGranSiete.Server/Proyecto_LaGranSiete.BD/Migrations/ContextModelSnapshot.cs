@@ -350,10 +350,10 @@ namespace Proyecto_LaGranSiete.BD.Migrations
                     b.Property<int?>("ReservaId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("Telefono")
+                    b.Property<string>("Telefono")
                         .IsRequired()
                         .HasMaxLength(25)
-                        .HasColumnType("int");
+                        .HasColumnType("nvarchar(25)");
 
                     b.Property<int>("UsuarioId")
                         .HasColumnType("int");

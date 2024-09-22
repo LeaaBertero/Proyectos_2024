@@ -12,8 +12,8 @@ using Proyecto_LaGranSiete.BD.Data;
 namespace Proyecto_LaGranSiete.BD.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20240922012528_Inocio")]
-    partial class Inocio
+    [Migration("20240922013217_Inicio")]
+    partial class Inicio
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -353,10 +353,10 @@ namespace Proyecto_LaGranSiete.BD.Migrations
                     b.Property<int?>("ReservaId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("Telefono")
+                    b.Property<string>("Telefono")
                         .IsRequired()
                         .HasMaxLength(25)
-                        .HasColumnType("int");
+                        .HasColumnType("nvarchar(25)");
 
                     b.Property<int>("UsuarioId")
                         .HasColumnType("int");
